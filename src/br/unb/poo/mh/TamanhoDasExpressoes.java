@@ -17,18 +17,30 @@ public class TamanhoDasExpressoes implements Visitor {
 		tamanho += 1;
 	}
 
-	@Override
-	public void visitar(ExpressaoSoma exp) {
+	private void visitarBin(ExpressaoBinaria exp) {
 		 exp.expEsquerda.aceitar(this);
 		 exp.expDireita.aceitar(this);
 		 tamanho += 1;
 	}
+	
+	@Override
+	public void visitar(ExpressaoSoma exp) {
+		visitarBin(exp);
+	}
 
 	@Override
 	public void visitar(Multiplicacao exp) {
-		 exp.expEsquerda.aceitar(this);
-		 exp.expDireita.aceitar(this);
-		 tamanho += 1;	
+		visitarBin(exp);
+	}
+
+	@Override
+	public void visitar(ExpressaoAnd exp) {
+		visitarBin(exp);
+	}
+
+	@Override
+	public void visitar(ExpressaoOr exp) {
+		visitarBin(exp);
 	}
 
 	@Override

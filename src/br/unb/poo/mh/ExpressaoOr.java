@@ -1,0 +1,28 @@
+package br.unb.poo.mh;
+
+public class ExpressaoOr extends ExpressaoBinaria {
+
+	public ExpressaoOr(Expressao expDireita, Expressao expEsquerda) {
+		super(expDireita, expEsquerda);
+	}
+
+	@Override
+	public Valor avaliar() {
+		ValorBooleano v1 = (ValorBooleano) expEsquerda.avaliar();
+		ValorBooleano v2 = (ValorBooleano) expDireita.avaliar();
+		
+		return new ValorBooleano(v1.getValor() || v2.getValor());
+		
+	}
+
+	@Override
+	public Tipo tipo() {
+		return (expEsquerda.tipo() == Tipo.Booleano && expDireita.tipo() == Tipo.Booleano) ? Tipo.Booleano : Tipo.Error;
+	}
+
+	@Override
+	public void aceitar(Visitor v) {
+		v.visitar(this);
+	}
+	
+}

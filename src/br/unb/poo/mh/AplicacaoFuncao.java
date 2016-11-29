@@ -20,8 +20,7 @@ public class AplicacaoFuncao implements Expressao {
 
 	@Override
 	public Valor avaliar() {
-		DeclaracaoFuncao dec = Ambiente.instance().
-				getDeclaracaoFuncao(nome, parametros.size());
+		DeclaracaoFuncao dec = Ambiente.instance().getDeclaracaoFuncao(nome, parametros.size());
 		
 		Ambiente.instance().empilha();
 		

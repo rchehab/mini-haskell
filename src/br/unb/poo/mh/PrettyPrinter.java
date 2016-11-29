@@ -12,22 +12,32 @@ public class PrettyPrinter implements Visitor{
 		System.out.print(exp.getValor());
 	}
 
-	@Override
-	public void visitar(ExpressaoSoma exp) {
+	private void visitarBin(ExpressaoBinaria exp, String sim) {
 		System.out.print("(");
 		exp.expEsquerda.aceitar(this);
-		System.out.print("+");
+		System.out.print(sim);
 		exp.expDireita.aceitar(this);
 		System.out.print(")");
+	}
+	
+	@Override
+	public void visitar(ExpressaoSoma exp) {
+		visitarBin(exp, "+");
 	}
 
 	@Override
 	public void visitar(Multiplicacao exp) {
-		System.out.print("(");
-		exp.expEsquerda.aceitar(this);
-		System.out.print("*");
-		exp.expDireita.aceitar(this);
-		System.out.print(")");
+		visitarBin(exp, "*");
+	}
+	
+	@Override
+	public void visitar(ExpressaoAnd exp) {
+		visitarBin(exp, "and");
+	}
+	
+	@Override
+	public void visitar(ExpressaoOr exp) {
+		visitarBin(exp, "or");
 	}
 
 	@Override
@@ -36,10 +46,10 @@ public class PrettyPrinter implements Visitor{
 		exp.condicao.aceitar(this);
 		System.out.println(")");
 		
-		System.out.print("then ");
+		System.out.print(" then ");
 		exp.clausulaThen.aceitar(this);
 		
-		System.out.println("else " );
+		System.out.println(" else " );
 		exp.clausulaElse.aceitar(this);
 	}
 

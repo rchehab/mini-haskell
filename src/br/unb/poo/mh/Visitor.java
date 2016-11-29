@@ -16,4 +16,6 @@ public interface Visitor {
 	public void visitar(IfThenElse exp);
 	public void visitar(AplicacaoFuncao exp);
 	public void visitar(Identificador exp);
+	public void visitar(ExpressaoAnd exp);
+	public void visitar(ExpressaoOr exp);
 }
