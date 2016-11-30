@@ -27,6 +27,16 @@ public class TamanhoDasExpressoes implements Visitor {
 	public void visitar(ExpressaoSoma exp) {
 		visitarBin(exp);
 	}
+	
+	@Override
+	public void visitar(ExpressaoSubtracao exp) {
+		visitarBin(exp);
+	}
+	
+	@Override
+	public void visitar(ExpressaoDivisor exp) {
+		visitarBin(exp);
+	}
 
 	@Override
 	public void visitar(Multiplicacao exp) {
