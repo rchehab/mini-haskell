@@ -26,8 +26,18 @@ public class PrettyPrinter implements Visitor{
 	}
 
 	@Override
+	public void visitar(ExpressaoSubtracao exp) {
+		visitarBin(exp, "-");
+	}
+	
+	@Override
 	public void visitar(Multiplicacao exp) {
 		visitarBin(exp, "*");
+	}
+	
+	@Override
+	public void visitar(ExpressaoDivisor exp) {
+		visitarBin(exp, "/");
 	}
 	
 	@Override
@@ -72,5 +82,4 @@ public class PrettyPrinter implements Visitor{
 	public void visitar(Identificador exp) {
 		System.out.println(exp.id);
 	}
-
 }
