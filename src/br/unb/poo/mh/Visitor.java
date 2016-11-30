@@ -18,6 +18,4 @@ public interface Visitor {
 	public void visitar(Identificador exp);
 	public void visitar(ExpressaoAnd exp);
 	public void visitar(ExpressaoOr exp);
-	public void visitar(ExpressaoDivisor exp);
-	public void visitar(ExpressaoSubtracao exp);
 }

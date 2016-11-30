@@ -24,4 +24,7 @@ public class ExpressaoAnd extends ExpressaoBinaria {
 	public void aceitar(Visitor v) {
 		v.visitar(this);
 	}
+	
+	
+
 }

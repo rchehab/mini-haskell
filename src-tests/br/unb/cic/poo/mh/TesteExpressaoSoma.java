@@ -15,6 +15,7 @@ public class TesteExpressaoSoma {
 	private Expressao soma = new ExpressaoSoma(v5, v10);
 	
 	@Test
+
 	public void testeSomaSimples() {
 		ValorInteiro v15 = new ValorInteiro(15);
 		
@@ -27,4 +28,5 @@ public class TesteExpressaoSoma {
 		Expressao soma2 = new ExpressaoSoma(v10, soma);
 		Assert.assertEquals(v25, soma2.avaliar());
 	}
+	
 }
