@@ -25,10 +25,16 @@ public interface Expressao {
 	//professor
 	
 	//A verificacao de tipos busca casar o resultado com o padrao dado
+	//A funcao retorna Tipo e nao bool, porque em expressoes com retorno generico (if then else)
+	//o resultado pode ser usado para instanciar outros identificadores
+	
+	//Essa diferenca possui vantagens na analise de DECLARACOES de funcao, porem nao possui nenhuma
+	//vantagem em tempo de execucao.
+	//OBS: A VERIFICACAO DE TIPO NO MOMENTO DA DECLARACAO DE FUNCAO AINDA NAO FOI IMPLEMENTADA,
+	//JA QUE REQUER DIVERSAS ALTERACOES NA ESTRUTURA DADA PELO PROFESSOR
 	public Tipo tipo(Tipo padrao);
-	//Se nenhum parametro e dado, entao o tipo eh Indefinido
-	//ou seja nao pode ser erro porem nao ha nenhuma outra restricao
-	public Tipo tipo();
+	
+	//tipo() = tipo(Tipo.Indefinido);
 
 	public void aceitar(Visitor v);
 }

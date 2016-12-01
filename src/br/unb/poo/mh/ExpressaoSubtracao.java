@@ -15,8 +15,10 @@ public class ExpressaoSubtracao extends ExpressaoBinaria{
 	}
 
 	@Override
-	public Tipo tipo() {
-		return (expEsquerda.tipo() == Tipo.Inteiro && expDireita.tipo() == Tipo.Inteiro) ? Tipo.Inteiro : Tipo.Error;
+	public Tipo tipo(Tipo padrao) {
+		Tipo ret = (expEsquerda.tipo(Tipo.Inteiro) == Tipo.Inteiro && expDireita.tipo(Tipo.Inteiro) == Tipo.Inteiro) ? Tipo.Inteiro : Tipo.Error;
+		
+		return (ret == padrao || padrao == Tipo.Indefinido) ? ret : Tipo.Error;
 	}
 
 	@Override

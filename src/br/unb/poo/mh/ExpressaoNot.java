@@ -17,8 +17,10 @@ public class ExpressaoNot implements Expressao {
 	}
 
 	@Override
-	public Tipo tipo() {
-		return (exp.tipo() == Tipo.Booleano) ? Tipo.Booleano : Tipo.Error;
+	public Tipo tipo(Tipo padrao) {
+		Tipo ret = (exp.tipo(Tipo.Booleano) == Tipo.Booleano) ? Tipo.Booleano : Tipo.Error;
+		
+		return (ret == padrao || padrao == Tipo.Indefinido) ? ret : Tipo.Error;
 	}
 
 	@Override

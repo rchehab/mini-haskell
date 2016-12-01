@@ -22,11 +22,6 @@ public class Multiplicacao extends ExpressaoBinaria {
 	}
 	
 	@Override
-	public Tipo tipo() {
-		return tipo(Tipo.Indefinido);
-	}
-
-	@Override
 	public void aceitar(Visitor v) {
 		v.visitar(this);
 	}

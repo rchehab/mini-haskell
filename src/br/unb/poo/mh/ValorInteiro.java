@@ -12,11 +12,6 @@ public class ValorInteiro extends ValorParametrizado<Integer> {
 		
 		return (ret == padrao || padrao == Tipo.Indefinido) ? ret : Tipo.Error;
 	}
-	
-	@Override
-	public Tipo tipo() {
-		return tipo(Tipo.Indefinido);
-	}
 
 	@Override
 	public void aceitar(Visitor v) {

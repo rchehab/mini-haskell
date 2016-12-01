@@ -48,15 +48,10 @@ public class AplicacaoFuncao implements Expressao {
 			
 			Ambiente.instance().associaExpressao(arg, pmt);
 		}
-		Tipo ret = dec.getCorpo().tipo();
+		Tipo ret = dec.getCorpo().tipo(Tipo.Indefinido);
 		Ambiente.instance().desempilha();
 		
 		return (ret == padrao || padrao == Tipo.Indefinido) ? ret : Tipo.Error;
-	}
-	
-	@Override
-	public Tipo tipo() {
-		return tipo(Tipo.Indefinido);
 	}
 
 	@Override
