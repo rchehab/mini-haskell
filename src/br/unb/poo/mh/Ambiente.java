@@ -88,6 +88,14 @@ public class Ambiente {
 		return instance;
 	}
 
+	public static void delete_instance() {
+		instance = null;
+	}
+	
+	public static Boolean is_instance_empty() {
+		return instance == null;
+	}
+	
 	/**
 	 * Declara uma funcao no ambiente de execucao.
 	 * @param decl Declaracao de funcao. 

@@ -2,7 +2,7 @@ package br.unb.poo.mh;
 
 public class Identificador implements Expressao {
 	String id;
-	Tipo tipo_id; //TODO TODO TODO TODO //TODO TODO TODO TODO //TODO TODO TODO TODO //TODO TODO TODO TODO //TODO TODO TODO TODO
+	Tipo tipo_id;
 
 	public Identificador(String id) {
 		this.id = id;
@@ -16,10 +16,18 @@ public class Identificador implements Expressao {
 
 	@Override
 	public Tipo tipo(Tipo padrao) {
-		Expressao exp = Ambiente.instance().getExpressao(id);
-		Tipo ret = exp.tipo(padrao);
+		Tipo ret;
 		
-		return tipo_id = (ret == padrao || padrao == Tipo.Indefinido) ? ret : Tipo.Error;
+		if (Ambiente.is_instance_empty()) { //Declaracao da funcao
+			ret = tipo_id;
+			
+			tipo_id = (ret == padrao || padrao == Tipo.Indefinido) ? ret : Tipo.Error;
+		} else {
+			Expressao exp = Ambiente.instance().getExpressao(id);
+			ret = exp.tipo(padrao);
+		}
+		
+		return (ret == padrao || padrao == Tipo.Indefinido) ? ret : Tipo.Error;
 	}
 
 	@Override

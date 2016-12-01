@@ -3,6 +3,8 @@ package br.unb.poo.mh;
 import java.util.List;
 
 public class DeclaracaoFuncao {
+	
+	Tipo tipo_id;
 
 	private String nome;
 	/*
@@ -19,6 +21,18 @@ public class DeclaracaoFuncao {
 		this.nome = nome;
 		this.args = args;
 		this.corpo = corpo;
+	}
+	
+	public Tipo tipo(Tipo padrao) {
+		
+		//Teoricamente desnecessario
+		Ambiente.delete_instance();
+		
+		Tipo ret = corpo.tipo(Tipo.Indefinido);
+			
+		tipo_id = (ret == padrao || padrao == Tipo.Indefinido) ? ret : Tipo.Error;
+		
+		return (ret == padrao || padrao == Tipo.Indefinido) ? ret : Tipo.Error;
 	}
 
 	public String getNome() {
