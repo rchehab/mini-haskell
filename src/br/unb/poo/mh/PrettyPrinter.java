@@ -2,22 +2,28 @@ package br.unb.poo.mh;
 
 public class PrettyPrinter implements Visitor{
 
+	private String str = new String();
+	
+	public String getStr() {
+		return str;
+	}
+	
 	@Override
 	public void visitar(ValorInteiro exp) {
-		System.out.print(exp.getValor());
+		str = str + exp.getValor().toString();
 	}
 
 	@Override
 	public void visitar(ValorBooleano exp) {
-		System.out.print(exp.getValor());
+		str = str + exp.getValor().toString();
 	}
 
 	private void visitarBin(ExpressaoBinaria exp, String sim) {
-		System.out.print("(");
+		str = str + "(";
 		exp.expEsquerda.aceitar(this);
-		System.out.print(" " + sim + " ");
+		str = str + " " + sim + " ";
 		exp.expDireita.aceitar(this);
-		System.out.print(")");
+		str = str + ")";
 	}
 	
 	@Override
@@ -51,36 +57,74 @@ public class PrettyPrinter implements Visitor{
 	}
 
 	@Override
-	public void visitar(IfThenElse exp) {
-		System.out.print("if(");
-		exp.condicao.aceitar(this);
-		System.out.println(")");
+	public void visitar(ExpressaoEqual exp) {
+		visitarBin(exp, "==");
 		
-		System.out.print(" then { ");
+	}
+
+	@Override
+	public void visitar(ExpressaoGreaterThan exp) {
+		visitarBin(exp, ">");
+		
+	}
+
+	@Override
+	public void visitar(ExpressaoLessThan exp) {
+		visitarBin(exp, "<");
+		
+	}
+
+	@Override
+	public void visitar(ExpressaoGreaterOrEqual exp) {
+		visitarBin(exp, ">=");
+		
+	}
+
+	@Override
+	public void visitar(ExpressaoLessOrEqual exp) {
+		visitarBin(exp, "<=");
+		
+	}
+
+	@Override
+	public void visitar(IfThenElse exp) {
+		str = str + "if(";
+		exp.condicao.aceitar(this);
+		str = str + ")";
+		
+		str = str + " then { ";
 		exp.clausulaThen.aceitar(this);
 		
-		System.out.println(" } else { " );
+		str = str + " } else { " ;
 		exp.clausulaElse.aceitar(this);
-		System.out.println(" }" );
+		str = str + " }" ;
 	}
 
 	@Override
 	public void visitar(AplicacaoFuncao exp) {
-		System.out.print(exp.nome);
-		System.out.print("(");
+		str = str + exp.nome;
+		str = str + "(";
 		int i = 0;
 		while(i < exp.parametros.size() - 1) {
 			exp.parametros.get(i++).aceitar(this);
-			System.out.print(",");
+			str = str + ", ";
 		}
 		if(i == exp.parametros.size() - 1) {
 			exp.parametros.get(i++).aceitar(this);
 		}
-		System.out.println(")");
+		str = str + ")";
 	}
 
 	@Override
 	public void visitar(Identificador exp) {
-		System.out.println(exp.id);
+		str = str + exp.id;
+	}
+
+	@Override
+	public void visitar(ExpressaoNot exp) {
+		str = str + "not ";
+		exp.exp.aceitar(this);
+		
+		
 	}
 }

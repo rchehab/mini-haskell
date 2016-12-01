@@ -41,5 +41,6 @@ public class TesteIfThenElse {
 		PrettyPrinter pp = new PrettyPrinter();
 		
 		a.aceitar(pp);
+		System.out.println(pp.getStr());
 	}
 }

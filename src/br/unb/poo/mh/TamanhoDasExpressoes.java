@@ -54,6 +54,36 @@ public class TamanhoDasExpressoes implements Visitor {
 	}
 
 	@Override
+	public void visitar(ExpressaoEqual exp) {
+		visitarBin(exp);
+		
+	}
+
+	@Override
+	public void visitar(ExpressaoGreaterThan exp) {
+		visitarBin(exp);
+		
+	}
+
+	@Override
+	public void visitar(ExpressaoLessThan exp) {
+		visitarBin(exp);
+		
+	}
+
+	@Override
+	public void visitar(ExpressaoGreaterOrEqual exp) {
+		visitarBin(exp);
+		
+	}
+
+	@Override
+	public void visitar(ExpressaoLessOrEqual exp) {
+		visitarBin(exp);
+		
+	}
+
+	@Override
 	public void visitar(IfThenElse exp) {
 		exp.condicao.aceitar(this);
 		exp.clausulaThen.aceitar(this);
@@ -74,6 +104,14 @@ public class TamanhoDasExpressoes implements Visitor {
 	@Override
 	public void visitar(Identificador exp) {
 		tamanho += 1;
+	}
+
+	@Override
+	public void visitar(ExpressaoNot exp) {
+		tamanho += 1;
+		exp.exp.aceitar(this);
+		
+		
 	}
 
 }

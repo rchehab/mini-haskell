@@ -29,5 +29,6 @@ public class TesteExpressaoDivisor {
 		Assert.assertEquals(divisao.tipo(), Tipo.Inteiro);
 		PrettyPrinter pp = new PrettyPrinter();
 		divisao.aceitar(pp);
+		System.out.println(pp.getStr());
 	}
 }

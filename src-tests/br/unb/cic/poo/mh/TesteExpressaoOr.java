@@ -49,6 +49,7 @@ public class TesteExpressaoOr {
 		
 		PrettyPrinter pp = new PrettyPrinter();
 		test_complexo_1.aceitar(pp);
+		System.out.println(pp.getStr());
 	}
 
 }

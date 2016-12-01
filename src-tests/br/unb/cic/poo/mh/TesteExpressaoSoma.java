@@ -34,5 +34,6 @@ public class TesteExpressaoSoma {
 		PrettyPrinter pp = new PrettyPrinter();
 		
 		soma2.aceitar(pp);
+		System.out.println(pp.getStr());
 	}
 }

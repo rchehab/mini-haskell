@@ -20,4 +20,10 @@ public interface Visitor {
 	public void visitar(ExpressaoOr exp);
 	public void visitar(ExpressaoDivisor exp);
 	public void visitar(ExpressaoSubtracao exp);
+	public void visitar(ExpressaoEqual exp);
+	public void visitar(ExpressaoGreaterThan exp);
+	public void visitar(ExpressaoLessThan exp);
+	public void visitar(ExpressaoGreaterOrEqual exp);
+	public void visitar(ExpressaoLessOrEqual exp);
+	public void visitar(ExpressaoNot exp);
 }

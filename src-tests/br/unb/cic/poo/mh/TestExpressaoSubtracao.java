@@ -31,5 +31,6 @@ public class TestExpressaoSubtracao {
 		PrettyPrinter pp = new PrettyPrinter();
 		
 		sub.aceitar(pp);
+		System.out.println(pp.getStr());
 	}
 }

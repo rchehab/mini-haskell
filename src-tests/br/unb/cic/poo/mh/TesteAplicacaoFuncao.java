@@ -41,7 +41,7 @@ public class TesteAplicacaoFuncao {
 		parametros.add(new ExpressaoSoma(new ValorInteiro(4), new ValorInteiro(5)));
 		
 		Expressao aplicaSoma = new AplicacaoFuncao("soma", parametros);
-		
+
 		Assert.assertEquals(new ValorInteiro(12), aplicaSoma.avaliar());
 		
 		PrettyPrinter pp = new PrettyPrinter();
@@ -49,6 +49,7 @@ public class TesteAplicacaoFuncao {
 		
 		aplicaSoma.aceitar(pp);
 		aplicaSoma.aceitar(t);
+		System.out.println(pp.getStr());
 		System.out.println(t.getTamanho());
 	}
 }

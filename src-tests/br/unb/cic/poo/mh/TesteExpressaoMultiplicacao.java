@@ -23,6 +23,7 @@ public class TesteExpressaoMultiplicacao {
 		PrettyPrinter pp = new PrettyPrinter();
 		
 		m.aceitar(pp);
+		System.out.println(pp.getStr());
 	}
 	
 	@Test
