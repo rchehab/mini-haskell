@@ -45,7 +45,7 @@ public class TesteExpressaoOr {
 		Assert.assertEquals(test_complexo_1.avaliar(), vtrue);
 		Assert.assertEquals(test_complexo_2.avaliar(), vfalse);
 		
-		Assert.assertEquals(test_complexo_1.tipo(), Tipo.Booleano);
+		Assert.assertEquals(test_complexo_1.tipo(Tipo.Indefinido), Tipo.Booleano);
 		
 		PrettyPrinter pp = new PrettyPrinter();
 		test_complexo_1.aceitar(pp);

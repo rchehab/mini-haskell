@@ -32,7 +32,7 @@ public class TesteIfThenElse {
 	public void testeIfThenElseComplexo() {
 		IfThenElse a = new IfThenElse(new ValorBooleano(false), new ValorInteiro(0), ifthen);
 		
-		Assert.assertEquals(a.tipo(), Tipo.Inteiro);
+		Assert.assertEquals(a.tipo(Tipo.Indefinido), Tipo.Inteiro);
 		
 		ValorInteiro v20 = new ValorInteiro(20);
 		

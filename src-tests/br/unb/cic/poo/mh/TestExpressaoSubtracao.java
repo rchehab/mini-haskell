@@ -26,7 +26,8 @@ public class TestExpressaoSubtracao {
 		Expressao sub = new ExpressaoSubtracao(v10, subtcao);
 		Assert.assertEquals(vt, sub.avaliar());
 		
-		Assert.assertEquals(subtcao.tipo(), Tipo.Inteiro);
+		Assert.assertEquals(subtcao.tipo(Tipo.Indefinido), Tipo.Inteiro);
+		Assert.assertEquals(subtcao.tipo(Tipo.Booleano), Tipo.Error);
 		
 		PrettyPrinter pp = new PrettyPrinter();
 		

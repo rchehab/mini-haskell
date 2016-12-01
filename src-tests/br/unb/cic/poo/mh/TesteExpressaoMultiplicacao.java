@@ -32,6 +32,6 @@ public class TesteExpressaoMultiplicacao {
 		ValorBooleano vtrue = new ValorBooleano(true);
 		
 		Expressao m = new Multiplicacao(v10, vtrue);
-		Assert.assertEquals(m.tipo(), Tipo.Error);
+		Assert.assertEquals(m.tipo(Tipo.Indefinido), Tipo.Error);
 	}
 }

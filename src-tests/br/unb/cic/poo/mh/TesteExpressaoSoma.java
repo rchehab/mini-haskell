@@ -29,7 +29,7 @@ public class TesteExpressaoSoma {
 		Expressao soma2 = new ExpressaoSoma(v10, soma);
 		Assert.assertEquals(v25, soma2.avaliar());
 		
-		Assert.assertEquals(soma2.tipo(), Tipo.Inteiro);
+		Assert.assertEquals(soma2.tipo(Tipo.Indefinido), Tipo.Inteiro);
 		
 		PrettyPrinter pp = new PrettyPrinter();
 		
