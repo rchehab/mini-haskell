@@ -21,7 +21,15 @@ public class IfThenElse implements Expressao {
 
 	@Override
 	public Tipo tipo() {
-		return Tipo.Error;
+		Tipo v1 = condicao.tipo();
+		
+		if (v1 != Tipo.Booleano) {
+			return Tipo.Error;
+		}
+		Tipo v2 = clausulaThen.tipo();
+		Tipo v3 = clausulaElse.tipo();
+		
+		return v2 == v3 ? v2 : Tipo.Error;
 	}
 
 	@Override
