@@ -5,6 +5,8 @@ import org.junit.Test;
 import br.unb.poo.mh.Expressao;
 import br.unb.poo.mh.ExpressaoSubtracao;
 import br.unb.poo.mh.ValorInteiro;
+import br.unb.poo.mh.Tipo;
+import br.unb.poo.mh.PrettyPrinter;
 
 public class TestExpressaoSubtracao {
 
@@ -23,5 +25,11 @@ public class TestExpressaoSubtracao {
 		ValorInteiro vt = new ValorInteiro(-5);
 		Expressao sub = new ExpressaoSubtracao(v10, subtcao);
 		Assert.assertEquals(vt, sub.avaliar());
+		
+		Assert.assertEquals(subtcao.tipo(), Tipo.Inteiro);
+		
+		PrettyPrinter pp = new PrettyPrinter();
+		
+		sub.aceitar(pp);
 	}
 }

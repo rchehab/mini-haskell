@@ -6,6 +6,8 @@ import org.junit.Before;
 
 import br.unb.poo.mh.ValorBooleano;
 import br.unb.poo.mh.ExpressaoOr;
+import br.unb.poo.mh.Tipo;
+import br.unb.poo.mh.PrettyPrinter;
 
 public class TesteExpressaoOr {
 
@@ -42,6 +44,11 @@ public class TesteExpressaoOr {
 		
 		Assert.assertEquals(test_complexo_1.avaliar(), vtrue);
 		Assert.assertEquals(test_complexo_2.avaliar(), vfalse);
+		
+		Assert.assertEquals(test_complexo_1.tipo(), Tipo.Booleano);
+		
+		PrettyPrinter pp = new PrettyPrinter();
+		test_complexo_1.aceitar(pp);
 	}
 
 }

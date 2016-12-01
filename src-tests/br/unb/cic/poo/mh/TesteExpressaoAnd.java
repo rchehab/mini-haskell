@@ -6,6 +6,8 @@ import org.junit.Before;
 
 import br.unb.poo.mh.ValorBooleano;
 import br.unb.poo.mh.ExpressaoAnd;
+import br.unb.poo.mh.Tipo;
+import br.unb.poo.mh.PrettyPrinter;
 
 public class TesteExpressaoAnd {
 
@@ -32,6 +34,7 @@ public class TesteExpressaoAnd {
 		Assert.assertEquals(test_2.avaliar(), vfalse);
 		Assert.assertEquals(test_3.avaliar(), vfalse);
 		Assert.assertEquals(test_4.avaliar(), vfalse);
+		Assert.assertEquals(test_1.tipo(), Tipo.Booleano);
 	}
 	@Test
 	public void TesteAndComplexo() {
@@ -42,6 +45,10 @@ public class TesteExpressaoAnd {
 		
 		Assert.assertEquals(test_complexo_1.avaliar(), vfalse);
 		Assert.assertEquals(test_complexo_2.avaliar(), vtrue);
+		Assert.assertEquals(test_complexo_1.tipo(), Tipo.Booleano);
+		
+		PrettyPrinter pp = new PrettyPrinter();
+		test_complexo_1.aceitar(pp);
 	}
 
 }

@@ -6,6 +6,8 @@ import org.junit.Test;
 import br.unb.poo.mh.Expressao;
 import br.unb.poo.mh.ExpressaoSoma;
 import br.unb.poo.mh.ValorInteiro;
+import br.unb.poo.mh.Tipo;
+import br.unb.poo.mh.PrettyPrinter;
 
 
 public class TesteExpressaoSoma {
@@ -26,5 +28,11 @@ public class TesteExpressaoSoma {
 		ValorInteiro v25 = new ValorInteiro(25);
 		Expressao soma2 = new ExpressaoSoma(v10, soma);
 		Assert.assertEquals(v25, soma2.avaliar());
+		
+		Assert.assertEquals(soma2.tipo(), Tipo.Inteiro);
+		
+		PrettyPrinter pp = new PrettyPrinter();
+		
+		soma2.aceitar(pp);
 	}
 }

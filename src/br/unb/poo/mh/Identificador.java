@@ -6,6 +6,7 @@ public class Identificador implements Expressao {
 
 	public Identificador(String id) {
 		this.id = id;
+		tipo_id = Tipo.Error; //TODO
 	}
 	
 	public Valor avaliar() {
@@ -15,7 +16,7 @@ public class Identificador implements Expressao {
 
 	@Override
 	public Tipo tipo() {
-		return Tipo.Error;
+		return tipo_id;
 	}
 
 	@Override

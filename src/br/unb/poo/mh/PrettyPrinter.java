@@ -15,7 +15,7 @@ public class PrettyPrinter implements Visitor{
 	private void visitarBin(ExpressaoBinaria exp, String sim) {
 		System.out.print("(");
 		exp.expEsquerda.aceitar(this);
-		System.out.print(sim);
+		System.out.print(" " + sim + " ");
 		exp.expDireita.aceitar(this);
 		System.out.print(")");
 	}
@@ -52,15 +52,16 @@ public class PrettyPrinter implements Visitor{
 
 	@Override
 	public void visitar(IfThenElse exp) {
-		System.out.print("if( ");
+		System.out.print("if(");
 		exp.condicao.aceitar(this);
 		System.out.println(")");
 		
-		System.out.print(" then ");
+		System.out.print(" then { ");
 		exp.clausulaThen.aceitar(this);
 		
-		System.out.println(" else " );
+		System.out.println(" } else { " );
 		exp.clausulaElse.aceitar(this);
+		System.out.println(" }" );
 	}
 
 	@Override
