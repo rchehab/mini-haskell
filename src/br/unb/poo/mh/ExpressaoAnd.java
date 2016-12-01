@@ -16,8 +16,15 @@ public class ExpressaoAnd extends ExpressaoBinaria {
 	}
 
 	@Override
+	public Tipo tipo(Tipo padrao) {
+		Tipo ret =  (expEsquerda.tipo(Tipo.Booleano) == Tipo.Booleano && expDireita.tipo(Tipo.Booleano) == Tipo.Booleano) ? Tipo.Booleano : Tipo.Error;
+		
+		return (ret == padrao || padrao == Tipo.Indefinido) ? ret : Tipo.Error;
+	}
+	
+	@Override
 	public Tipo tipo() {
-		return (expEsquerda.tipo() == Tipo.Booleano && expDireita.tipo() == Tipo.Booleano) ? Tipo.Booleano : Tipo.Error;
+		return tipo(Tipo.Indefinido);
 	}
 
 	@Override

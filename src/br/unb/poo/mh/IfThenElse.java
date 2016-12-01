@@ -20,16 +20,20 @@ public class IfThenElse implements Expressao {
 	}
 
 	@Override
+	public Tipo tipo(Tipo padrao) {
+		Tipo v1 = condicao.tipo(Tipo.Booleano);
+		Tipo v2 = clausulaThen.tipo(Tipo.Indefinido);
+		Tipo v3 = clausulaElse.tipo(v2);
+		v2 = clausulaThen.tipo(v3); //Pode ser necessario para tipar identificadores
+		
+		Tipo ret = (v1 == Tipo.Booleano && v2 == v3) ? v2 : Tipo.Error;
+		
+		return (ret == padrao || padrao == Tipo.Indefinido) ? ret : Tipo.Error;
+	}
+	
+	@Override
 	public Tipo tipo() {
-		Tipo v1 = condicao.tipo();
-		
-		if (v1 != Tipo.Booleano) {
-			return Tipo.Error;
-		}
-		Tipo v2 = clausulaThen.tipo();
-		Tipo v3 = clausulaElse.tipo();
-		
-		return v2 == v3 ? v2 : Tipo.Error;
+		return tipo(Tipo.Indefinido);
 	}
 
 	@Override

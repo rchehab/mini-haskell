@@ -7,8 +7,15 @@ public class ValorInteiro extends ValorParametrizado<Integer> {
 	}
 
 	@Override
+	public Tipo tipo(Tipo padrao) {
+		Tipo ret = Tipo.Inteiro;
+		
+		return (ret == padrao || padrao == Tipo.Indefinido) ? ret : Tipo.Error;
+	}
+	
+	@Override
 	public Tipo tipo() {
-		return Tipo.Inteiro;
+		return tipo(Tipo.Indefinido);
 	}
 
 	@Override

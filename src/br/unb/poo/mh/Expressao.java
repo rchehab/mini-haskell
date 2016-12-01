@@ -19,6 +19,15 @@ package br.unb.poo.mh;
  */
 public interface Expressao {
 	public Valor avaliar();
+	
+	//Apesar do codigo similar, ha uma diferença conceitual importante
+	//entre a verificacao de tipos que decidiu-se implementar e a implementada pelo
+	//professor
+	
+	//A verificacao de tipos busca casar o resultado com o padrao dado
+	public Tipo tipo(Tipo padrao);
+	//Se nenhum parametro e dado, entao o tipo eh Indefinido
+	//ou seja nao pode ser erro porem nao ha nenhuma outra restricao
 	public Tipo tipo();
 
 	public void aceitar(Visitor v);

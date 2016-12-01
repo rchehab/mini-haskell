@@ -37,8 +37,26 @@ public class AplicacaoFuncao implements Expressao {
 	}
 
 	@Override
+	public Tipo tipo(Tipo padrao) {
+		DeclaracaoFuncao dec = Ambiente.instance().getDeclaracaoFuncao(nome, parametros.size());
+
+		Ambiente.instance().empilha();
+		
+		for(int i = 0; i < dec.getArgs().size(); i++) {
+			String arg = dec.getArgs().get(i);
+			Expressao pmt = parametros.get(i);
+			
+			Ambiente.instance().associaExpressao(arg, pmt);
+		}
+		Tipo ret = dec.getCorpo().tipo();
+		Ambiente.instance().desempilha();
+		
+		return (ret == padrao || padrao == Tipo.Indefinido) ? ret : Tipo.Error;
+	}
+	
+	@Override
 	public Tipo tipo() {
-		return Tipo.Error;
+		return tipo(Tipo.Indefinido);
 	}
 
 	@Override

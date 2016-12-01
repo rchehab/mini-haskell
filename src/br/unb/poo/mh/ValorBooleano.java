@@ -7,8 +7,15 @@ public class ValorBooleano extends ValorParametrizado<Boolean>{
 	}
 
 	@Override
+	public Tipo tipo(Tipo padrao) {
+		Tipo ret =  Tipo.Booleano;
+		
+		return (ret == padrao || padrao == Tipo.Indefinido) ? ret : Tipo.Error;
+	}
+	
+	@Override
 	public Tipo tipo() {
-		return Tipo.Booleano;
+		return tipo(Tipo.Indefinido);
 	}
 
 	@Override
