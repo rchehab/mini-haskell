@@ -9,7 +9,7 @@ start	: expression EOF #Start
 		;
 
 expressao		: expressaoBinaria								#ExpressaoBinaria
-				| func param '=' expressao						#DeclaracaoFuncao //
+				| func param '=' expressao						#DeclaracaoFuncao //Declaracao de funcao nao eh exatamente expresssao, mudar isso
 				| func listExpressao							#AplicacaoFuncao
 				| NOT expressao									#Not
 				| IF expressao THEN expressao ELSE expressao	#IfThenElse
