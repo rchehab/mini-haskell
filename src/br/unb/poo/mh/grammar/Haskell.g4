@@ -12,7 +12,6 @@ start	: expression EOF	#Start
 declaracao	: funcname=ID (param+=ID)* '=' expressao	#DeclaracaoFuncao
 			;
 
-//Correcao: declarar func param listExpressao e pular espaços em branco
 expressao		: expressaoBinaria								#ExpressaoBinaria
 				| func (expressao)*								#AplicacaoFuncao
 				| NOT expressao									#Not
