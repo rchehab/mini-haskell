@@ -1,6 +1,6 @@
 // Generated from Haskell.g4 by ANTLR 4.5.3
 
-	package br.unb.poo.mh.grammar;
+//package br.unb.poo.mh.grammar;
 
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -19,8 +19,9 @@ public class HaskellParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, WS=2, LE=3, GE=4, LT=5, GT=6, EQ=7, IF=8, THEN=9, ELSE=10, NOT=11, 
-		OR=12, AND=13, DIV=14, SUB=15, MUL=16, SOM=17, INT=18, BOOL=19, ID=20;
+		T__0=1, T__1=2, T__2=3, WS=4, LE=5, GE=6, LT=7, GT=8, EQ=9, IF=10, THEN=11, 
+		ELSE=12, NOT=13, OR=14, AND=15, DIV=16, SUB=17, MUL=18, SOM=19, INT=20, 
+		BOOL=21, ID=22;
 	public static final int
 		RULE_start = 0, RULE_declaracao = 1, RULE_expressao = 2;
 	public static final String[] ruleNames = {
@@ -28,12 +29,13 @@ public class HaskellParser extends Parser {
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "'='", null, "'<='", "'>='", "'<'", "'>'", "'=='", "'if'", "'then'", 
-		"'else'", null, null, null, "'/'", "'-'", "'*'", "'+'"
+		null, "'='", "'('", "')'", null, "'<='", "'>='", "'<'", "'>'", "'=='", 
+		"'if'", "'then'", "'else'", null, null, null, "'/'", "'-'", "'*'", "'+'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, null, "WS", "LE", "GE", "LT", "GT", "EQ", "IF", "THEN", "ELSE", 
-		"NOT", "OR", "AND", "DIV", "SUB", "MUL", "SOM", "INT", "BOOL", "ID"
+		null, null, null, null, "WS", "LE", "GE", "LT", "GT", "EQ", "IF", "THEN", 
+		"ELSE", "NOT", "OR", "AND", "DIV", "SUB", "MUL", "SOM", "INT", "BOOL", 
+		"ID"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -303,6 +305,20 @@ public class HaskellParser extends Parser {
 			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).exitOr(this);
 		}
 	}
+	public static class ParentesisContext extends ExpressaoContext {
+		public ExpressaoContext expressao() {
+			return getRuleContext(ExpressaoContext.class,0);
+		}
+		public ParentesisContext(ExpressaoContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).enterParentesis(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).exitParentesis(this);
+		}
+	}
 	public static class GreaterOrEqualContext extends ExpressaoContext {
 		public List<ExpressaoContext> expressao() {
 			return getRuleContexts(ExpressaoContext.class);
@@ -384,24 +400,6 @@ public class HaskellParser extends Parser {
 			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).exitLessThan(this);
 		}
 	}
-	public static class GreaterThanContext extends ExpressaoContext {
-		public List<ExpressaoContext> expressao() {
-			return getRuleContexts(ExpressaoContext.class);
-		}
-		public ExpressaoContext expressao(int i) {
-			return getRuleContext(ExpressaoContext.class,i);
-		}
-		public TerminalNode GT() { return getToken(HaskellParser.GT, 0); }
-		public GreaterThanContext(ExpressaoContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).enterGreaterThan(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).exitGreaterThan(this);
-		}
-	}
 	public static class EqualContext extends ExpressaoContext {
 		public List<ExpressaoContext> expressao() {
 			return getRuleContexts(ExpressaoContext.class);
@@ -418,6 +416,24 @@ public class HaskellParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).exitEqual(this);
+		}
+	}
+	public static class GreaterThanContext extends ExpressaoContext {
+		public List<ExpressaoContext> expressao() {
+			return getRuleContexts(ExpressaoContext.class);
+		}
+		public ExpressaoContext expressao(int i) {
+			return getRuleContext(ExpressaoContext.class,i);
+		}
+		public TerminalNode GT() { return getToken(HaskellParser.GT, 0); }
+		public GreaterThanContext(ExpressaoContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).enterGreaterThan(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).exitGreaterThan(this);
 		}
 	}
 	public static class AndContext extends ExpressaoContext {
@@ -534,7 +550,7 @@ public class HaskellParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(44);
+			setState(48);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 			case 1:
@@ -559,70 +575,83 @@ public class HaskellParser extends Parser {
 				break;
 			case 2:
 				{
-				_localctx = new AplicacaoFuncaoContext(_localctx);
+				_localctx = new NotContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				setState(32);
+				match(NOT);
+				setState(33);
+				expressao(6);
+				}
+				break;
+			case 3:
+				{
+				_localctx = new AplicacaoFuncaoContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(34);
 				((AplicacaoFuncaoContext)_localctx).funcname = match(ID);
-				setState(36);
+				setState(38);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
 				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1 ) {
 						{
 						{
-						setState(33);
+						setState(35);
 						expressao(0);
 						}
 						} 
 					}
-					setState(38);
+					setState(40);
 					_errHandler.sync(this);
 					_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
 				}
 				}
 				break;
-			case 3:
-				{
-				_localctx = new NotContext(_localctx);
-				_ctx = _localctx;
-				_prevctx = _localctx;
-				setState(39);
-				match(NOT);
-				setState(40);
-				expressao(15);
-				}
-				break;
 			case 4:
 				{
-				_localctx = new InteiroContext(_localctx);
+				_localctx = new ParentesisContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				setState(41);
-				match(INT);
+				match(T__1);
+				setState(42);
+				expressao(0);
+				setState(43);
+				match(T__2);
 				}
 				break;
 			case 5:
 				{
-				_localctx = new BooleanoContext(_localctx);
+				_localctx = new InteiroContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(42);
-				match(BOOL);
+				setState(45);
+				match(INT);
 				}
 				break;
 			case 6:
 				{
+				_localctx = new BooleanoContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(46);
+				match(BOOL);
+				}
+				break;
+			case 7:
+				{
 				_localctx = new IdentificadorContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(43);
+				setState(47);
 				match(ID);
 				}
 				break;
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(81);
+			setState(85);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
@@ -630,145 +659,145 @@ public class HaskellParser extends Parser {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(79);
+					setState(83);
 					_errHandler.sync(this);
 					switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
 					case 1:
 						{
-						_localctx = new LessOrEqualContext(new ExpressaoContext(_parentctx, _parentState));
+						_localctx = new EqualContext(new ExpressaoContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expressao);
-						setState(46);
-						if (!(precpred(_ctx, 14))) throw new FailedPredicateException(this, "precpred(_ctx, 14)");
-						setState(47);
-						match(LE);
-						setState(48);
-						expressao(15);
+						setState(50);
+						if (!(precpred(_ctx, 17))) throw new FailedPredicateException(this, "precpred(_ctx, 17)");
+						setState(51);
+						match(EQ);
+						setState(52);
+						expressao(18);
 						}
 						break;
 					case 2:
 						{
-						_localctx = new GreaterOrEqualContext(new ExpressaoContext(_parentctx, _parentState));
+						_localctx = new LessOrEqualContext(new ExpressaoContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expressao);
-						setState(49);
-						if (!(precpred(_ctx, 13))) throw new FailedPredicateException(this, "precpred(_ctx, 13)");
-						setState(50);
-						match(GE);
-						setState(51);
-						expressao(14);
+						setState(53);
+						if (!(precpred(_ctx, 16))) throw new FailedPredicateException(this, "precpred(_ctx, 16)");
+						setState(54);
+						match(LE);
+						setState(55);
+						expressao(17);
 						}
 						break;
 					case 3:
 						{
-						_localctx = new LessThanContext(new ExpressaoContext(_parentctx, _parentState));
+						_localctx = new GreaterOrEqualContext(new ExpressaoContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expressao);
-						setState(52);
-						if (!(precpred(_ctx, 12))) throw new FailedPredicateException(this, "precpred(_ctx, 12)");
-						setState(53);
-						match(LT);
-						setState(54);
-						expressao(13);
+						setState(56);
+						if (!(precpred(_ctx, 15))) throw new FailedPredicateException(this, "precpred(_ctx, 15)");
+						setState(57);
+						match(GE);
+						setState(58);
+						expressao(16);
 						}
 						break;
 					case 4:
 						{
-						_localctx = new GreaterThanContext(new ExpressaoContext(_parentctx, _parentState));
+						_localctx = new LessThanContext(new ExpressaoContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expressao);
-						setState(55);
-						if (!(precpred(_ctx, 11))) throw new FailedPredicateException(this, "precpred(_ctx, 11)");
-						setState(56);
-						match(GT);
-						setState(57);
-						expressao(12);
+						setState(59);
+						if (!(precpred(_ctx, 14))) throw new FailedPredicateException(this, "precpred(_ctx, 14)");
+						setState(60);
+						match(LT);
+						setState(61);
+						expressao(15);
 						}
 						break;
 					case 5:
 						{
-						_localctx = new AndContext(new ExpressaoContext(_parentctx, _parentState));
+						_localctx = new GreaterThanContext(new ExpressaoContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expressao);
-						setState(58);
-						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");
-						setState(59);
-						match(AND);
-						setState(60);
-						expressao(11);
+						setState(62);
+						if (!(precpred(_ctx, 13))) throw new FailedPredicateException(this, "precpred(_ctx, 13)");
+						setState(63);
+						match(GT);
+						setState(64);
+						expressao(14);
 						}
 						break;
 					case 6:
 						{
-						_localctx = new OrContext(new ExpressaoContext(_parentctx, _parentState));
+						_localctx = new MultiplicacaoContext(new ExpressaoContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expressao);
-						setState(61);
-						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
-						setState(62);
-						match(OR);
-						setState(63);
-						expressao(10);
+						setState(65);
+						if (!(precpred(_ctx, 12))) throw new FailedPredicateException(this, "precpred(_ctx, 12)");
+						setState(66);
+						match(MUL);
+						setState(67);
+						expressao(13);
 						}
 						break;
 					case 7:
 						{
 						_localctx = new DivisorContext(new ExpressaoContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expressao);
-						setState(64);
-						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
-						setState(65);
+						setState(68);
+						if (!(precpred(_ctx, 11))) throw new FailedPredicateException(this, "precpred(_ctx, 11)");
+						setState(69);
 						match(DIV);
-						setState(66);
-						expressao(9);
+						setState(70);
+						expressao(12);
 						}
 						break;
 					case 8:
 						{
-						_localctx = new SubtracaoContext(new ExpressaoContext(_parentctx, _parentState));
+						_localctx = new SomaContext(new ExpressaoContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expressao);
-						setState(67);
-						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
-						setState(68);
-						match(SUB);
-						setState(69);
-						expressao(8);
+						setState(71);
+						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");
+						setState(72);
+						match(SOM);
+						setState(73);
+						expressao(11);
 						}
 						break;
 					case 9:
 						{
-						_localctx = new MultiplicacaoContext(new ExpressaoContext(_parentctx, _parentState));
+						_localctx = new SubtracaoContext(new ExpressaoContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expressao);
-						setState(70);
-						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
-						setState(71);
-						match(MUL);
-						setState(72);
-						expressao(7);
+						setState(74);
+						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
+						setState(75);
+						match(SUB);
+						setState(76);
+						expressao(10);
 						}
 						break;
 					case 10:
 						{
-						_localctx = new SomaContext(new ExpressaoContext(_parentctx, _parentState));
+						_localctx = new AndContext(new ExpressaoContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expressao);
-						setState(73);
-						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
-						setState(74);
-						match(SOM);
-						setState(75);
-						expressao(6);
+						setState(77);
+						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
+						setState(78);
+						match(AND);
+						setState(79);
+						expressao(9);
 						}
 						break;
 					case 11:
 						{
-						_localctx = new EqualContext(new ExpressaoContext(_parentctx, _parentState));
+						_localctx = new OrContext(new ExpressaoContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expressao);
-						setState(76);
-						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
-						setState(77);
-						match(EQ);
-						setState(78);
-						expressao(5);
+						setState(80);
+						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
+						setState(81);
+						match(OR);
+						setState(82);
+						expressao(8);
 						}
 						break;
 					}
 					} 
 				}
-				setState(83);
+				setState(87);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
 			}
@@ -795,56 +824,57 @@ public class HaskellParser extends Parser {
 	private boolean expressao_sempred(ExpressaoContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 0:
-			return precpred(_ctx, 14);
+			return precpred(_ctx, 17);
 		case 1:
-			return precpred(_ctx, 13);
+			return precpred(_ctx, 16);
 		case 2:
-			return precpred(_ctx, 12);
+			return precpred(_ctx, 15);
 		case 3:
-			return precpred(_ctx, 11);
+			return precpred(_ctx, 14);
 		case 4:
-			return precpred(_ctx, 10);
+			return precpred(_ctx, 13);
 		case 5:
-			return precpred(_ctx, 9);
+			return precpred(_ctx, 12);
 		case 6:
-			return precpred(_ctx, 8);
+			return precpred(_ctx, 11);
 		case 7:
-			return precpred(_ctx, 7);
+			return precpred(_ctx, 10);
 		case 8:
-			return precpred(_ctx, 6);
+			return precpred(_ctx, 9);
 		case 9:
-			return precpred(_ctx, 5);
+			return precpred(_ctx, 8);
 		case 10:
-			return precpred(_ctx, 4);
+			return precpred(_ctx, 7);
 		}
 		return true;
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\26W\4\2\t\2\4\3\t"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\30[\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\3\2\3\2\3\2\3\2\3\2\3\2\5\2\17\n\2\3\3\3\3\7\3\23\n\3\f\3\16"+
-		"\3\26\13\3\3\3\3\3\3\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\7\4%\n"+
-		"\4\f\4\16\4(\13\4\3\4\3\4\3\4\3\4\3\4\5\4/\n\4\3\4\3\4\3\4\3\4\3\4\3\4"+
-		"\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3"+
-		"\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\7\4R\n\4\f\4\16\4U\13\4\3\4\2\3"+
-		"\6\5\2\4\6\2\2f\2\16\3\2\2\2\4\20\3\2\2\2\6.\3\2\2\2\b\t\5\6\4\2\t\n\7"+
-		"\2\2\3\n\17\3\2\2\2\13\f\5\4\3\2\f\r\7\2\2\3\r\17\3\2\2\2\16\b\3\2\2\2"+
-		"\16\13\3\2\2\2\17\3\3\2\2\2\20\24\7\26\2\2\21\23\7\26\2\2\22\21\3\2\2"+
-		"\2\23\26\3\2\2\2\24\22\3\2\2\2\24\25\3\2\2\2\25\27\3\2\2\2\26\24\3\2\2"+
-		"\2\27\30\7\3\2\2\30\31\5\6\4\2\31\5\3\2\2\2\32\33\b\4\1\2\33\34\7\n\2"+
-		"\2\34\35\5\6\4\2\35\36\7\13\2\2\36\37\5\6\4\2\37 \7\f\2\2 !\5\6\4\2!/"+
-		"\3\2\2\2\"&\7\26\2\2#%\5\6\4\2$#\3\2\2\2%(\3\2\2\2&$\3\2\2\2&\'\3\2\2"+
-		"\2\'/\3\2\2\2(&\3\2\2\2)*\7\r\2\2*/\5\6\4\21+/\7\24\2\2,/\7\25\2\2-/\7"+
-		"\26\2\2.\32\3\2\2\2.\"\3\2\2\2.)\3\2\2\2.+\3\2\2\2.,\3\2\2\2.-\3\2\2\2"+
-		"/S\3\2\2\2\60\61\f\20\2\2\61\62\7\5\2\2\62R\5\6\4\21\63\64\f\17\2\2\64"+
-		"\65\7\6\2\2\65R\5\6\4\20\66\67\f\16\2\2\678\7\7\2\28R\5\6\4\179:\f\r\2"+
-		"\2:;\7\b\2\2;R\5\6\4\16<=\f\f\2\2=>\7\17\2\2>R\5\6\4\r?@\f\13\2\2@A\7"+
-		"\16\2\2AR\5\6\4\fBC\f\n\2\2CD\7\20\2\2DR\5\6\4\13EF\f\t\2\2FG\7\21\2\2"+
-		"GR\5\6\4\nHI\f\b\2\2IJ\7\22\2\2JR\5\6\4\tKL\f\7\2\2LM\7\23\2\2MR\5\6\4"+
-		"\bNO\f\6\2\2OP\7\t\2\2PR\5\6\4\7Q\60\3\2\2\2Q\63\3\2\2\2Q\66\3\2\2\2Q"+
-		"9\3\2\2\2Q<\3\2\2\2Q?\3\2\2\2QB\3\2\2\2QE\3\2\2\2QH\3\2\2\2QK\3\2\2\2"+
-		"QN\3\2\2\2RU\3\2\2\2SQ\3\2\2\2ST\3\2\2\2T\7\3\2\2\2US\3\2\2\2\b\16\24"+
-		"&.QS";
+		"\3\26\13\3\3\3\3\3\3\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4"+
+		"\7\4\'\n\4\f\4\16\4*\13\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4\63\n\4\3\4\3"+
+		"\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4"+
+		"\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\7\4V\n\4\f\4"+
+		"\16\4Y\13\4\3\4\2\3\6\5\2\4\6\2\2k\2\16\3\2\2\2\4\20\3\2\2\2\6\62\3\2"+
+		"\2\2\b\t\5\6\4\2\t\n\7\2\2\3\n\17\3\2\2\2\13\f\5\4\3\2\f\r\7\2\2\3\r\17"+
+		"\3\2\2\2\16\b\3\2\2\2\16\13\3\2\2\2\17\3\3\2\2\2\20\24\7\30\2\2\21\23"+
+		"\7\30\2\2\22\21\3\2\2\2\23\26\3\2\2\2\24\22\3\2\2\2\24\25\3\2\2\2\25\27"+
+		"\3\2\2\2\26\24\3\2\2\2\27\30\7\3\2\2\30\31\5\6\4\2\31\5\3\2\2\2\32\33"+
+		"\b\4\1\2\33\34\7\f\2\2\34\35\5\6\4\2\35\36\7\r\2\2\36\37\5\6\4\2\37 \7"+
+		"\16\2\2 !\5\6\4\2!\63\3\2\2\2\"#\7\17\2\2#\63\5\6\4\b$(\7\30\2\2%\'\5"+
+		"\6\4\2&%\3\2\2\2\'*\3\2\2\2(&\3\2\2\2()\3\2\2\2)\63\3\2\2\2*(\3\2\2\2"+
+		"+,\7\4\2\2,-\5\6\4\2-.\7\5\2\2.\63\3\2\2\2/\63\7\26\2\2\60\63\7\27\2\2"+
+		"\61\63\7\30\2\2\62\32\3\2\2\2\62\"\3\2\2\2\62$\3\2\2\2\62+\3\2\2\2\62"+
+		"/\3\2\2\2\62\60\3\2\2\2\62\61\3\2\2\2\63W\3\2\2\2\64\65\f\23\2\2\65\66"+
+		"\7\13\2\2\66V\5\6\4\24\678\f\22\2\289\7\7\2\29V\5\6\4\23:;\f\21\2\2;<"+
+		"\7\b\2\2<V\5\6\4\22=>\f\20\2\2>?\7\t\2\2?V\5\6\4\21@A\f\17\2\2AB\7\n\2"+
+		"\2BV\5\6\4\20CD\f\16\2\2DE\7\24\2\2EV\5\6\4\17FG\f\r\2\2GH\7\22\2\2HV"+
+		"\5\6\4\16IJ\f\f\2\2JK\7\25\2\2KV\5\6\4\rLM\f\13\2\2MN\7\23\2\2NV\5\6\4"+
+		"\fOP\f\n\2\2PQ\7\21\2\2QV\5\6\4\13RS\f\t\2\2ST\7\20\2\2TV\5\6\4\nU\64"+
+		"\3\2\2\2U\67\3\2\2\2U:\3\2\2\2U=\3\2\2\2U@\3\2\2\2UC\3\2\2\2UF\3\2\2\2"+
+		"UI\3\2\2\2UL\3\2\2\2UO\3\2\2\2UR\3\2\2\2VY\3\2\2\2WU\3\2\2\2WX\3\2\2\2"+
+		"X\7\3\2\2\2YW\3\2\2\2\b\16\24(\62UW";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

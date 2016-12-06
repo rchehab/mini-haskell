@@ -1,7 +1,7 @@
 grammar Haskell;
 
 @header {
-package br.unb.poo.mh.grammar;
+//package br.unb.poo.mh.grammar;
 }
 
 start	: expressao EOF
@@ -12,19 +12,26 @@ declaracao	: funcname=ID (param+=ID)* '=' expressao	#DeclaracaoFuncao
 			;
 
 expressao		: IF expressao THEN expressao ELSE expressao	#IfThenElse
-				| funcname=ID (expressao)*								#AplicacaoFuncao
-				| NOT expressao									#Not
+
+				| expressao EQ expressao						#Equal
 				| expressao LE expressao						#LessOrEqual
 				| expressao GE expressao						#GreaterOrEqual
 				| expressao LT expressao						#LessThan
 				| expressao GT expressao						#GreaterThan
+
+				| expressao MUL expressao						#Multiplicacao
+				| expressao DIV expressao						#Divisor
+				| expressao SOM expressao						#Soma
+				| expressao SUB expressao						#Subtracao
+
 				| expressao AND expressao						#And
 				| expressao OR expressao						#Or
-				| expressao DIV expressao						#Divisor
-				| expressao SUB expressao						#Subtracao
-				| expressao MUL expressao						#Multiplicacao
-				| expressao SOM expressao						#Soma
-				| expressao EQ expressao						#Equal
+				| NOT expressao									#Not
+
+				| funcname=ID (expressao)*						#AplicacaoFuncao
+
+				| '(' expressao ')'								#Parentesis
+
 				| INT											#Inteiro
 				| BOOL											#Booleano
 				| ID											#Identificador

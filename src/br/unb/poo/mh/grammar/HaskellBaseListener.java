@@ -1,6 +1,6 @@
 // Generated from Haskell.g4 by ANTLR 4.5.3
 
-	package br.unb.poo.mh.grammar;
+//package br.unb.poo.mh.grammar;
 
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -90,6 +90,18 @@ public class HaskellBaseListener implements HaskellListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterParentesis(HaskellParser.ParentesisContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitParentesis(HaskellParser.ParentesisContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterGreaterOrEqual(HaskellParser.GreaterOrEqualContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -150,18 +162,6 @@ public class HaskellBaseListener implements HaskellListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterGreaterThan(HaskellParser.GreaterThanContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitGreaterThan(HaskellParser.GreaterThanContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterEqual(HaskellParser.EqualContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -169,6 +169,18 @@ public class HaskellBaseListener implements HaskellListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitEqual(HaskellParser.EqualContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterGreaterThan(HaskellParser.GreaterThanContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitGreaterThan(HaskellParser.GreaterThanContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

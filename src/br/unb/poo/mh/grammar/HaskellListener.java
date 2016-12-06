@@ -1,6 +1,6 @@
 // Generated from Haskell.g4 by ANTLR 4.5.3
 
-	package br.unb.poo.mh.grammar;
+//package br.unb.poo.mh.grammar;
 
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -80,6 +80,18 @@ public interface HaskellListener extends ParseTreeListener {
 	 */
 	void exitOr(HaskellParser.OrContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code Parentesis}
+	 * labeled alternative in {@link HaskellParser#expressao}.
+	 * @param ctx the parse tree
+	 */
+	void enterParentesis(HaskellParser.ParentesisContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Parentesis}
+	 * labeled alternative in {@link HaskellParser#expressao}.
+	 * @param ctx the parse tree
+	 */
+	void exitParentesis(HaskellParser.ParentesisContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code GreaterOrEqual}
 	 * labeled alternative in {@link HaskellParser#expressao}.
 	 * @param ctx the parse tree
@@ -140,18 +152,6 @@ public interface HaskellListener extends ParseTreeListener {
 	 */
 	void exitLessThan(HaskellParser.LessThanContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code GreaterThan}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void enterGreaterThan(HaskellParser.GreaterThanContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code GreaterThan}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void exitGreaterThan(HaskellParser.GreaterThanContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code Equal}
 	 * labeled alternative in {@link HaskellParser#expressao}.
 	 * @param ctx the parse tree
@@ -163,6 +163,18 @@ public interface HaskellListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitEqual(HaskellParser.EqualContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code GreaterThan}
+	 * labeled alternative in {@link HaskellParser#expressao}.
+	 * @param ctx the parse tree
+	 */
+	void enterGreaterThan(HaskellParser.GreaterThanContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code GreaterThan}
+	 * labeled alternative in {@link HaskellParser#expressao}.
+	 * @param ctx the parse tree
+	 */
+	void exitGreaterThan(HaskellParser.GreaterThanContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code And}
 	 * labeled alternative in {@link HaskellParser#expressao}.
