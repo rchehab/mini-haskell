@@ -11,13 +11,15 @@ start	: expressao EOF
 declaracao	: funcname=ID (param+=ID)* '=' expressao	#DeclaracaoFuncao
 			;
 
-expressao		: IF expressao THEN expressao ELSE expressao	#IfThenElse
+expressao		: '(' expressao ')'								#Parentesis
 
 				| expressao EQ expressao						#Equal
-				| expressao LE expressao						#LessOrEqual
-				| expressao GE expressao						#GreaterOrEqual
 				| expressao LT expressao						#LessThan
 				| expressao GT expressao						#GreaterThan
+				| expressao LE expressao						#LessOrEqual
+				| expressao GE expressao						#GreaterOrEqual
+
+				| IF expressao THEN expressao ELSE expressao	#IfThenElse
 
 				| expressao MUL expressao						#Multiplicacao
 				| expressao DIV expressao						#Divisor
@@ -29,8 +31,6 @@ expressao		: IF expressao THEN expressao ELSE expressao	#IfThenElse
 				| NOT expressao									#Not
 
 				| funcname=ID (expressao)*						#AplicacaoFuncao
-
-				| '(' expressao ')'								#Parentesis
 
 				| INT											#Inteiro
 				| BOOL											#Booleano
