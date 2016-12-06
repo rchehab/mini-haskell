@@ -13,28 +13,28 @@ declaracao	: funcname=ID (param+=ID)* '=' expressao	#DeclaracaoFuncao
 
 expressao		: '(' expressao ')'								#Parentesis
 
-				| expressao EQ expressao						#Equal
-				| expressao LT expressao						#LessThan
-				| expressao GT expressao						#GreaterThan
-				| expressao LE expressao						#LessOrEqual
-				| expressao GE expressao						#GreaterOrEqual
+				| expressao EQ expressao							#Equal
+				| expressao LT expressao							#LessThan
+				| expressao GT expressao							#GreaterThan
+				| expressao LE expressao							#LessOrEqual
+				| expressao GE expressao							#GreaterOrEqual
 
-				| IF expressao THEN expressao ELSE expressao	#IfThenElse
+				| IF expressao THEN expressao ELSE expressao		#IfThenElse
 
-				| expressao MUL expressao						#Multiplicacao
-				| expressao DIV expressao						#Divisor
-				| expressao SOM expressao						#Soma
-				| expressao SUB expressao						#Subtracao
+				| expressao MUL expressao							#Multiplicacao
+				| expressao DIV expressao							#Divisor
+				| expressao SOM expressao							#Soma
+				| expressao SUB expressao							#Subtracao
 
-				| expressao AND expressao						#And
-				| expressao OR expressao						#Or
-				| NOT expressao									#Not
+				| expressao AND expressao							#And
+				| expressao OR expressao							#Or
+				| NOT expressao										#Not
 
-				| funcname=ID (expressao)*						#AplicacaoFuncao
+				| funcname=ID '(' (expressao)? (',' expressao)* ')'	#AplicacaoFuncao
 
-				| INT											#Inteiro
-				| BOOL											#Booleano
-				| ID											#Identificador
+				| INT												#Inteiro
+				| BOOL												#Booleano
+				| ID												#Identificador
 				;
 
 WS : [ \r\t\n]+ -> skip;

@@ -1,6 +1,6 @@
 // Generated from Haskell.g4 by ANTLR 4.5.3
 
-//package br.unb.poo.mh.grammar;
+package br.unb.poo.mh.grammar;
 
 
 import org.antlr.v4.runtime.ParserRuleContext;
