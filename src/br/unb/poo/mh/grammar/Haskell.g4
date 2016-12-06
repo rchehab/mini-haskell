@@ -5,13 +5,16 @@ grammar Haskell;
 	import br.unb.poo.mh;
 }
 
-start	: expression EOF #Start
+start	: expression EOF	#Start
+		| declaracao EOF	#DeclaracaoFuncao
 		;
+
+declaracao	: funcname=ID (param+=ID)* '=' expressao	#DeclaracaoFuncao
+			;
 
 //Correcao: declarar func param listExpressao e pular espaços em branco
 expressao		: expressaoBinaria								#ExpressaoBinaria
-				| func param '=' expressao						#DeclaracaoFuncao //Declaracao de funcao nao eh exatamente expresssao, mudar isso
-				| func listExpressao							#AplicacaoFuncao
+				| func (expressao)*								#AplicacaoFuncao
 				| NOT expressao									#Not
 				| IF expressao THEN expressao ELSE expressao	#IfThenElse
 				| INT											#Inteiro
@@ -31,6 +34,7 @@ expressaoBinaria: expressao LE expressao						#LessOrEqual
 				| expressao EQ expressao						#Equal
 				;
 
+WS : [ \r\t\n]+ -> skip;
 
 LE: '<=';
 GE: '>=';
