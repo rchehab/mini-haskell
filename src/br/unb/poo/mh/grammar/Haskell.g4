@@ -8,6 +8,7 @@ grammar Haskell;
 start	: expression EOF #Start
 		;
 
+//Correcao: declarar func param listExpressao e pular espaços em branco
 expressao		: expressaoBinaria								#ExpressaoBinaria
 				| func param '=' expressao						#DeclaracaoFuncao //Declaracao de funcao nao eh exatamente expresssao, mudar isso
 				| func listExpressao							#AplicacaoFuncao
