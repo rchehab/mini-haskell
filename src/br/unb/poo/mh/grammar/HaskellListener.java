@@ -20,231 +20,193 @@ public interface HaskellListener extends ParseTreeListener {
 	 */
 	void exitStart(HaskellParser.StartContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code DeclaracaoFuncao}
-	 * labeled alternative in {@link HaskellParser#declaracao}.
+	 * Enter a parse tree produced by {@link HaskellParser#declaracaoFuncao}.
 	 * @param ctx the parse tree
 	 */
 	void enterDeclaracaoFuncao(HaskellParser.DeclaracaoFuncaoContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code DeclaracaoFuncao}
-	 * labeled alternative in {@link HaskellParser#declaracao}.
+	 * Exit a parse tree produced by {@link HaskellParser#declaracaoFuncao}.
 	 * @param ctx the parse tree
 	 */
 	void exitDeclaracaoFuncao(HaskellParser.DeclaracaoFuncaoContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Multiplicacao}
-	 * labeled alternative in {@link HaskellParser#expressao}.
+	 * Enter a parse tree produced by {@link HaskellParser#expressaoNot}.
 	 * @param ctx the parse tree
 	 */
-	void enterMultiplicacao(HaskellParser.MultiplicacaoContext ctx);
+	void enterExpressaoNot(HaskellParser.ExpressaoNotContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Multiplicacao}
-	 * labeled alternative in {@link HaskellParser#expressao}.
+	 * Exit a parse tree produced by {@link HaskellParser#expressaoNot}.
 	 * @param ctx the parse tree
 	 */
-	void exitMultiplicacao(HaskellParser.MultiplicacaoContext ctx);
+	void exitExpressaoNot(HaskellParser.ExpressaoNotContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code LessOrEqual}
-	 * labeled alternative in {@link HaskellParser#expressao}.
+	 * Enter a parse tree produced by {@link HaskellParser#expressaoOr}.
 	 * @param ctx the parse tree
 	 */
-	void enterLessOrEqual(HaskellParser.LessOrEqualContext ctx);
+	void enterExpressaoOr(HaskellParser.ExpressaoOrContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code LessOrEqual}
-	 * labeled alternative in {@link HaskellParser#expressao}.
+	 * Exit a parse tree produced by {@link HaskellParser#expressaoOr}.
 	 * @param ctx the parse tree
 	 */
-	void exitLessOrEqual(HaskellParser.LessOrEqualContext ctx);
+	void exitExpressaoOr(HaskellParser.ExpressaoOrContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code AplicacaoFuncao}
-	 * labeled alternative in {@link HaskellParser#expressao}.
+	 * Enter a parse tree produced by {@link HaskellParser#expressaoAnd}.
 	 * @param ctx the parse tree
 	 */
-	void enterAplicacaoFuncao(HaskellParser.AplicacaoFuncaoContext ctx);
+	void enterExpressaoAnd(HaskellParser.ExpressaoAndContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code AplicacaoFuncao}
-	 * labeled alternative in {@link HaskellParser#expressao}.
+	 * Exit a parse tree produced by {@link HaskellParser#expressaoAnd}.
 	 * @param ctx the parse tree
 	 */
-	void exitAplicacaoFuncao(HaskellParser.AplicacaoFuncaoContext ctx);
+	void exitExpressaoAnd(HaskellParser.ExpressaoAndContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Or}
-	 * labeled alternative in {@link HaskellParser#expressao}.
+	 * Enter a parse tree produced by {@link HaskellParser#expressaoEqual}.
 	 * @param ctx the parse tree
 	 */
-	void enterOr(HaskellParser.OrContext ctx);
+	void enterExpressaoEqual(HaskellParser.ExpressaoEqualContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Or}
-	 * labeled alternative in {@link HaskellParser#expressao}.
+	 * Exit a parse tree produced by {@link HaskellParser#expressaoEqual}.
 	 * @param ctx the parse tree
 	 */
-	void exitOr(HaskellParser.OrContext ctx);
+	void exitExpressaoEqual(HaskellParser.ExpressaoEqualContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Parentesis}
-	 * labeled alternative in {@link HaskellParser#expressao}.
+	 * Enter a parse tree produced by {@link HaskellParser#expressaoLessThan}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressaoLessThan(HaskellParser.ExpressaoLessThanContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HaskellParser#expressaoLessThan}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressaoLessThan(HaskellParser.ExpressaoLessThanContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HaskellParser#expressaoGreaterThan}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressaoGreaterThan(HaskellParser.ExpressaoGreaterThanContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HaskellParser#expressaoGreaterThan}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressaoGreaterThan(HaskellParser.ExpressaoGreaterThanContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HaskellParser#expressaoLessOrEqual}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressaoLessOrEqual(HaskellParser.ExpressaoLessOrEqualContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HaskellParser#expressaoLessOrEqual}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressaoLessOrEqual(HaskellParser.ExpressaoLessOrEqualContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HaskellParser#expressaoGreaterOrEqual}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressaoGreaterOrEqual(HaskellParser.ExpressaoGreaterOrEqualContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HaskellParser#expressaoGreaterOrEqual}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressaoGreaterOrEqual(HaskellParser.ExpressaoGreaterOrEqualContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HaskellParser#expressaoSubtracao}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressaoSubtracao(HaskellParser.ExpressaoSubtracaoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HaskellParser#expressaoSubtracao}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressaoSubtracao(HaskellParser.ExpressaoSubtracaoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HaskellParser#expressaoSoma}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressaoSoma(HaskellParser.ExpressaoSomaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HaskellParser#expressaoSoma}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressaoSoma(HaskellParser.ExpressaoSomaContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HaskellParser#expressaoDivisor}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressaoDivisor(HaskellParser.ExpressaoDivisorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HaskellParser#expressaoDivisor}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressaoDivisor(HaskellParser.ExpressaoDivisorContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HaskellParser#expressaoMultiplicacao}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressaoMultiplicacao(HaskellParser.ExpressaoMultiplicacaoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HaskellParser#expressaoMultiplicacao}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressaoMultiplicacao(HaskellParser.ExpressaoMultiplicacaoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HaskellParser#expressaoIfThenElse}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressaoIfThenElse(HaskellParser.ExpressaoIfThenElseContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HaskellParser#expressaoIfThenElse}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressaoIfThenElse(HaskellParser.ExpressaoIfThenElseContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HaskellParser#aplicacoDeFuncao}.
+	 * @param ctx the parse tree
+	 */
+	void enterAplicacoDeFuncao(HaskellParser.AplicacoDeFuncaoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HaskellParser#aplicacoDeFuncao}.
+	 * @param ctx the parse tree
+	 */
+	void exitAplicacoDeFuncao(HaskellParser.AplicacoDeFuncaoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HaskellParser#parentesis}.
 	 * @param ctx the parse tree
 	 */
 	void enterParentesis(HaskellParser.ParentesisContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Parentesis}
-	 * labeled alternative in {@link HaskellParser#expressao}.
+	 * Exit a parse tree produced by {@link HaskellParser#parentesis}.
 	 * @param ctx the parse tree
 	 */
 	void exitParentesis(HaskellParser.ParentesisContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code GreaterOrEqual}
-	 * labeled alternative in {@link HaskellParser#expressao}.
+	 * Enter a parse tree produced by {@link HaskellParser#valorInteiro}.
 	 * @param ctx the parse tree
 	 */
-	void enterGreaterOrEqual(HaskellParser.GreaterOrEqualContext ctx);
+	void enterValorInteiro(HaskellParser.ValorInteiroContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code GreaterOrEqual}
-	 * labeled alternative in {@link HaskellParser#expressao}.
+	 * Exit a parse tree produced by {@link HaskellParser#valorInteiro}.
 	 * @param ctx the parse tree
 	 */
-	void exitGreaterOrEqual(HaskellParser.GreaterOrEqualContext ctx);
+	void exitValorInteiro(HaskellParser.ValorInteiroContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Booleano}
-	 * labeled alternative in {@link HaskellParser#expressao}.
+	 * Enter a parse tree produced by {@link HaskellParser#valorBooleano}.
 	 * @param ctx the parse tree
 	 */
-	void enterBooleano(HaskellParser.BooleanoContext ctx);
+	void enterValorBooleano(HaskellParser.ValorBooleanoContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Booleano}
-	 * labeled alternative in {@link HaskellParser#expressao}.
+	 * Exit a parse tree produced by {@link HaskellParser#valorBooleano}.
 	 * @param ctx the parse tree
 	 */
-	void exitBooleano(HaskellParser.BooleanoContext ctx);
+	void exitValorBooleano(HaskellParser.ValorBooleanoContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Subtracao}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void enterSubtracao(HaskellParser.SubtracaoContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Subtracao}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void exitSubtracao(HaskellParser.SubtracaoContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Not}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void enterNot(HaskellParser.NotContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Not}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void exitNot(HaskellParser.NotContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code LessThan}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void enterLessThan(HaskellParser.LessThanContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code LessThan}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void exitLessThan(HaskellParser.LessThanContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Equal}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void enterEqual(HaskellParser.EqualContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Equal}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void exitEqual(HaskellParser.EqualContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code GreaterThan}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void enterGreaterThan(HaskellParser.GreaterThanContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code GreaterThan}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void exitGreaterThan(HaskellParser.GreaterThanContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code And}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void enterAnd(HaskellParser.AndContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code And}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void exitAnd(HaskellParser.AndContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Soma}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void enterSoma(HaskellParser.SomaContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Soma}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void exitSoma(HaskellParser.SomaContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Divisor}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void enterDivisor(HaskellParser.DivisorContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Divisor}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void exitDivisor(HaskellParser.DivisorContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code IfThenElse}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void enterIfThenElse(HaskellParser.IfThenElseContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code IfThenElse}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void exitIfThenElse(HaskellParser.IfThenElseContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Identificador}
-	 * labeled alternative in {@link HaskellParser#expressao}.
+	 * Enter a parse tree produced by {@link HaskellParser#identificador}.
 	 * @param ctx the parse tree
 	 */
 	void enterIdentificador(HaskellParser.IdentificadorContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Identificador}
-	 * labeled alternative in {@link HaskellParser#expressao}.
+	 * Exit a parse tree produced by {@link HaskellParser#identificador}.
 	 * @param ctx the parse tree
 	 */
 	void exitIdentificador(HaskellParser.IdentificadorContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Inteiro}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void enterInteiro(HaskellParser.InteiroContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Inteiro}
-	 * labeled alternative in {@link HaskellParser#expressao}.
-	 * @param ctx the parse tree
-	 */
-	void exitInteiro(HaskellParser.InteiroContext ctx);
 }

@@ -1,41 +1,39 @@
 grammar Haskell;
 
 @header {
-//package br.unb.poo.mh.grammar;
+package br.unb.poo.mh.grammar;
 }
 
-start	: expressao EOF
-		| declaracao EOF
+start	: expressaoNot EOF
+		| declaracaoFuncao EOF
 		;
 
-declaracao	: funcname=ID (param+=ID)* '=' expressao	#DeclaracaoFuncao
-			;
+declaracaoFuncao	: funcname=ID (param+=ID)* '=' expressaoNot;
 
-expressao		: '(' expressao ')'								#Parentesis
 
-				| expressao EQ expressao							#Equal
-				| expressao LT expressao							#LessThan
-				| expressao GT expressao							#GreaterThan
-				| expressao LE expressao							#LessOrEqual
-				| expressao GE expressao							#GreaterOrEqual
+expressaoNot			: NOT expressaoNot															| expressaoOr;
+expressaoOr				: expressaoOr OR expressaoOr												| expressaoAnd;
+expressaoAnd			: expressaoAnd AND expressaoAnd												| expressaoEqual;
 
-				| IF expressao THEN expressao ELSE expressao		#IfThenElse
+expressaoEqual			: expressaoEqual EQ expressaoEqual											| expressaoLessThan;
+expressaoLessThan		: expressaoLessThan LT expressaoLessThan									| expressaoGreaterThan;
+expressaoGreaterThan	: expressaoGreaterThan GT expressaoGreaterThan								| expressaoLessOrEqual;
+expressaoLessOrEqual	: expressaoLessOrEqual LE expressaoLessOrEqual								| expressaoGreaterOrEqual;
+expressaoGreaterOrEqual	: expressaoGreaterOrEqual GE expressaoGreaterOrEqual						| expressaoSubtracao;
 
-				| expressao MUL expressao							#Multiplicacao
-				| expressao DIV expressao							#Divisor
-				| expressao SOM expressao							#Soma
-				| expressao SUB expressao							#Subtracao
+expressaoSubtracao		: expressaoSubtracao SUB expressaoSubtracao									| expressaoSoma;
+expressaoSoma			: expressaoSoma SOM expressaoSoma											| expressaoDivisor;
+expressaoDivisor		: expressaoDivisor DIV expressaoDivisor										| expressaoMultiplicacao;
+expressaoMultiplicacao	: expressaoMultiplicacao MUL expressaoMultiplicacao							| expressaoIfThenElse;
 
-				| expressao AND expressao							#And
-				| expressao OR expressao							#Or
-				| NOT expressao										#Not
+expressaoIfThenElse		: IF expressaoNot THEN expressaoNot ELSE expressaoIfThenElse				| aplicacoDeFuncao;
 
-				| funcname=ID '(' (expressao)? (',' expressao)* ')'	#AplicacaoFuncao
+aplicacoDeFuncao		: funcname=ID '(' expressaoNot* ')'											| parentesis;
 
-				| INT												#Inteiro
-				| BOOL												#Booleano
-				| ID												#Identificador
-				;
+parentesis				: '(' expressaoNot ')'														| valorInteiro;
+valorInteiro			: INT																		| valorBooleano;
+valorBooleano			: BOOL																		| identificador;
+identificador			: ID;
 
 WS : [ \r\t\n]+ -> skip;
 
