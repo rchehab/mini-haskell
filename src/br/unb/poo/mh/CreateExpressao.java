@@ -11,7 +11,7 @@ public class CreateExpressao{
 	public Expressao getExp() {
 		return exp;
 	}
-	
+	//Concertar
 	public Expressao choose(String s) {
 		String str = s.split("\\(")[0];
 		String str2 = s.split("\\)")[0];
