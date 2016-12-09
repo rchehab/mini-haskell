@@ -114,4 +114,11 @@ public class TamanhoDasExpressoes implements Visitor {
 		
 	}
 
+	@Override
+	public void visitar(Parentesis exp) {
+		tamanho += 1;
+		exp.exp.aceitar(this);
+		
+	}
+
 }

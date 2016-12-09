@@ -83,11 +83,11 @@ public class ParserTranslator {
 		return resul;
 	}
 	
-	public static void parse(File file) throws IOException {
+	public static String parse(File file) throws IOException {
 		byte[] bit = Files.readAllBytes(file.toPath());
 		String str = new String(bit, Charset.forName("UTF-8"));
 		
-		parse(str);
+		return parse(str);
 	}
 	
 }

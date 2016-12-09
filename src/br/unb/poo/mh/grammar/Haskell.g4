@@ -4,16 +4,16 @@ grammar Haskell;
 package br.unb.poo.mh.grammar;
 }
 
-start	: expressaoNot EOF
+start	: expressaoOr EOF
 		| declaracaoFuncao EOF
 		;
 
-declaracaoFuncao	: funcname=ID (param+=ID)* '=' expressaoNot;
+declaracaoFuncao	: name+ '=' expressaoOr;
 
 
-expressaoNot			: NOT expressaoNot															| expressaoOr;
 expressaoOr				: expressaoOr OR expressaoOr												| expressaoAnd;
-expressaoAnd			: expressaoAnd AND expressaoAnd												| expressaoEqual;
+expressaoAnd			: expressaoAnd AND expressaoAnd												| expressaoNot;
+expressaoNot			: NOT expressaoNot															| expressaoEqual;
 
 expressaoEqual			: expressaoEqual EQ expressaoEqual											| expressaoLessThan;
 expressaoLessThan		: expressaoLessThan LT expressaoLessThan									| expressaoGreaterThan;
@@ -23,16 +23,18 @@ expressaoGreaterOrEqual	: expressaoGreaterOrEqual GE expressaoGreaterOrEqual				
 
 expressaoSubtracao		: expressaoSubtracao SUB expressaoSubtracao									| expressaoSoma;
 expressaoSoma			: expressaoSoma SOM expressaoSoma											| expressaoDivisor;
-expressaoDivisor		: expressaoDivisor DIV expressaoDivisor										| expressaoMultiplicacao;
-expressaoMultiplicacao	: expressaoMultiplicacao MUL expressaoMultiplicacao							| expressaoIfThenElse;
+expressaoDivisor		: expressaoDivisor DIV expressaoDivisor										| multiplicacao;
+multiplicacao			: multiplicacao MUL multiplicacao											| ifThenElse;
 
-expressaoIfThenElse		: IF expressaoNot THEN expressaoNot ELSE expressaoIfThenElse				| aplicacoDeFuncao;
+ifThenElse				: IF expressaoOr THEN expressaoOr ELSE ifThenElse							| aplicacaoFuncao;
 
-aplicacoDeFuncao		: funcname=ID '(' expressaoNot* ')'											| parentesis;
+aplicacaoFuncao		: name '(' expressaoOr* ')'														| parentesis;
 
-parentesis				: '(' expressaoNot ')'														| valorInteiro;
+parentesis				: '(' expressaoOr ')'														| valorInteiro;
 valorInteiro			: INT																		| valorBooleano;
 valorBooleano			: BOOL																		| identificador;
+
+name					: ID;
 identificador			: ID;
 
 WS : [ \r\t\n]+ -> skip;

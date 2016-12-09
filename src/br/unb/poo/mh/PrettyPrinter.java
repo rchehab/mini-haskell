@@ -127,4 +127,12 @@ public class PrettyPrinter implements Visitor{
 		
 		
 	}
+
+	@Override
+	public void visitar(Parentesis exp) {
+		str = str + "( ";
+		exp.exp.aceitar(this);
+		str = str + " )";
+		
+	}
 }

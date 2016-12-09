@@ -30,16 +30,6 @@ public interface HaskellListener extends ParseTreeListener {
 	 */
 	void exitDeclaracaoFuncao(HaskellParser.DeclaracaoFuncaoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link HaskellParser#expressaoNot}.
-	 * @param ctx the parse tree
-	 */
-	void enterExpressaoNot(HaskellParser.ExpressaoNotContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link HaskellParser#expressaoNot}.
-	 * @param ctx the parse tree
-	 */
-	void exitExpressaoNot(HaskellParser.ExpressaoNotContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link HaskellParser#expressaoOr}.
 	 * @param ctx the parse tree
 	 */
@@ -59,6 +49,16 @@ public interface HaskellListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitExpressaoAnd(HaskellParser.ExpressaoAndContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HaskellParser#expressaoNot}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressaoNot(HaskellParser.ExpressaoNotContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HaskellParser#expressaoNot}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressaoNot(HaskellParser.ExpressaoNotContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link HaskellParser#expressaoEqual}.
 	 * @param ctx the parse tree
@@ -140,35 +140,35 @@ public interface HaskellListener extends ParseTreeListener {
 	 */
 	void exitExpressaoDivisor(HaskellParser.ExpressaoDivisorContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link HaskellParser#expressaoMultiplicacao}.
+	 * Enter a parse tree produced by {@link HaskellParser#multiplicacao}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpressaoMultiplicacao(HaskellParser.ExpressaoMultiplicacaoContext ctx);
+	void enterMultiplicacao(HaskellParser.MultiplicacaoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link HaskellParser#expressaoMultiplicacao}.
+	 * Exit a parse tree produced by {@link HaskellParser#multiplicacao}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpressaoMultiplicacao(HaskellParser.ExpressaoMultiplicacaoContext ctx);
+	void exitMultiplicacao(HaskellParser.MultiplicacaoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link HaskellParser#expressaoIfThenElse}.
+	 * Enter a parse tree produced by {@link HaskellParser#ifThenElse}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpressaoIfThenElse(HaskellParser.ExpressaoIfThenElseContext ctx);
+	void enterIfThenElse(HaskellParser.IfThenElseContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link HaskellParser#expressaoIfThenElse}.
+	 * Exit a parse tree produced by {@link HaskellParser#ifThenElse}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpressaoIfThenElse(HaskellParser.ExpressaoIfThenElseContext ctx);
+	void exitIfThenElse(HaskellParser.IfThenElseContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link HaskellParser#aplicacoDeFuncao}.
+	 * Enter a parse tree produced by {@link HaskellParser#aplicacaoFuncao}.
 	 * @param ctx the parse tree
 	 */
-	void enterAplicacoDeFuncao(HaskellParser.AplicacoDeFuncaoContext ctx);
+	void enterAplicacaoFuncao(HaskellParser.AplicacaoFuncaoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link HaskellParser#aplicacoDeFuncao}.
+	 * Exit a parse tree produced by {@link HaskellParser#aplicacaoFuncao}.
 	 * @param ctx the parse tree
 	 */
-	void exitAplicacoDeFuncao(HaskellParser.AplicacoDeFuncaoContext ctx);
+	void exitAplicacaoFuncao(HaskellParser.AplicacaoFuncaoContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link HaskellParser#parentesis}.
 	 * @param ctx the parse tree
@@ -199,6 +199,16 @@ public interface HaskellListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitValorBooleano(HaskellParser.ValorBooleanoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HaskellParser#name}.
+	 * @param ctx the parse tree
+	 */
+	void enterName(HaskellParser.NameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HaskellParser#name}.
+	 * @param ctx the parse tree
+	 */
+	void exitName(HaskellParser.NameContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link HaskellParser#identificador}.
 	 * @param ctx the parse tree

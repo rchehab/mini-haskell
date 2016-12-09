@@ -42,18 +42,6 @@ public class HaskellBaseListener implements HaskellListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpressaoNot(HaskellParser.ExpressaoNotContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitExpressaoNot(HaskellParser.ExpressaoNotContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterExpressaoOr(HaskellParser.ExpressaoOrContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -73,6 +61,18 @@ public class HaskellBaseListener implements HaskellListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitExpressaoAnd(HaskellParser.ExpressaoAndContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExpressaoNot(HaskellParser.ExpressaoNotContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExpressaoNot(HaskellParser.ExpressaoNotContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -174,37 +174,37 @@ public class HaskellBaseListener implements HaskellListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpressaoMultiplicacao(HaskellParser.ExpressaoMultiplicacaoContext ctx) { }
+	@Override public void enterMultiplicacao(HaskellParser.MultiplicacaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpressaoMultiplicacao(HaskellParser.ExpressaoMultiplicacaoContext ctx) { }
+	@Override public void exitMultiplicacao(HaskellParser.MultiplicacaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpressaoIfThenElse(HaskellParser.ExpressaoIfThenElseContext ctx) { }
+	@Override public void enterIfThenElse(HaskellParser.IfThenElseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpressaoIfThenElse(HaskellParser.ExpressaoIfThenElseContext ctx) { }
+	@Override public void exitIfThenElse(HaskellParser.IfThenElseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAplicacoDeFuncao(HaskellParser.AplicacoDeFuncaoContext ctx) { }
+	@Override public void enterAplicacaoFuncao(HaskellParser.AplicacaoFuncaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAplicacoDeFuncao(HaskellParser.AplicacoDeFuncaoContext ctx) { }
+	@Override public void exitAplicacaoFuncao(HaskellParser.AplicacaoFuncaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -241,6 +241,18 @@ public class HaskellBaseListener implements HaskellListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitValorBooleano(HaskellParser.ValorBooleanoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterName(HaskellParser.NameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitName(HaskellParser.NameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

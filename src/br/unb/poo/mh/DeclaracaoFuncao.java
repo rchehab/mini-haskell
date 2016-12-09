@@ -24,12 +24,9 @@ public class DeclaracaoFuncao {
 	}
 	
 	public Tipo tipo(Tipo padrao) {
-		
-		//Teoricamente desnecessario
-		Ambiente.delete_instance();
-		
-		Tipo ret = corpo.tipo(Tipo.Indefinido);
-			
+
+		Tipo ret = corpo.tipo(padrao);
+
 		tipo_id = (ret == padrao || padrao == Tipo.Indefinido) ? ret : Tipo.Error;
 		
 		return (ret == padrao || padrao == Tipo.Indefinido) ? ret : Tipo.Error;

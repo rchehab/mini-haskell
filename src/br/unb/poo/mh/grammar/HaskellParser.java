@@ -23,19 +23,19 @@ public class HaskellParser extends Parser {
 		ELSE=12, NOT=13, OR=14, AND=15, DIV=16, SUB=17, MUL=18, SOM=19, INT=20, 
 		BOOL=21, ID=22;
 	public static final int
-		RULE_start = 0, RULE_declaracaoFuncao = 1, RULE_expressaoNot = 2, RULE_expressaoOr = 3, 
-		RULE_expressaoAnd = 4, RULE_expressaoEqual = 5, RULE_expressaoLessThan = 6, 
+		RULE_start = 0, RULE_declaracaoFuncao = 1, RULE_expressaoOr = 2, RULE_expressaoAnd = 3, 
+		RULE_expressaoNot = 4, RULE_expressaoEqual = 5, RULE_expressaoLessThan = 6, 
 		RULE_expressaoGreaterThan = 7, RULE_expressaoLessOrEqual = 8, RULE_expressaoGreaterOrEqual = 9, 
 		RULE_expressaoSubtracao = 10, RULE_expressaoSoma = 11, RULE_expressaoDivisor = 12, 
-		RULE_expressaoMultiplicacao = 13, RULE_expressaoIfThenElse = 14, RULE_aplicacoDeFuncao = 15, 
+		RULE_multiplicacao = 13, RULE_ifThenElse = 14, RULE_aplicacaoFuncao = 15, 
 		RULE_parentesis = 16, RULE_valorInteiro = 17, RULE_valorBooleano = 18, 
-		RULE_identificador = 19;
+		RULE_name = 19, RULE_identificador = 20;
 	public static final String[] ruleNames = {
-		"start", "declaracaoFuncao", "expressaoNot", "expressaoOr", "expressaoAnd", 
+		"start", "declaracaoFuncao", "expressaoOr", "expressaoAnd", "expressaoNot", 
 		"expressaoEqual", "expressaoLessThan", "expressaoGreaterThan", "expressaoLessOrEqual", 
 		"expressaoGreaterOrEqual", "expressaoSubtracao", "expressaoSoma", "expressaoDivisor", 
-		"expressaoMultiplicacao", "expressaoIfThenElse", "aplicacoDeFuncao", "parentesis", 
-		"valorInteiro", "valorBooleano", "identificador"
+		"multiplicacao", "ifThenElse", "aplicacaoFuncao", "parentesis", "valorInteiro", 
+		"valorBooleano", "name", "identificador"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
@@ -97,8 +97,8 @@ public class HaskellParser extends Parser {
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 	public static class StartContext extends ParserRuleContext {
-		public ExpressaoNotContext expressaoNot() {
-			return getRuleContext(ExpressaoNotContext.class,0);
+		public ExpressaoOrContext expressaoOr() {
+			return getRuleContext(ExpressaoOrContext.class,0);
 		}
 		public TerminalNode EOF() { return getToken(HaskellParser.EOF, 0); }
 		public DeclaracaoFuncaoContext declaracaoFuncao() {
@@ -122,24 +122,24 @@ public class HaskellParser extends Parser {
 		StartContext _localctx = new StartContext(_ctx, getState());
 		enterRule(_localctx, 0, RULE_start);
 		try {
-			setState(46);
+			setState(48);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,0,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(40);
-				expressaoNot();
-				setState(41);
+				setState(42);
+				expressaoOr(0);
+				setState(43);
 				match(EOF);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(43);
+				setState(45);
 				declaracaoFuncao();
-				setState(44);
+				setState(46);
 				match(EOF);
 				}
 				break;
@@ -157,15 +157,14 @@ public class HaskellParser extends Parser {
 	}
 
 	public static class DeclaracaoFuncaoContext extends ParserRuleContext {
-		public Token funcname;
-		public Token ID;
-		public List<Token> param = new ArrayList<Token>();
-		public ExpressaoNotContext expressaoNot() {
-			return getRuleContext(ExpressaoNotContext.class,0);
+		public ExpressaoOrContext expressaoOr() {
+			return getRuleContext(ExpressaoOrContext.class,0);
 		}
-		public List<TerminalNode> ID() { return getTokens(HaskellParser.ID); }
-		public TerminalNode ID(int i) {
-			return getToken(HaskellParser.ID, i);
+		public List<NameContext> name() {
+			return getRuleContexts(NameContext.class);
+		}
+		public NameContext name(int i) {
+			return getRuleContext(NameContext.class,i);
 		}
 		public DeclaracaoFuncaoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -188,90 +187,24 @@ public class HaskellParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(48);
-			((DeclaracaoFuncaoContext)_localctx).funcname = match(ID);
-			setState(52);
+			setState(51); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==ID) {
+			do {
 				{
 				{
-				setState(49);
-				((DeclaracaoFuncaoContext)_localctx).ID = match(ID);
-				((DeclaracaoFuncaoContext)_localctx).param.add(((DeclaracaoFuncaoContext)_localctx).ID);
+				setState(50);
+				name();
 				}
 				}
-				setState(54);
+				setState(53); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			}
+			} while ( _la==ID );
 			setState(55);
 			match(T__0);
 			setState(56);
-			expressaoNot();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class ExpressaoNotContext extends ParserRuleContext {
-		public TerminalNode NOT() { return getToken(HaskellParser.NOT, 0); }
-		public ExpressaoNotContext expressaoNot() {
-			return getRuleContext(ExpressaoNotContext.class,0);
-		}
-		public ExpressaoOrContext expressaoOr() {
-			return getRuleContext(ExpressaoOrContext.class,0);
-		}
-		public ExpressaoNotContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_expressaoNot; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).enterExpressaoNot(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).exitExpressaoNot(this);
-		}
-	}
-
-	public final ExpressaoNotContext expressaoNot() throws RecognitionException {
-		ExpressaoNotContext _localctx = new ExpressaoNotContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_expressaoNot);
-		try {
-			setState(61);
-			switch (_input.LA(1)) {
-			case NOT:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(58);
-				match(NOT);
-				setState(59);
-				expressaoNot();
-				}
-				break;
-			case T__1:
-			case IF:
-			case INT:
-			case BOOL:
-			case ID:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(60);
-				expressaoOr(0);
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
+			expressaoOr(0);
 			}
 		}
 		catch (RecognitionException re) {
@@ -319,20 +252,20 @@ public class HaskellParser extends Parser {
 		int _parentState = getState();
 		ExpressaoOrContext _localctx = new ExpressaoOrContext(_ctx, _parentState);
 		ExpressaoOrContext _prevctx = _localctx;
-		int _startState = 6;
-		enterRecursionRule(_localctx, 6, RULE_expressaoOr, _p);
+		int _startState = 4;
+		enterRecursionRule(_localctx, 4, RULE_expressaoOr, _p);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
 			{
-			setState(64);
+			setState(59);
 			expressaoAnd(0);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(71);
+			setState(66);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
@@ -341,18 +274,18 @@ public class HaskellParser extends Parser {
 					{
 					_localctx = new ExpressaoOrContext(_parentctx, _parentState);
 					pushNewRecursionContext(_localctx, _startState, RULE_expressaoOr);
-					setState(66);
+					setState(61);
 					if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
-					setState(67);
+					setState(62);
 					match(OR);
-					setState(68);
+					setState(63);
 					expressaoOr(3);
 					}
 					} 
 				}
-				setState(73);
+				setState(68);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
 			}
 			}
 		}
@@ -368,8 +301,8 @@ public class HaskellParser extends Parser {
 	}
 
 	public static class ExpressaoAndContext extends ParserRuleContext {
-		public ExpressaoEqualContext expressaoEqual() {
-			return getRuleContext(ExpressaoEqualContext.class,0);
+		public ExpressaoNotContext expressaoNot() {
+			return getRuleContext(ExpressaoNotContext.class,0);
 		}
 		public List<ExpressaoAndContext> expressaoAnd() {
 			return getRuleContexts(ExpressaoAndContext.class);
@@ -401,20 +334,20 @@ public class HaskellParser extends Parser {
 		int _parentState = getState();
 		ExpressaoAndContext _localctx = new ExpressaoAndContext(_ctx, _parentState);
 		ExpressaoAndContext _prevctx = _localctx;
-		int _startState = 8;
-		enterRecursionRule(_localctx, 8, RULE_expressaoAnd, _p);
+		int _startState = 6;
+		enterRecursionRule(_localctx, 6, RULE_expressaoAnd, _p);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
 			{
-			setState(75);
-			expressaoEqual(0);
+			setState(70);
+			expressaoNot();
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(82);
+			setState(77);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
@@ -423,18 +356,18 @@ public class HaskellParser extends Parser {
 					{
 					_localctx = new ExpressaoAndContext(_parentctx, _parentState);
 					pushNewRecursionContext(_localctx, _startState, RULE_expressaoAnd);
-					setState(77);
+					setState(72);
 					if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
-					setState(78);
+					setState(73);
 					match(AND);
-					setState(79);
+					setState(74);
 					expressaoAnd(3);
 					}
 					} 
 				}
-				setState(84);
+				setState(79);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
 			}
 			}
 		}
@@ -445,6 +378,69 @@ public class HaskellParser extends Parser {
 		}
 		finally {
 			unrollRecursionContexts(_parentctx);
+		}
+		return _localctx;
+	}
+
+	public static class ExpressaoNotContext extends ParserRuleContext {
+		public TerminalNode NOT() { return getToken(HaskellParser.NOT, 0); }
+		public ExpressaoNotContext expressaoNot() {
+			return getRuleContext(ExpressaoNotContext.class,0);
+		}
+		public ExpressaoEqualContext expressaoEqual() {
+			return getRuleContext(ExpressaoEqualContext.class,0);
+		}
+		public ExpressaoNotContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_expressaoNot; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).enterExpressaoNot(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).exitExpressaoNot(this);
+		}
+	}
+
+	public final ExpressaoNotContext expressaoNot() throws RecognitionException {
+		ExpressaoNotContext _localctx = new ExpressaoNotContext(_ctx, getState());
+		enterRule(_localctx, 8, RULE_expressaoNot);
+		try {
+			setState(83);
+			switch (_input.LA(1)) {
+			case NOT:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(80);
+				match(NOT);
+				setState(81);
+				expressaoNot();
+				}
+				break;
+			case T__1:
+			case IF:
+			case INT:
+			case BOOL:
+			case ID:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(82);
+				expressaoEqual(0);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
 		}
 		return _localctx;
 	}
@@ -1024,8 +1020,8 @@ public class HaskellParser extends Parser {
 	}
 
 	public static class ExpressaoDivisorContext extends ParserRuleContext {
-		public ExpressaoMultiplicacaoContext expressaoMultiplicacao() {
-			return getRuleContext(ExpressaoMultiplicacaoContext.class,0);
+		public MultiplicacaoContext multiplicacao() {
+			return getRuleContext(MultiplicacaoContext.class,0);
 		}
 		public List<ExpressaoDivisorContext> expressaoDivisor() {
 			return getRuleContexts(ExpressaoDivisorContext.class);
@@ -1065,7 +1061,7 @@ public class HaskellParser extends Parser {
 			{
 			{
 			setState(163);
-			expressaoMultiplicacao(0);
+			multiplicacao(0);
 			}
 			_ctx.stop = _input.LT(-1);
 			setState(170);
@@ -1105,49 +1101,49 @@ public class HaskellParser extends Parser {
 		return _localctx;
 	}
 
-	public static class ExpressaoMultiplicacaoContext extends ParserRuleContext {
-		public ExpressaoIfThenElseContext expressaoIfThenElse() {
-			return getRuleContext(ExpressaoIfThenElseContext.class,0);
+	public static class MultiplicacaoContext extends ParserRuleContext {
+		public IfThenElseContext ifThenElse() {
+			return getRuleContext(IfThenElseContext.class,0);
 		}
-		public List<ExpressaoMultiplicacaoContext> expressaoMultiplicacao() {
-			return getRuleContexts(ExpressaoMultiplicacaoContext.class);
+		public List<MultiplicacaoContext> multiplicacao() {
+			return getRuleContexts(MultiplicacaoContext.class);
 		}
-		public ExpressaoMultiplicacaoContext expressaoMultiplicacao(int i) {
-			return getRuleContext(ExpressaoMultiplicacaoContext.class,i);
+		public MultiplicacaoContext multiplicacao(int i) {
+			return getRuleContext(MultiplicacaoContext.class,i);
 		}
 		public TerminalNode MUL() { return getToken(HaskellParser.MUL, 0); }
-		public ExpressaoMultiplicacaoContext(ParserRuleContext parent, int invokingState) {
+		public MultiplicacaoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_expressaoMultiplicacao; }
+		@Override public int getRuleIndex() { return RULE_multiplicacao; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).enterExpressaoMultiplicacao(this);
+			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).enterMultiplicacao(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).exitExpressaoMultiplicacao(this);
+			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).exitMultiplicacao(this);
 		}
 	}
 
-	public final ExpressaoMultiplicacaoContext expressaoMultiplicacao() throws RecognitionException {
-		return expressaoMultiplicacao(0);
+	public final MultiplicacaoContext multiplicacao() throws RecognitionException {
+		return multiplicacao(0);
 	}
 
-	private ExpressaoMultiplicacaoContext expressaoMultiplicacao(int _p) throws RecognitionException {
+	private MultiplicacaoContext multiplicacao(int _p) throws RecognitionException {
 		ParserRuleContext _parentctx = _ctx;
 		int _parentState = getState();
-		ExpressaoMultiplicacaoContext _localctx = new ExpressaoMultiplicacaoContext(_ctx, _parentState);
-		ExpressaoMultiplicacaoContext _prevctx = _localctx;
+		MultiplicacaoContext _localctx = new MultiplicacaoContext(_ctx, _parentState);
+		MultiplicacaoContext _prevctx = _localctx;
 		int _startState = 26;
-		enterRecursionRule(_localctx, 26, RULE_expressaoMultiplicacao, _p);
+		enterRecursionRule(_localctx, 26, RULE_multiplicacao, _p);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
 			{
 			setState(174);
-			expressaoIfThenElse();
+			ifThenElse();
 			}
 			_ctx.stop = _input.LT(-1);
 			setState(181);
@@ -1159,14 +1155,14 @@ public class HaskellParser extends Parser {
 					_prevctx = _localctx;
 					{
 					{
-					_localctx = new ExpressaoMultiplicacaoContext(_parentctx, _parentState);
-					pushNewRecursionContext(_localctx, _startState, RULE_expressaoMultiplicacao);
+					_localctx = new MultiplicacaoContext(_parentctx, _parentState);
+					pushNewRecursionContext(_localctx, _startState, RULE_multiplicacao);
 					setState(176);
 					if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
 					setState(177);
 					match(MUL);
 					setState(178);
-					expressaoMultiplicacao(3);
+					multiplicacao(3);
 					}
 					} 
 				}
@@ -1187,39 +1183,39 @@ public class HaskellParser extends Parser {
 		return _localctx;
 	}
 
-	public static class ExpressaoIfThenElseContext extends ParserRuleContext {
+	public static class IfThenElseContext extends ParserRuleContext {
 		public TerminalNode IF() { return getToken(HaskellParser.IF, 0); }
-		public List<ExpressaoNotContext> expressaoNot() {
-			return getRuleContexts(ExpressaoNotContext.class);
+		public List<ExpressaoOrContext> expressaoOr() {
+			return getRuleContexts(ExpressaoOrContext.class);
 		}
-		public ExpressaoNotContext expressaoNot(int i) {
-			return getRuleContext(ExpressaoNotContext.class,i);
+		public ExpressaoOrContext expressaoOr(int i) {
+			return getRuleContext(ExpressaoOrContext.class,i);
 		}
 		public TerminalNode THEN() { return getToken(HaskellParser.THEN, 0); }
 		public TerminalNode ELSE() { return getToken(HaskellParser.ELSE, 0); }
-		public ExpressaoIfThenElseContext expressaoIfThenElse() {
-			return getRuleContext(ExpressaoIfThenElseContext.class,0);
+		public IfThenElseContext ifThenElse() {
+			return getRuleContext(IfThenElseContext.class,0);
 		}
-		public AplicacoDeFuncaoContext aplicacoDeFuncao() {
-			return getRuleContext(AplicacoDeFuncaoContext.class,0);
+		public AplicacaoFuncaoContext aplicacaoFuncao() {
+			return getRuleContext(AplicacaoFuncaoContext.class,0);
 		}
-		public ExpressaoIfThenElseContext(ParserRuleContext parent, int invokingState) {
+		public IfThenElseContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_expressaoIfThenElse; }
+		@Override public int getRuleIndex() { return RULE_ifThenElse; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).enterExpressaoIfThenElse(this);
+			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).enterIfThenElse(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).exitExpressaoIfThenElse(this);
+			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).exitIfThenElse(this);
 		}
 	}
 
-	public final ExpressaoIfThenElseContext expressaoIfThenElse() throws RecognitionException {
-		ExpressaoIfThenElseContext _localctx = new ExpressaoIfThenElseContext(_ctx, getState());
-		enterRule(_localctx, 28, RULE_expressaoIfThenElse);
+	public final IfThenElseContext ifThenElse() throws RecognitionException {
+		IfThenElseContext _localctx = new IfThenElseContext(_ctx, getState());
+		enterRule(_localctx, 28, RULE_ifThenElse);
 		try {
 			setState(192);
 			switch (_input.LA(1)) {
@@ -1229,15 +1225,15 @@ public class HaskellParser extends Parser {
 				setState(184);
 				match(IF);
 				setState(185);
-				expressaoNot();
+				expressaoOr(0);
 				setState(186);
 				match(THEN);
 				setState(187);
-				expressaoNot();
+				expressaoOr(0);
 				setState(188);
 				match(ELSE);
 				setState(189);
-				expressaoIfThenElse();
+				ifThenElse();
 				}
 				break;
 			case T__1:
@@ -1247,7 +1243,7 @@ public class HaskellParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(191);
-				aplicacoDeFuncao();
+				aplicacaoFuncao();
 				}
 				break;
 			default:
@@ -1265,45 +1261,46 @@ public class HaskellParser extends Parser {
 		return _localctx;
 	}
 
-	public static class AplicacoDeFuncaoContext extends ParserRuleContext {
-		public Token funcname;
-		public TerminalNode ID() { return getToken(HaskellParser.ID, 0); }
-		public List<ExpressaoNotContext> expressaoNot() {
-			return getRuleContexts(ExpressaoNotContext.class);
+	public static class AplicacaoFuncaoContext extends ParserRuleContext {
+		public NameContext name() {
+			return getRuleContext(NameContext.class,0);
 		}
-		public ExpressaoNotContext expressaoNot(int i) {
-			return getRuleContext(ExpressaoNotContext.class,i);
+		public List<ExpressaoOrContext> expressaoOr() {
+			return getRuleContexts(ExpressaoOrContext.class);
+		}
+		public ExpressaoOrContext expressaoOr(int i) {
+			return getRuleContext(ExpressaoOrContext.class,i);
 		}
 		public ParentesisContext parentesis() {
 			return getRuleContext(ParentesisContext.class,0);
 		}
-		public AplicacoDeFuncaoContext(ParserRuleContext parent, int invokingState) {
+		public AplicacaoFuncaoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_aplicacoDeFuncao; }
+		@Override public int getRuleIndex() { return RULE_aplicacaoFuncao; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).enterAplicacoDeFuncao(this);
+			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).enterAplicacaoFuncao(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).exitAplicacoDeFuncao(this);
+			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).exitAplicacaoFuncao(this);
 		}
 	}
 
-	public final AplicacoDeFuncaoContext aplicacoDeFuncao() throws RecognitionException {
-		AplicacoDeFuncaoContext _localctx = new AplicacoDeFuncaoContext(_ctx, getState());
-		enterRule(_localctx, 30, RULE_aplicacoDeFuncao);
+	public final AplicacaoFuncaoContext aplicacaoFuncao() throws RecognitionException {
+		AplicacaoFuncaoContext _localctx = new AplicacaoFuncaoContext(_ctx, getState());
+		enterRule(_localctx, 30, RULE_aplicacaoFuncao);
 		int _la;
 		try {
-			setState(204);
+			setState(205);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,16,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(194);
-				((AplicacoDeFuncaoContext)_localctx).funcname = match(ID);
+				name();
 				setState(195);
 				match(T__1);
 				setState(199);
@@ -1313,7 +1310,7 @@ public class HaskellParser extends Parser {
 					{
 					{
 					setState(196);
-					expressaoNot();
+					expressaoOr(0);
 					}
 					}
 					setState(201);
@@ -1327,7 +1324,7 @@ public class HaskellParser extends Parser {
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(203);
+				setState(204);
 				parentesis();
 				}
 				break;
@@ -1345,8 +1342,8 @@ public class HaskellParser extends Parser {
 	}
 
 	public static class ParentesisContext extends ParserRuleContext {
-		public ExpressaoNotContext expressaoNot() {
-			return getRuleContext(ExpressaoNotContext.class,0);
+		public ExpressaoOrContext expressaoOr() {
+			return getRuleContext(ExpressaoOrContext.class,0);
 		}
 		public ValorInteiroContext valorInteiro() {
 			return getRuleContext(ValorInteiroContext.class,0);
@@ -1369,16 +1366,16 @@ public class HaskellParser extends Parser {
 		ParentesisContext _localctx = new ParentesisContext(_ctx, getState());
 		enterRule(_localctx, 32, RULE_parentesis);
 		try {
-			setState(211);
+			setState(212);
 			switch (_input.LA(1)) {
 			case T__1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(206);
-				match(T__1);
 				setState(207);
-				expressaoNot();
+				match(T__1);
 				setState(208);
+				expressaoOr(0);
+				setState(209);
 				match(T__2);
 				}
 				break;
@@ -1387,7 +1384,7 @@ public class HaskellParser extends Parser {
 			case ID:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(210);
+				setState(211);
 				valorInteiro();
 				}
 				break;
@@ -1429,12 +1426,12 @@ public class HaskellParser extends Parser {
 		ValorInteiroContext _localctx = new ValorInteiroContext(_ctx, getState());
 		enterRule(_localctx, 34, RULE_valorInteiro);
 		try {
-			setState(215);
+			setState(216);
 			switch (_input.LA(1)) {
 			case INT:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(213);
+				setState(214);
 				match(INT);
 				}
 				break;
@@ -1442,7 +1439,7 @@ public class HaskellParser extends Parser {
 			case ID:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(214);
+				setState(215);
 				valorBooleano();
 				}
 				break;
@@ -1484,24 +1481,61 @@ public class HaskellParser extends Parser {
 		ValorBooleanoContext _localctx = new ValorBooleanoContext(_ctx, getState());
 		enterRule(_localctx, 36, RULE_valorBooleano);
 		try {
-			setState(219);
+			setState(220);
 			switch (_input.LA(1)) {
 			case BOOL:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(217);
+				setState(218);
 				match(BOOL);
 				}
 				break;
 			case ID:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(218);
+				setState(219);
 				identificador();
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class NameContext extends ParserRuleContext {
+		public TerminalNode ID() { return getToken(HaskellParser.ID, 0); }
+		public NameContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_name; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).enterName(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof HaskellListener ) ((HaskellListener)listener).exitName(this);
+		}
+	}
+
+	public final NameContext name() throws RecognitionException {
+		NameContext _localctx = new NameContext(_ctx, getState());
+		enterRule(_localctx, 38, RULE_name);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(222);
+			match(ID);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1533,11 +1567,11 @@ public class HaskellParser extends Parser {
 
 	public final IdentificadorContext identificador() throws RecognitionException {
 		IdentificadorContext _localctx = new IdentificadorContext(_ctx, getState());
-		enterRule(_localctx, 38, RULE_identificador);
+		enterRule(_localctx, 40, RULE_identificador);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(221);
+			setState(224);
 			match(ID);
 			}
 		}
@@ -1554,9 +1588,9 @@ public class HaskellParser extends Parser {
 
 	public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
-		case 3:
+		case 2:
 			return expressaoOr_sempred((ExpressaoOrContext)_localctx, predIndex);
-		case 4:
+		case 3:
 			return expressaoAnd_sempred((ExpressaoAndContext)_localctx, predIndex);
 		case 5:
 			return expressaoEqual_sempred((ExpressaoEqualContext)_localctx, predIndex);
@@ -1575,7 +1609,7 @@ public class HaskellParser extends Parser {
 		case 12:
 			return expressaoDivisor_sempred((ExpressaoDivisorContext)_localctx, predIndex);
 		case 13:
-			return expressaoMultiplicacao_sempred((ExpressaoMultiplicacaoContext)_localctx, predIndex);
+			return multiplicacao_sempred((MultiplicacaoContext)_localctx, predIndex);
 		}
 		return true;
 	}
@@ -1649,7 +1683,7 @@ public class HaskellParser extends Parser {
 		}
 		return true;
 	}
-	private boolean expressaoMultiplicacao_sempred(ExpressaoMultiplicacaoContext _localctx, int predIndex) {
+	private boolean multiplicacao_sempred(MultiplicacaoContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 10:
 			return precpred(_ctx, 2);
@@ -1658,76 +1692,76 @@ public class HaskellParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\30\u00e2\4\2\t\2"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\30\u00e5\4\2\t\2"+
 		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
 		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
-		"\4\23\t\23\4\24\t\24\4\25\t\25\3\2\3\2\3\2\3\2\3\2\3\2\5\2\61\n\2\3\3"+
-		"\3\3\7\3\65\n\3\f\3\16\38\13\3\3\3\3\3\3\3\3\4\3\4\3\4\5\4@\n\4\3\5\3"+
-		"\5\3\5\3\5\3\5\3\5\7\5H\n\5\f\5\16\5K\13\5\3\6\3\6\3\6\3\6\3\6\3\6\7\6"+
-		"S\n\6\f\6\16\6V\13\6\3\7\3\7\3\7\3\7\3\7\3\7\7\7^\n\7\f\7\16\7a\13\7\3"+
-		"\b\3\b\3\b\3\b\3\b\3\b\7\bi\n\b\f\b\16\bl\13\b\3\t\3\t\3\t\3\t\3\t\3\t"+
-		"\7\tt\n\t\f\t\16\tw\13\t\3\n\3\n\3\n\3\n\3\n\3\n\7\n\177\n\n\f\n\16\n"+
-		"\u0082\13\n\3\13\3\13\3\13\3\13\3\13\3\13\7\13\u008a\n\13\f\13\16\13\u008d"+
-		"\13\13\3\f\3\f\3\f\3\f\3\f\3\f\7\f\u0095\n\f\f\f\16\f\u0098\13\f\3\r\3"+
-		"\r\3\r\3\r\3\r\3\r\7\r\u00a0\n\r\f\r\16\r\u00a3\13\r\3\16\3\16\3\16\3"+
-		"\16\3\16\3\16\7\16\u00ab\n\16\f\16\16\16\u00ae\13\16\3\17\3\17\3\17\3"+
-		"\17\3\17\3\17\7\17\u00b6\n\17\f\17\16\17\u00b9\13\17\3\20\3\20\3\20\3"+
-		"\20\3\20\3\20\3\20\3\20\5\20\u00c3\n\20\3\21\3\21\3\21\7\21\u00c8\n\21"+
-		"\f\21\16\21\u00cb\13\21\3\21\3\21\5\21\u00cf\n\21\3\22\3\22\3\22\3\22"+
-		"\3\22\5\22\u00d6\n\22\3\23\3\23\5\23\u00da\n\23\3\24\3\24\5\24\u00de\n"+
-		"\24\3\25\3\25\3\25\2\r\b\n\f\16\20\22\24\26\30\32\34\26\2\4\6\b\n\f\16"+
-		"\20\22\24\26\30\32\34\36 \"$&(\2\2\u00e1\2\60\3\2\2\2\4\62\3\2\2\2\6?"+
-		"\3\2\2\2\bA\3\2\2\2\nL\3\2\2\2\fW\3\2\2\2\16b\3\2\2\2\20m\3\2\2\2\22x"+
-		"\3\2\2\2\24\u0083\3\2\2\2\26\u008e\3\2\2\2\30\u0099\3\2\2\2\32\u00a4\3"+
-		"\2\2\2\34\u00af\3\2\2\2\36\u00c2\3\2\2\2 \u00ce\3\2\2\2\"\u00d5\3\2\2"+
-		"\2$\u00d9\3\2\2\2&\u00dd\3\2\2\2(\u00df\3\2\2\2*+\5\6\4\2+,\7\2\2\3,\61"+
-		"\3\2\2\2-.\5\4\3\2./\7\2\2\3/\61\3\2\2\2\60*\3\2\2\2\60-\3\2\2\2\61\3"+
-		"\3\2\2\2\62\66\7\30\2\2\63\65\7\30\2\2\64\63\3\2\2\2\658\3\2\2\2\66\64"+
-		"\3\2\2\2\66\67\3\2\2\2\679\3\2\2\28\66\3\2\2\29:\7\3\2\2:;\5\6\4\2;\5"+
-		"\3\2\2\2<=\7\17\2\2=@\5\6\4\2>@\5\b\5\2?<\3\2\2\2?>\3\2\2\2@\7\3\2\2\2"+
-		"AB\b\5\1\2BC\5\n\6\2CI\3\2\2\2DE\f\4\2\2EF\7\20\2\2FH\5\b\5\5GD\3\2\2"+
-		"\2HK\3\2\2\2IG\3\2\2\2IJ\3\2\2\2J\t\3\2\2\2KI\3\2\2\2LM\b\6\1\2MN\5\f"+
-		"\7\2NT\3\2\2\2OP\f\4\2\2PQ\7\21\2\2QS\5\n\6\5RO\3\2\2\2SV\3\2\2\2TR\3"+
-		"\2\2\2TU\3\2\2\2U\13\3\2\2\2VT\3\2\2\2WX\b\7\1\2XY\5\16\b\2Y_\3\2\2\2"+
-		"Z[\f\4\2\2[\\\7\13\2\2\\^\5\f\7\5]Z\3\2\2\2^a\3\2\2\2_]\3\2\2\2_`\3\2"+
-		"\2\2`\r\3\2\2\2a_\3\2\2\2bc\b\b\1\2cd\5\20\t\2dj\3\2\2\2ef\f\4\2\2fg\7"+
-		"\t\2\2gi\5\16\b\5he\3\2\2\2il\3\2\2\2jh\3\2\2\2jk\3\2\2\2k\17\3\2\2\2"+
-		"lj\3\2\2\2mn\b\t\1\2no\5\22\n\2ou\3\2\2\2pq\f\4\2\2qr\7\n\2\2rt\5\20\t"+
-		"\5sp\3\2\2\2tw\3\2\2\2us\3\2\2\2uv\3\2\2\2v\21\3\2\2\2wu\3\2\2\2xy\b\n"+
-		"\1\2yz\5\24\13\2z\u0080\3\2\2\2{|\f\4\2\2|}\7\7\2\2}\177\5\22\n\5~{\3"+
-		"\2\2\2\177\u0082\3\2\2\2\u0080~\3\2\2\2\u0080\u0081\3\2\2\2\u0081\23\3"+
-		"\2\2\2\u0082\u0080\3\2\2\2\u0083\u0084\b\13\1\2\u0084\u0085\5\26\f\2\u0085"+
-		"\u008b\3\2\2\2\u0086\u0087\f\4\2\2\u0087\u0088\7\b\2\2\u0088\u008a\5\24"+
-		"\13\5\u0089\u0086\3\2\2\2\u008a\u008d\3\2\2\2\u008b\u0089\3\2\2\2\u008b"+
-		"\u008c\3\2\2\2\u008c\25\3\2\2\2\u008d\u008b\3\2\2\2\u008e\u008f\b\f\1"+
-		"\2\u008f\u0090\5\30\r\2\u0090\u0096\3\2\2\2\u0091\u0092\f\4\2\2\u0092"+
-		"\u0093\7\23\2\2\u0093\u0095\5\26\f\5\u0094\u0091\3\2\2\2\u0095\u0098\3"+
-		"\2\2\2\u0096\u0094\3\2\2\2\u0096\u0097\3\2\2\2\u0097\27\3\2\2\2\u0098"+
-		"\u0096\3\2\2\2\u0099\u009a\b\r\1\2\u009a\u009b\5\32\16\2\u009b\u00a1\3"+
-		"\2\2\2\u009c\u009d\f\4\2\2\u009d\u009e\7\25\2\2\u009e\u00a0\5\30\r\5\u009f"+
-		"\u009c\3\2\2\2\u00a0\u00a3\3\2\2\2\u00a1\u009f\3\2\2\2\u00a1\u00a2\3\2"+
-		"\2\2\u00a2\31\3\2\2\2\u00a3\u00a1\3\2\2\2\u00a4\u00a5\b\16\1\2\u00a5\u00a6"+
-		"\5\34\17\2\u00a6\u00ac\3\2\2\2\u00a7\u00a8\f\4\2\2\u00a8\u00a9\7\22\2"+
-		"\2\u00a9\u00ab\5\32\16\5\u00aa\u00a7\3\2\2\2\u00ab\u00ae\3\2\2\2\u00ac"+
-		"\u00aa\3\2\2\2\u00ac\u00ad\3\2\2\2\u00ad\33\3\2\2\2\u00ae\u00ac\3\2\2"+
-		"\2\u00af\u00b0\b\17\1\2\u00b0\u00b1\5\36\20\2\u00b1\u00b7\3\2\2\2\u00b2"+
-		"\u00b3\f\4\2\2\u00b3\u00b4\7\24\2\2\u00b4\u00b6\5\34\17\5\u00b5\u00b2"+
-		"\3\2\2\2\u00b6\u00b9\3\2\2\2\u00b7\u00b5\3\2\2\2\u00b7\u00b8\3\2\2\2\u00b8"+
-		"\35\3\2\2\2\u00b9\u00b7\3\2\2\2\u00ba\u00bb\7\f\2\2\u00bb\u00bc\5\6\4"+
-		"\2\u00bc\u00bd\7\r\2\2\u00bd\u00be\5\6\4\2\u00be\u00bf\7\16\2\2\u00bf"+
-		"\u00c0\5\36\20\2\u00c0\u00c3\3\2\2\2\u00c1\u00c3\5 \21\2\u00c2\u00ba\3"+
-		"\2\2\2\u00c2\u00c1\3\2\2\2\u00c3\37\3\2\2\2\u00c4\u00c5\7\30\2\2\u00c5"+
-		"\u00c9\7\4\2\2\u00c6\u00c8\5\6\4\2\u00c7\u00c6\3\2\2\2\u00c8\u00cb\3\2"+
-		"\2\2\u00c9\u00c7\3\2\2\2\u00c9\u00ca\3\2\2\2\u00ca\u00cc\3\2\2\2\u00cb"+
-		"\u00c9\3\2\2\2\u00cc\u00cf\7\5\2\2\u00cd\u00cf\5\"\22\2\u00ce\u00c4\3"+
-		"\2\2\2\u00ce\u00cd\3\2\2\2\u00cf!\3\2\2\2\u00d0\u00d1\7\4\2\2\u00d1\u00d2"+
-		"\5\6\4\2\u00d2\u00d3\7\5\2\2\u00d3\u00d6\3\2\2\2\u00d4\u00d6\5$\23\2\u00d5"+
-		"\u00d0\3\2\2\2\u00d5\u00d4\3\2\2\2\u00d6#\3\2\2\2\u00d7\u00da\7\26\2\2"+
-		"\u00d8\u00da\5&\24\2\u00d9\u00d7\3\2\2\2\u00d9\u00d8\3\2\2\2\u00da%\3"+
-		"\2\2\2\u00db\u00de\7\27\2\2\u00dc\u00de\5(\25\2\u00dd\u00db\3\2\2\2\u00dd"+
-		"\u00dc\3\2\2\2\u00de\'\3\2\2\2\u00df\u00e0\7\30\2\2\u00e0)\3\2\2\2\26"+
-		"\60\66?IT_ju\u0080\u008b\u0096\u00a1\u00ac\u00b7\u00c2\u00c9\u00ce\u00d5"+
-		"\u00d9\u00dd";
+		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\3\2\3\2\3\2\3\2\3\2\3\2\5\2\63"+
+		"\n\2\3\3\6\3\66\n\3\r\3\16\3\67\3\3\3\3\3\3\3\4\3\4\3\4\3\4\3\4\3\4\7"+
+		"\4C\n\4\f\4\16\4F\13\4\3\5\3\5\3\5\3\5\3\5\3\5\7\5N\n\5\f\5\16\5Q\13\5"+
+		"\3\6\3\6\3\6\5\6V\n\6\3\7\3\7\3\7\3\7\3\7\3\7\7\7^\n\7\f\7\16\7a\13\7"+
+		"\3\b\3\b\3\b\3\b\3\b\3\b\7\bi\n\b\f\b\16\bl\13\b\3\t\3\t\3\t\3\t\3\t\3"+
+		"\t\7\tt\n\t\f\t\16\tw\13\t\3\n\3\n\3\n\3\n\3\n\3\n\7\n\177\n\n\f\n\16"+
+		"\n\u0082\13\n\3\13\3\13\3\13\3\13\3\13\3\13\7\13\u008a\n\13\f\13\16\13"+
+		"\u008d\13\13\3\f\3\f\3\f\3\f\3\f\3\f\7\f\u0095\n\f\f\f\16\f\u0098\13\f"+
+		"\3\r\3\r\3\r\3\r\3\r\3\r\7\r\u00a0\n\r\f\r\16\r\u00a3\13\r\3\16\3\16\3"+
+		"\16\3\16\3\16\3\16\7\16\u00ab\n\16\f\16\16\16\u00ae\13\16\3\17\3\17\3"+
+		"\17\3\17\3\17\3\17\7\17\u00b6\n\17\f\17\16\17\u00b9\13\17\3\20\3\20\3"+
+		"\20\3\20\3\20\3\20\3\20\3\20\5\20\u00c3\n\20\3\21\3\21\3\21\7\21\u00c8"+
+		"\n\21\f\21\16\21\u00cb\13\21\3\21\3\21\3\21\5\21\u00d0\n\21\3\22\3\22"+
+		"\3\22\3\22\3\22\5\22\u00d7\n\22\3\23\3\23\5\23\u00db\n\23\3\24\3\24\5"+
+		"\24\u00df\n\24\3\25\3\25\3\26\3\26\3\26\2\r\6\b\f\16\20\22\24\26\30\32"+
+		"\34\27\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*\2\2\u00e3\2\62\3"+
+		"\2\2\2\4\65\3\2\2\2\6<\3\2\2\2\bG\3\2\2\2\nU\3\2\2\2\fW\3\2\2\2\16b\3"+
+		"\2\2\2\20m\3\2\2\2\22x\3\2\2\2\24\u0083\3\2\2\2\26\u008e\3\2\2\2\30\u0099"+
+		"\3\2\2\2\32\u00a4\3\2\2\2\34\u00af\3\2\2\2\36\u00c2\3\2\2\2 \u00cf\3\2"+
+		"\2\2\"\u00d6\3\2\2\2$\u00da\3\2\2\2&\u00de\3\2\2\2(\u00e0\3\2\2\2*\u00e2"+
+		"\3\2\2\2,-\5\6\4\2-.\7\2\2\3.\63\3\2\2\2/\60\5\4\3\2\60\61\7\2\2\3\61"+
+		"\63\3\2\2\2\62,\3\2\2\2\62/\3\2\2\2\63\3\3\2\2\2\64\66\5(\25\2\65\64\3"+
+		"\2\2\2\66\67\3\2\2\2\67\65\3\2\2\2\678\3\2\2\289\3\2\2\29:\7\3\2\2:;\5"+
+		"\6\4\2;\5\3\2\2\2<=\b\4\1\2=>\5\b\5\2>D\3\2\2\2?@\f\4\2\2@A\7\20\2\2A"+
+		"C\5\6\4\5B?\3\2\2\2CF\3\2\2\2DB\3\2\2\2DE\3\2\2\2E\7\3\2\2\2FD\3\2\2\2"+
+		"GH\b\5\1\2HI\5\n\6\2IO\3\2\2\2JK\f\4\2\2KL\7\21\2\2LN\5\b\5\5MJ\3\2\2"+
+		"\2NQ\3\2\2\2OM\3\2\2\2OP\3\2\2\2P\t\3\2\2\2QO\3\2\2\2RS\7\17\2\2SV\5\n"+
+		"\6\2TV\5\f\7\2UR\3\2\2\2UT\3\2\2\2V\13\3\2\2\2WX\b\7\1\2XY\5\16\b\2Y_"+
+		"\3\2\2\2Z[\f\4\2\2[\\\7\13\2\2\\^\5\f\7\5]Z\3\2\2\2^a\3\2\2\2_]\3\2\2"+
+		"\2_`\3\2\2\2`\r\3\2\2\2a_\3\2\2\2bc\b\b\1\2cd\5\20\t\2dj\3\2\2\2ef\f\4"+
+		"\2\2fg\7\t\2\2gi\5\16\b\5he\3\2\2\2il\3\2\2\2jh\3\2\2\2jk\3\2\2\2k\17"+
+		"\3\2\2\2lj\3\2\2\2mn\b\t\1\2no\5\22\n\2ou\3\2\2\2pq\f\4\2\2qr\7\n\2\2"+
+		"rt\5\20\t\5sp\3\2\2\2tw\3\2\2\2us\3\2\2\2uv\3\2\2\2v\21\3\2\2\2wu\3\2"+
+		"\2\2xy\b\n\1\2yz\5\24\13\2z\u0080\3\2\2\2{|\f\4\2\2|}\7\7\2\2}\177\5\22"+
+		"\n\5~{\3\2\2\2\177\u0082\3\2\2\2\u0080~\3\2\2\2\u0080\u0081\3\2\2\2\u0081"+
+		"\23\3\2\2\2\u0082\u0080\3\2\2\2\u0083\u0084\b\13\1\2\u0084\u0085\5\26"+
+		"\f\2\u0085\u008b\3\2\2\2\u0086\u0087\f\4\2\2\u0087\u0088\7\b\2\2\u0088"+
+		"\u008a\5\24\13\5\u0089\u0086\3\2\2\2\u008a\u008d\3\2\2\2\u008b\u0089\3"+
+		"\2\2\2\u008b\u008c\3\2\2\2\u008c\25\3\2\2\2\u008d\u008b\3\2\2\2\u008e"+
+		"\u008f\b\f\1\2\u008f\u0090\5\30\r\2\u0090\u0096\3\2\2\2\u0091\u0092\f"+
+		"\4\2\2\u0092\u0093\7\23\2\2\u0093\u0095\5\26\f\5\u0094\u0091\3\2\2\2\u0095"+
+		"\u0098\3\2\2\2\u0096\u0094\3\2\2\2\u0096\u0097\3\2\2\2\u0097\27\3\2\2"+
+		"\2\u0098\u0096\3\2\2\2\u0099\u009a\b\r\1\2\u009a\u009b\5\32\16\2\u009b"+
+		"\u00a1\3\2\2\2\u009c\u009d\f\4\2\2\u009d\u009e\7\25\2\2\u009e\u00a0\5"+
+		"\30\r\5\u009f\u009c\3\2\2\2\u00a0\u00a3\3\2\2\2\u00a1\u009f\3\2\2\2\u00a1"+
+		"\u00a2\3\2\2\2\u00a2\31\3\2\2\2\u00a3\u00a1\3\2\2\2\u00a4\u00a5\b\16\1"+
+		"\2\u00a5\u00a6\5\34\17\2\u00a6\u00ac\3\2\2\2\u00a7\u00a8\f\4\2\2\u00a8"+
+		"\u00a9\7\22\2\2\u00a9\u00ab\5\32\16\5\u00aa\u00a7\3\2\2\2\u00ab\u00ae"+
+		"\3\2\2\2\u00ac\u00aa\3\2\2\2\u00ac\u00ad\3\2\2\2\u00ad\33\3\2\2\2\u00ae"+
+		"\u00ac\3\2\2\2\u00af\u00b0\b\17\1\2\u00b0\u00b1\5\36\20\2\u00b1\u00b7"+
+		"\3\2\2\2\u00b2\u00b3\f\4\2\2\u00b3\u00b4\7\24\2\2\u00b4\u00b6\5\34\17"+
+		"\5\u00b5\u00b2\3\2\2\2\u00b6\u00b9\3\2\2\2\u00b7\u00b5\3\2\2\2\u00b7\u00b8"+
+		"\3\2\2\2\u00b8\35\3\2\2\2\u00b9\u00b7\3\2\2\2\u00ba\u00bb\7\f\2\2\u00bb"+
+		"\u00bc\5\6\4\2\u00bc\u00bd\7\r\2\2\u00bd\u00be\5\6\4\2\u00be\u00bf\7\16"+
+		"\2\2\u00bf\u00c0\5\36\20\2\u00c0\u00c3\3\2\2\2\u00c1\u00c3\5 \21\2\u00c2"+
+		"\u00ba\3\2\2\2\u00c2\u00c1\3\2\2\2\u00c3\37\3\2\2\2\u00c4\u00c5\5(\25"+
+		"\2\u00c5\u00c9\7\4\2\2\u00c6\u00c8\5\6\4\2\u00c7\u00c6\3\2\2\2\u00c8\u00cb"+
+		"\3\2\2\2\u00c9\u00c7\3\2\2\2\u00c9\u00ca\3\2\2\2\u00ca\u00cc\3\2\2\2\u00cb"+
+		"\u00c9\3\2\2\2\u00cc\u00cd\7\5\2\2\u00cd\u00d0\3\2\2\2\u00ce\u00d0\5\""+
+		"\22\2\u00cf\u00c4\3\2\2\2\u00cf\u00ce\3\2\2\2\u00d0!\3\2\2\2\u00d1\u00d2"+
+		"\7\4\2\2\u00d2\u00d3\5\6\4\2\u00d3\u00d4\7\5\2\2\u00d4\u00d7\3\2\2\2\u00d5"+
+		"\u00d7\5$\23\2\u00d6\u00d1\3\2\2\2\u00d6\u00d5\3\2\2\2\u00d7#\3\2\2\2"+
+		"\u00d8\u00db\7\26\2\2\u00d9\u00db\5&\24\2\u00da\u00d8\3\2\2\2\u00da\u00d9"+
+		"\3\2\2\2\u00db%\3\2\2\2\u00dc\u00df\7\27\2\2\u00dd\u00df\5*\26\2\u00de"+
+		"\u00dc\3\2\2\2\u00de\u00dd\3\2\2\2\u00df\'\3\2\2\2\u00e0\u00e1\7\30\2"+
+		"\2\u00e1)\3\2\2\2\u00e2\u00e3\7\30\2\2\u00e3+\3\2\2\2\26\62\67DOU_ju\u0080"+
+		"\u008b\u0096\u00a1\u00ac\u00b7\u00c2\u00c9\u00cf\u00d6\u00da\u00de";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

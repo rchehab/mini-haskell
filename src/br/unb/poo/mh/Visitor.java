@@ -26,4 +26,5 @@ public interface Visitor {
 	public void visitar(ExpressaoGreaterOrEqual exp);
 	public void visitar(ExpressaoLessOrEqual exp);
 	public void visitar(ExpressaoNot exp);
+	public void visitar(Parentesis exp);
 }

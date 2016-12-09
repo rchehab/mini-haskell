@@ -2,8 +2,8 @@ package br.unb.poo.mh;
 
 public class ExpressaoLessOrEqual extends ExpressaoBinaria {
 
-	public ExpressaoLessOrEqual(Expressao expDireita, Expressao expEsquerda) {
-		super(expDireita, expEsquerda);
+	public ExpressaoLessOrEqual(Expressao expEsquerda, Expressao expDireita) {
+		super(expEsquerda, expDireita);
 	}
 
 	@Override

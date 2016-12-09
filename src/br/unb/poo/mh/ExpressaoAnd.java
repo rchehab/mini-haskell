@@ -2,8 +2,8 @@ package br.unb.poo.mh;
 
 public class ExpressaoAnd extends ExpressaoBinaria {
 
-	public ExpressaoAnd(Expressao expDireita, Expressao expEsquerda) {
-		super(expDireita, expEsquerda);
+	public ExpressaoAnd(Expressao expEsquerda, Expressao expDireita) {
+		super(expEsquerda, expDireita);
 	}
 
 	@Override
