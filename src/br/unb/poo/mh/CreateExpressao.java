@@ -2,49 +2,47 @@ package br.unb.poo.mh;
 
 public class CreateExpressao{
 
-	private Expressao exp;
-	
-	public CreateExpressao () {
-		exp = null;
-	}
-	
-	public Expressao getExp() {
-		return exp;
-	}
-	//Concertar
-	public Expressao choose(String s) {
+	public static Expressao choose(String s) {
 		String str = s.split("\\(")[0];
-		String str2 = s.split("\\)")[0];
+
+		int min = str.length() + 1;
+		int par = 1;
+		int i;
 		
-		String f;
-		
-		if (str.length() < str2.length()) {
-			f = str;
-		} else {
-			f = str2;
+		for (i = min; i < s.length(); i++) {
+			if (s.charAt(i) == '(') {
+				par++;
+			}
+			if (s.charAt(i) == ')') {
+				par--;
+			}
+			if (par == 0)
+				break;
 		}
-		String o = s.substring(f.length() + 1);
+		int max = i;
 		
+		String f = s.substring(min, max);
+		
+		System.out.println(str);
 		System.out.println(f);
-		System.out.println(o);
 		
-		switch (f) {
+		switch (str) {
 		case "ValorInteiro":
 		{
 			ValorInteiro e = null;
-			visitar(e, o);
+			e = visitar(e, f);
 			return e;
 		}
 		case "ValorBooleano":
 		{
 			ValorBooleano e = null;
-			visitar(e, o);
+			e = visitar(e, f);
 			return e;
 		}
 		case "ExpressaoSoma":
 		{
 			ExpressaoSoma e = null;
-			visitar(e, o);
+			e = visitar(e, f);
 			return e;
 		}
 		}
@@ -52,119 +50,173 @@ public class CreateExpressao{
 		return null;
 	}
 	
-	public void visitar(ValorInteiro exp, String f) {
-		String str = f.split("\\(")[0];
-		String str2 = f.split("\\)")[0];
-		
-		String s;
-		
-		if (str.length() < str2.length()) {
-			s = str;
-		} else {
-			s = str2;
-		}
-		exp = new ValorInteiro(Integer.parseInt(s));
+	public static ValorInteiro visitar(ValorInteiro exp, String f) {
+		exp = new ValorInteiro(Integer.parseInt(f));
+		return exp;
 	}
 
-	public void visitar(ValorBooleano exp, String f) {
-		String str = f.split("\\(")[0];
-		String str2 = f.split("\\)")[0];
-		
-		String s;
-		
-		if (str.length() < str2.length()) {
-			s = str;
-		} else {
-			s = str2;
-		}
-		exp = new ValorBooleano(Boolean.parseBoolean(s));
+	public static ValorBooleano visitar(ValorBooleano exp, String f) {
+		exp = new ValorBooleano(Boolean.parseBoolean(f));
+		return exp;
 	}
 	
-	public void visitar(ExpressaoSoma exp, String f) {
-		String str = f.split("\\(")[0];
-		String str2 = f.split("\\)")[0];
+	public static ExpressaoSoma visitar(ExpressaoSoma exp, String f) {
+		String str[] = f.split(",");
 		
-		String s;
-		
-		if (str.length() < str2.length()) {
-			s = str;
-		} else {
-			s = str2;
-		}
-
-		String o = f.substring(s.length() + 1);
-		
-		System.out.println(s);
-		System.out.println(o);
-		
-		Expressao a = choose(f);
-		Expressao b = choose(o);
+		Expressao a = choose(str[0]);
+		Expressao b = choose(str[1].substring(1, str[1].length()));
 		 
 		 exp = new ExpressaoSoma(a, b);
+		 return exp;
 	}
 	
-/*	@Override
-	public void visitar(ExpressaoSubtracao exp) {
-		visitarBin(exp);
+	public static ExpressaoSubtracao visitar(ExpressaoSubtracao exp, String f) {
+		String str[] = f.split(",");
+		
+		Expressao a = choose(str[0]);
+		Expressao b = choose(str[1].substring(1, str[1].length()));
+		 
+		 exp = new ExpressaoSubtracao(a, b);
+		 return exp;
 	}
 	
-	@Override
-	public void visitar(ExpressaoDivisor exp) {
-		visitarBin(exp);
-	}
-
-	@Override
-	public void visitar(Multiplicacao exp) {
-		visitarBin(exp);
-	}
-
-	@Override
-	public void visitar(ExpressaoAnd exp) {
-		visitarBin(exp);
-	}
-
-	@Override
-	public void visitar(ExpressaoOr exp) {
-		visitarBin(exp);
-	}
-
-	@Override
-	public void visitar(ExpressaoEqual exp) {
-		visitarBin(exp);
+	public static ExpressaoDivisor visitar(ExpressaoDivisor exp, String f) {
+		String str[] = f.split(",");
 		
+		Expressao a = choose(str[0]);
+		Expressao b = choose(str[1].substring(1, str[1].length()));
+		 
+		 exp = new ExpressaoDivisor(a, b);
+		 return exp;
 	}
-
-	@Override
-	public void visitar(ExpressaoGreaterThan exp) {
-		visitarBin(exp);
+	
+	//TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
+	public static Multiplicacao visitar(Multiplicacao exp, String f) {
+		String str[] = f.split(",");
 		
+		Expressao a = choose(str[0]);
+		Expressao b = choose(str[1].substring(1, str[1].length()));
+		 
+		 exp = new Multiplicacao(a, b);
+		 return exp;
 	}
-
-	@Override
-	public void visitar(ExpressaoLessThan exp) {
-		visitarBin(exp);
+	
+	public static ExpressaoAnd visitar(ExpressaoAnd exp, String f) {
+		String str[] = f.split(",");
 		
+		Expressao a = choose(str[0]);
+		Expressao b = choose(str[1].substring(1, str[1].length()));
+		 
+		 exp = new ExpressaoAnd(a, b);
+		 return exp;
 	}
-
-	@Override
-	public void visitar(ExpressaoGreaterOrEqual exp) {
-		visitarBin(exp);
+	
+	public static ExpressaoOr visitar(ExpressaoOr exp, String f) {
+		String str[] = f.split(",");
 		
+		Expressao a = choose(str[0]);
+		Expressao b = choose(str[1].substring(1, str[1].length()));
+		 
+		 exp = new ExpressaoOr(a, b);
+		 return exp;
 	}
-
-	@Override
-	public void visitar(ExpressaoLessOrEqual exp) {
-		visitarBin(exp);
+	
+	public static ExpressaoEqual visitar(ExpressaoEqual exp, String f) {
+		String str[] = f.split(",");
 		
+		Expressao a = choose(str[0]);
+		Expressao b = choose(str[1].substring(1, str[1].length()));
+		 
+		 exp = new ExpressaoEqual(a, b);
+		 return exp;
 	}
-
-	@Override
-	public void visitar(IfThenElse exp) {
-		exp.condicao.aceitar(this);
-		exp.clausulaThen.aceitar(this);
-		exp.clausulaElse.aceitar(this);
-		tamanho += 1;
+	
+	public static ExpressaoGreaterThan visitar(ExpressaoGreaterThan exp, String f) {
+		String str[] = f.split(",");
+		
+		Expressao a = choose(str[0]);
+		Expressao b = choose(str[1].substring(1, str[1].length()));
+		 
+		 exp = new ExpressaoGreaterThan(a, b);
+		 return exp;
 	}
+	
+	public static ExpressaoLessThan visitar(ExpressaoLessThan exp, String f) {
+		String str[] = f.split(",");
+		
+		Expressao a = choose(str[0]);
+		Expressao b = choose(str[1].substring(1, str[1].length()));
+		 
+		 exp = new ExpressaoLessThan(a, b);
+		 return exp;
+	}
+	
+	public static ExpressaoGreaterOrEqual visitar(ExpressaoGreaterOrEqual exp, String f) {
+		String str[] = f.split(",");
+		
+		Expressao a = choose(str[0]);
+		Expressao b = choose(str[1].substring(1, str[1].length()));
+		 
+		 exp = new ExpressaoGreaterOrEqual(a, b);
+		 return exp;
+	}
+	
+	public static ExpressaoLessOrEqual visitar(ExpressaoLessOrEqual exp, String f) {
+		int i;
+		int par = 0;
+		System.out.println(10);
+		
+		String[] str = new String[2];
+		int last = 0;
+		int min = 0;
+		
+		for (i = 0; i < f.length(); i++) {
+			if (f.charAt(i) == '(') {
+				par++;
+			}
+			if (f.charAt(i) == ')') {
+				par--;
+			}
+			if (par == 0 && f.charAt(i) == ',') {
+				str[last] = f.substring(min, i);
+				min = i + 2;
+			}
+		}
+		System.out.println(str[0]);
+		
+		Expressao a = choose(str[0]);
+		Expressao b = choose(str[1].substring(1, str[1].length()));
+		 
+		 exp = new ExpressaoLessOrEqual(a, b);
+		 return exp;
+	}
+	
+	//TODO TODO TODO TODO TODO TODO TODO TODO TODO
+	public static IfThenElse visitar(IfThenElse exp, String f) {
+		String str[] = f.split(",");
+		
+		Expressao a = choose(str[0]);
+		Expressao b = choose(str[1].substring(1, str[1].length()));
+		Expressao c = choose(str[2].substring(1, str[2].length()));
+		 
+		 exp = new IfThenElse(a, b, c);
+		 return exp;
+	}
+	
+	public static Identificador visitar(Identificador exp, String f) {
+		 
+		 exp = new Identificador(f);
+		 return exp;
+	}
+	
+	public static ExpressaoNot visitar(ExpressaoNot exp, String f) {
+		
+		Expressao a = choose(f);
+		 
+		 exp = new ExpressaoNot(a);
+		 return exp;
+	}
+/*
 
 	@Override
 	public void visitar(AplicacaoFuncao exp) {
@@ -175,17 +227,5 @@ public class CreateExpressao{
 //			p.aceitar(this);
 //		}
 	}
-
-	@Override
-	public void visitar(Identificador exp) {
-		tamanho += 1;
-	}
-
-	@Override
-	public void visitar(ExpressaoNot exp) {
-		tamanho += 1;
-		exp.exp.aceitar(this);
-		
-		
-	}*/
+	*/
 }

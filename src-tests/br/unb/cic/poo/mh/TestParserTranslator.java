@@ -9,7 +9,7 @@ public class TestParserTranslator {
 
 	@Test
 	public void test1() {
-		String tree = ParserTranslator.parse("((if true then 5 else 4) + 10) < 2 * 5 + 4");
+		String tree = ParserTranslator.parse("if true then 5 else 4 + 10 < 2 * 5 + 4");
 		
 		System.out.println(tree);
 		Assert.assertTrue(true);
