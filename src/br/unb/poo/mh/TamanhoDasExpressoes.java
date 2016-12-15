@@ -121,4 +121,20 @@ public class TamanhoDasExpressoes implements Visitor {
 		
 	}
 
+	@Override
+	public void visitar(Guarda exp) {
+		tamanho += 1;
+		exp.clausula.aceitar(this);
+		exp.condicao.aceitar(this);
+		
+	}
+
+	@Override
+	public void visitar(Guardas exp) {
+		tamanho += 1;
+		for (int i = 0; i < exp.opcoes.size(); i++) {
+			exp.opcoes.get(i).aceitar(this);
+		}
+	}
+
 }

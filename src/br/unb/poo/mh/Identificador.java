@@ -11,6 +11,7 @@ public class Identificador implements Expressao {
 	
 	public Valor avaliar() {
 		Expressao exp = Ambiente.instance().getExpressao(id);
+		
 		return exp.avaliar();
 	}
 
@@ -29,6 +30,7 @@ public class Identificador implements Expressao {
 		} else {
 			Expressao exp = Ambiente.instance().getExpressao(id);
 			ret = exp.tipo(padrao);
+			ret = (ret == tipo_id || tipo_id == Tipo.Indefinido) ? ret : Tipo.Error;
 		}
 		
 		return (ret == padrao || padrao == Tipo.Indefinido) ? ret : Tipo.Error;
@@ -37,5 +39,11 @@ public class Identificador implements Expressao {
 	@Override
 	public void aceitar(Visitor v) {
 		v.visitar(this);
+	}
+
+	@Override
+	public void aceitar(Visitor2 v, String f) {
+		v.visitar(this, f);
+		
 	}
 }

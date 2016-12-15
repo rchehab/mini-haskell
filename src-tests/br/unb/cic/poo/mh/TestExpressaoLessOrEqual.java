@@ -25,14 +25,14 @@ public class TestExpressaoLessOrEqual {
 	@Test
 	public void testeExpressaoLessOrEqual() {
 		ExpressaoLessOrEqual a = new ExpressaoLessOrEqual(v10, v10); // ==
-		ExpressaoLessOrEqual b = new ExpressaoLessOrEqual(v5, v10); // >
-		ExpressaoLessOrEqual c = new ExpressaoLessOrEqual(v10, v5); // <
+		ExpressaoLessOrEqual b = new ExpressaoLessOrEqual(v5, v10); // <
+		ExpressaoLessOrEqual c = new ExpressaoLessOrEqual(v10, v5); // >
 		
 		Assert.assertEquals(a.tipo(Tipo.Indefinido), Tipo.Booleano);
 		
 		Assert.assertEquals(new ValorBooleano(true), a.avaliar());
-		Assert.assertEquals(new ValorBooleano(false), b.avaliar());
-		Assert.assertEquals(new ValorBooleano(true), c.avaliar());
+		Assert.assertEquals(new ValorBooleano(true), b.avaliar());
+		Assert.assertEquals(new ValorBooleano(false), c.avaliar());
 		
 		PrettyPrinter pp = new PrettyPrinter();
 		

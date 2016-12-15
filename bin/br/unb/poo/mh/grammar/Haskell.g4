@@ -8,9 +8,6 @@ start	: expressaoOr EOF
 		| declaracaoFuncao EOF
 		;
 
-declaracaoFuncao	: name+ '=' expressaoOr;
-
-
 expressaoOr				: expressaoOr OR expressaoOr												| expressaoAnd;
 expressaoAnd			: expressaoAnd AND expressaoAnd												| expressaoNot;
 expressaoNot			: NOT expressaoNot															| expressaoEqual;
@@ -28,7 +25,7 @@ multiplicacao			: multiplicacao MUL multiplicacao											| ifThenElse;
 
 ifThenElse				: IF expressaoOr THEN expressaoOr ELSE ifThenElse							| aplicacaoFuncao;
 
-aplicacaoFuncao		: name '(' expressaoOr* ')'														| parentesis;
+aplicacaoFuncao			: name '(' expressaoOr* ')'													| parentesis;
 
 parentesis				: '(' expressaoOr ')'														| valorInteiro;
 valorInteiro			: INT																		| valorBooleano;
@@ -36,6 +33,17 @@ valorBooleano			: BOOL																		| identificador;
 
 name					: ID;
 identificador			: ID;
+
+
+declaracaoFuncao		: name+ testeGuarda;
+
+testeGuarda				: guardaFalsa | guardas;
+
+guardaFalsa				: '=' expressaoOr;
+
+guardas					: guarda+;
+
+guarda					: '|' expressaoOr '=' expressaoOr;
 
 WS : [ \r\t\n]+ -> skip;
 

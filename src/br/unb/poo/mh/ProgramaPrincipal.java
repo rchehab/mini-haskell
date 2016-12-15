@@ -29,27 +29,31 @@ public class ProgramaPrincipal {
 			}
 			String dec = tree.split("\\(")[0];
 			
+			CreateExpressao ce = new CreateExpressao();
+			
 			switch(dec) {
 			case "DeclaracaoFuncao":
-				DeclaracaoFuncao decla = CreateExpressao.choose2(tree);
+				DeclaracaoFuncao decla = ce.choose2(tree);
+
+				Ambiente.instance().declaraFuncao(decla);
 				
-				if (decla.tipo(Tipo.Indefinido) == Tipo.Error) {
+				/*if (decla.tipo(Tipo.Indefinido) == Tipo.Error) {
 					System.out.println("Expressao dada contêm erro de tipos\n");
+					Ambiente.instance().desdeclaraFuncao(decla);
 					break;
 				}
 				System.out.print(":: ");
-				System.out.println(decla.tipo(Tipo.Indefinido));
-				Ambiente.instance().declaraFuncao(decla);
+				System.out.println(decla.tipo(Tipo.Indefinido));*/
 				break;
 			default:
-				Expressao e = CreateExpressao.choose(tree);
+				Expressao e = ce.choose(tree);
 				
-				if (e.tipo(Tipo.Indefinido) == Tipo.Error) {
+				/*if (e.tipo(Tipo.Indefinido) == Tipo.Error) {
 					System.out.println("Expressao dada contêm erro de tipos\n");
 					break;
 				}
 				System.out.print(":: ");
-				System.out.println(e.tipo(Tipo.Indefinido));
+				System.out.println(e.tipo(Tipo.Indefinido));*/
 				
 				Valor a = e.avaliar();
 				

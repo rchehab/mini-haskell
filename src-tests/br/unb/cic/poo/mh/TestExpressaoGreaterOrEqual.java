@@ -25,14 +25,14 @@ public class TestExpressaoGreaterOrEqual {
 	@Test
 	public void testeExpressaoGreaterOrEqual() {
 		ExpressaoGreaterOrEqual a = new ExpressaoGreaterOrEqual(v10, v10); // ==
-		ExpressaoGreaterOrEqual b = new ExpressaoGreaterOrEqual(v5, v10); // >
-		ExpressaoGreaterOrEqual c = new ExpressaoGreaterOrEqual(v10, v5); // <
+		ExpressaoGreaterOrEqual b = new ExpressaoGreaterOrEqual(v5, v10); // <
+		ExpressaoGreaterOrEqual c = new ExpressaoGreaterOrEqual(v10, v5); // >
 		
 		Assert.assertEquals(a.tipo(Tipo.Indefinido), Tipo.Booleano);
 		
 		Assert.assertEquals(new ValorBooleano(true), a.avaliar());
-		Assert.assertEquals(new ValorBooleano(true), b.avaliar());
-		Assert.assertEquals(new ValorBooleano(false), c.avaliar());
+		Assert.assertEquals(new ValorBooleano(false), b.avaliar());
+		Assert.assertEquals(new ValorBooleano(true), c.avaliar());
 		
 		PrettyPrinter pp = new PrettyPrinter();
 		

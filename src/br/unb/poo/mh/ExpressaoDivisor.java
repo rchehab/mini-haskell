@@ -26,4 +26,10 @@ public class ExpressaoDivisor extends ExpressaoBinaria{
 		v.visitar(this);
 	}
 
+	@Override
+	public void aceitar(Visitor2 v, String f) {
+		v.visitar(this, f);
+		
+	}
+
 }

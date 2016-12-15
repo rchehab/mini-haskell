@@ -25,8 +25,8 @@ public class TestExpressaoEqual {
 	@Test
 	public void testeExpressaoEqual() {
 		ExpressaoEqual a = new ExpressaoEqual(v10, v10); // ==
-		ExpressaoEqual b = new ExpressaoEqual(v5, v10); // >
-		ExpressaoEqual c = new ExpressaoEqual(v10, v5); // <
+		ExpressaoEqual b = new ExpressaoEqual(v5, v10); // <
+		ExpressaoEqual c = new ExpressaoEqual(v10, v5); // >
 		
 		Assert.assertEquals(a.tipo(Tipo.Indefinido), Tipo.Booleano);
 		

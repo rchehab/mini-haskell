@@ -135,4 +135,20 @@ public class PrettyPrinter implements Visitor{
 		str = str + " )";
 		
 	}
+
+	@Override
+	public void visitar(Guarda exp) {
+		str = str + "| ";
+		exp.condicao.aceitar(this);
+		str = str + " =";
+		exp.clausula.aceitar(this);
+		str = str + "\n";
+	}
+
+	@Override
+	public void visitar(Guardas exp) {
+		for (int i = 0; i < exp.opcoes.size(); i++) {
+			exp.opcoes.get(i).aceitar(this);
+		}
+	}
 }

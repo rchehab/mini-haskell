@@ -13,7 +13,7 @@ public class TesteExpressaoDivisor {
 	
 	private ValorInteiro v2 = new ValorInteiro(2);
 	private ValorInteiro v40 = new ValorInteiro(40);
-	private Expressao div = new ExpressaoDivisor(v2, v40);
+	private Expressao div = new ExpressaoDivisor(v40, v2);
 	
 	@Test
 	public void testeDivisaoSimples() {
@@ -24,7 +24,7 @@ public class TesteExpressaoDivisor {
 	@Test
 	public void testeDivisaoComplexa() {
 		ValorInteiro v10 = new ValorInteiro(10);
-		Expressao divisao = new ExpressaoDivisor(v2, div);
+		Expressao divisao = new ExpressaoDivisor(div, v2);
 		Assert.assertEquals(v10, divisao.avaliar());
 		Assert.assertEquals(divisao.tipo(Tipo.Indefinido), Tipo.Inteiro);
 		PrettyPrinter pp = new PrettyPrinter();

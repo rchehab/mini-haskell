@@ -1,12 +1,20 @@
 package br.unb.cic.poo.mh;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import br.unb.poo.mh.*;
 
 public class TestCreateExpressao {
 
+	CreateExpressao ce;
+	
+	@Before
+	public void SetUp() {
+		ce = new CreateExpressao();
+	}
+	
 	@Test
 	public void test_base() {
 		System.out.println("Testb");
@@ -14,7 +22,7 @@ public class TestCreateExpressao {
 
 		ValorInteiro v3 = new ValorInteiro(3);
 		
-		Assert.assertEquals(v3, CreateExpressao.choose(tree).avaliar());
+		Assert.assertEquals(v3, ce.choose(tree).avaliar());
 	}
 	@Test
 	public void test1() {
@@ -23,7 +31,7 @@ public class TestCreateExpressao {
 		
 		ValorBooleano vtrue = new ValorBooleano(true);
 		
-		Assert.assertEquals(vtrue, CreateExpressao.choose(tree).avaliar());
+		Assert.assertEquals(vtrue, ce.choose(tree).avaliar());
 	}
 	
 	@Test

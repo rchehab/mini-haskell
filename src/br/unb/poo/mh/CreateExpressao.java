@@ -2,7 +2,7 @@ package br.unb.poo.mh;
 
 import java.util.Vector;
 
-public class CreateExpressao{
+public class CreateExpressao implements Visitor2 {
 	
 	private static Vector<String> divide(String f) {
 		Vector<String> str = new Vector<String>();
@@ -45,7 +45,7 @@ public class CreateExpressao{
 		return a;
 	}
 	
-	public static Expressao choose(String s) {
+	public Expressao choose(String s) {
 		String str = s.split("\\(")[0];
 
 		int min = str.length() + 1;
@@ -166,13 +166,25 @@ public class CreateExpressao{
 			e = visitar(e, f);
 			return e;
 		}
+		case "Guarda":
+		{
+			Guarda e = null;
+			e = visitar(e, f);
+			return e;
+		}
+		case "Guardas":
+		{
+			Guardas e = null;
+			e = visitar(e, f);
+			return e;
+		}
 		}
 		System.out.println("Error");
 		return null;
 	}
 	
 	
-	public static DeclaracaoFuncao choose2(String s) {
+	public DeclaracaoFuncao choose2(String s) {
 		String str = s.split("\\(")[0];
 
 		int min = str.length() + 1;
@@ -195,19 +207,19 @@ public class CreateExpressao{
 	}
 	
 	/*Done*/
-	public static ValorInteiro visitar(ValorInteiro exp, String f) {
+	public ValorInteiro visitar(ValorInteiro exp, String f) {
 		exp = new ValorInteiro(Integer.parseInt(f));
 		return exp;
 	}
 
 	/*Done*/
-	public static ValorBooleano visitar(ValorBooleano exp, String f) {
+	public ValorBooleano visitar(ValorBooleano exp, String f) {
 		exp = new ValorBooleano(Boolean.parseBoolean(f));
 		return exp;
 	}
 
 	/*Done*/
-	public static ExpressaoSoma visitar(ExpressaoSoma exp, String f) {
+	public ExpressaoSoma visitar(ExpressaoSoma exp, String f) {
 		Vector<String> str = divide(f);
 		
 		Expressao a = choose(str.get(0));
@@ -220,7 +232,7 @@ public class CreateExpressao{
 	
 	
 	/*Done*/
-	public static ExpressaoSubtracao visitar(ExpressaoSubtracao exp, String f) {
+	public ExpressaoSubtracao visitar(ExpressaoSubtracao exp, String f) {
 		Vector<String> str = divide(f);
 		
 		Expressao a = choose(str.get(0));
@@ -231,7 +243,7 @@ public class CreateExpressao{
 	}
 	
 	/*Done*/
-	public static ExpressaoDivisor visitar(ExpressaoDivisor exp, String f) {
+	public ExpressaoDivisor visitar(ExpressaoDivisor exp, String f) {
 		Vector<String> str = divide(f);
 		
 		Expressao a = choose(str.get(0));
@@ -241,7 +253,7 @@ public class CreateExpressao{
 		 return exp;
 	}
 	
-	public static Multiplicacao visitar(Multiplicacao exp, String f) {
+	public Multiplicacao visitar(Multiplicacao exp, String f) {
 		Vector<String> str = divide(f);
 		
 		Expressao a = choose(str.get(0));
@@ -251,7 +263,7 @@ public class CreateExpressao{
 		 return exp;
 	}
 	
-	public static ExpressaoAnd visitar(ExpressaoAnd exp, String f) {
+	public ExpressaoAnd visitar(ExpressaoAnd exp, String f) {
 		Vector<String> str = divide(f);
 		
 		Expressao a = choose(str.get(0));
@@ -261,7 +273,7 @@ public class CreateExpressao{
 		 return exp;
 	}
 	
-	public static ExpressaoOr visitar(ExpressaoOr exp, String f) {
+	public ExpressaoOr visitar(ExpressaoOr exp, String f) {
 		Vector<String> str = divide(f);
 		
 		Expressao a = choose(str.get(0));
@@ -271,7 +283,7 @@ public class CreateExpressao{
 		 return exp;
 	}
 	
-	public static ExpressaoEqual visitar(ExpressaoEqual exp, String f) {
+	public ExpressaoEqual visitar(ExpressaoEqual exp, String f) {
 		Vector<String> str = divide(f);
 		
 		Expressao a = choose(str.get(0));
@@ -281,7 +293,7 @@ public class CreateExpressao{
 		 return exp;
 	}
 	
-	public static ExpressaoGreaterThan visitar(ExpressaoGreaterThan exp, String f) {
+	public ExpressaoGreaterThan visitar(ExpressaoGreaterThan exp, String f) {
 		Vector<String> str = divide(f);
 		
 		Expressao a = choose(str.get(0));
@@ -291,7 +303,7 @@ public class CreateExpressao{
 		 return exp;
 	}
 	
-	public static ExpressaoLessThan visitar(ExpressaoLessThan exp, String f) {
+	public ExpressaoLessThan visitar(ExpressaoLessThan exp, String f) {
 		Vector<String> str = divide(f);
 		
 		Expressao a = choose(str.get(0));
@@ -301,7 +313,7 @@ public class CreateExpressao{
 		 return exp;
 	}
 	
-	public static ExpressaoGreaterOrEqual visitar(ExpressaoGreaterOrEqual exp, String f) {
+	public ExpressaoGreaterOrEqual visitar(ExpressaoGreaterOrEqual exp, String f) {
 		Vector<String> str = divide(f);
 		
 		Expressao a = choose(str.get(0));
@@ -311,7 +323,7 @@ public class CreateExpressao{
 		 return exp;
 	}
 	
-	public static ExpressaoLessOrEqual visitar(ExpressaoLessOrEqual exp, String f) {
+	public ExpressaoLessOrEqual visitar(ExpressaoLessOrEqual exp, String f) {
 		
 		Vector<String> str = divide(f);
 		
@@ -322,7 +334,7 @@ public class CreateExpressao{
 		 return exp;
 	}
 	
-	public static IfThenElse visitar(IfThenElse exp, String f) {
+	public IfThenElse visitar(IfThenElse exp, String f) {
 		Vector<String> str = divide(f);
 
 		Expressao a = choose(str.get(0));
@@ -333,13 +345,13 @@ public class CreateExpressao{
 		 return exp;
 	}
 	
-	public static Identificador visitar(Identificador exp, String f) {
+	public Identificador visitar(Identificador exp, String f) {
 		 
 		 exp = new Identificador(f);
 		 return exp;
 	}
 	
-	public static ExpressaoNot visitar(ExpressaoNot exp, String f) {
+	public ExpressaoNot visitar(ExpressaoNot exp, String f) {
 		
 		Expressao a = choose(f);
 		 
@@ -347,7 +359,7 @@ public class CreateExpressao{
 		 return exp;
 	}
 	
-	public static Parentesis visitar(Parentesis exp, String f) {
+	public Parentesis visitar(Parentesis exp, String f) {
 		
 		Expressao a = choose(f);
 		 
@@ -355,7 +367,7 @@ public class CreateExpressao{
 		 return exp;
 	}
 	
-	public static AplicacaoFuncao visitar(AplicacaoFuncao exp, String f) {
+	public AplicacaoFuncao visitar(AplicacaoFuncao exp, String f) {
 		Vector<String> str = divide(f);
 		Vector<Expressao> exp2 = new Vector<Expressao>();
 		 
@@ -364,6 +376,28 @@ public class CreateExpressao{
 		}
 		
 		 exp = new AplicacaoFuncao(getName(str.get(0)), exp2);
+		 return exp;
+	}
+	
+	public Guarda visitar(Guarda exp, String f) {
+		Vector<String> str = divide(f);
+		
+		Expressao a = choose(str.get(0));
+		Expressao b = choose(str.get(1));
+		 
+		 exp = new Guarda(a, b);
+		 return exp;
+	}
+	
+	public Guardas visitar(Guardas exp, String f) {
+		Vector<String> str = divide(f);
+		Vector<Guarda> exp2 = new Vector<Guarda>();
+		 
+		for (int i = 0; i < str.size(); i++) {
+			exp2.add((Guarda) choose(str.get(i)));
+		}
+		
+		 exp = new Guardas(exp2);
 		 return exp;
 	}
 }

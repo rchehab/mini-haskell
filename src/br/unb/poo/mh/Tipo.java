@@ -24,7 +24,7 @@ package br.unb.poo.mh;
  */
 public enum Tipo {
 
-	Inteiro, Booleano, Error, Indefinido;
+	Inteiro, Booleano, Lista, Error, Indefinido;
 	//Tipo Indefinido: eh um tipo valido, ou seja diferente de Error, porém pode ser mais de um,
 	//usado para casamento de padroes
 	

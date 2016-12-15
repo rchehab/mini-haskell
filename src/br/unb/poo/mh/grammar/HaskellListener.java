@@ -20,16 +20,6 @@ public interface HaskellListener extends ParseTreeListener {
 	 */
 	void exitStart(HaskellParser.StartContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link HaskellParser#declaracaoFuncao}.
-	 * @param ctx the parse tree
-	 */
-	void enterDeclaracaoFuncao(HaskellParser.DeclaracaoFuncaoContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link HaskellParser#declaracaoFuncao}.
-	 * @param ctx the parse tree
-	 */
-	void exitDeclaracaoFuncao(HaskellParser.DeclaracaoFuncaoContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link HaskellParser#expressaoOr}.
 	 * @param ctx the parse tree
 	 */
@@ -219,4 +209,54 @@ public interface HaskellListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitIdentificador(HaskellParser.IdentificadorContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HaskellParser#declaracaoFuncao}.
+	 * @param ctx the parse tree
+	 */
+	void enterDeclaracaoFuncao(HaskellParser.DeclaracaoFuncaoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HaskellParser#declaracaoFuncao}.
+	 * @param ctx the parse tree
+	 */
+	void exitDeclaracaoFuncao(HaskellParser.DeclaracaoFuncaoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HaskellParser#testeGuarda}.
+	 * @param ctx the parse tree
+	 */
+	void enterTesteGuarda(HaskellParser.TesteGuardaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HaskellParser#testeGuarda}.
+	 * @param ctx the parse tree
+	 */
+	void exitTesteGuarda(HaskellParser.TesteGuardaContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HaskellParser#guardaFalsa}.
+	 * @param ctx the parse tree
+	 */
+	void enterGuardaFalsa(HaskellParser.GuardaFalsaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HaskellParser#guardaFalsa}.
+	 * @param ctx the parse tree
+	 */
+	void exitGuardaFalsa(HaskellParser.GuardaFalsaContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HaskellParser#guardas}.
+	 * @param ctx the parse tree
+	 */
+	void enterGuardas(HaskellParser.GuardasContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HaskellParser#guardas}.
+	 * @param ctx the parse tree
+	 */
+	void exitGuardas(HaskellParser.GuardasContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HaskellParser#guarda}.
+	 * @param ctx the parse tree
+	 */
+	void enterGuarda(HaskellParser.GuardaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HaskellParser#guarda}.
+	 * @param ctx the parse tree
+	 */
+	void exitGuarda(HaskellParser.GuardaContext ctx);
 }

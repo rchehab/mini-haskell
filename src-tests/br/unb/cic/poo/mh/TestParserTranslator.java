@@ -30,5 +30,13 @@ public class TestParserTranslator {
 		System.out.println(tree);
 		Assert.assertTrue(true);
 	}
+	
+	@Test
+	public void test4() {
+		String tree = ParserTranslator.parse("fat n\n\t|n == 0 = 1\n\t|true = n * fat(n-1)");
+		
+		System.out.println(tree);
+		Assert.assertTrue(true);
+	}
 
 }

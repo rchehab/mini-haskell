@@ -27,4 +27,10 @@ public class Parentesis implements Expressao {
 	public void aceitar(Visitor v) {
 		v.visitar(this);
 	}
+
+	@Override
+	public void aceitar(Visitor2 v, String f) {
+		v.visitar(this, f);
+		
+	}
 }

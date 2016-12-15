@@ -12,7 +12,7 @@ public class TestExpressaoSubtracao {
 
 	private ValorInteiro v5 = new ValorInteiro(5);
 	private ValorInteiro v10 = new ValorInteiro(10);
-	private Expressao subtcao = new ExpressaoSubtracao(v5, v10);
+	private Expressao subtcao = new ExpressaoSubtracao(v10, v5);
 	
 	@Test
 	public void testeSubtracaoSimples() {
@@ -23,7 +23,7 @@ public class TestExpressaoSubtracao {
 	@Test
 	public void testeSubtracaoComplexa() {
 		ValorInteiro vt = new ValorInteiro(-5);
-		Expressao sub = new ExpressaoSubtracao(v10, subtcao);
+		Expressao sub = new ExpressaoSubtracao(subtcao, v10);
 		Assert.assertEquals(vt, sub.avaliar());
 		
 		Assert.assertEquals(subtcao.tipo(Tipo.Indefinido), Tipo.Inteiro);

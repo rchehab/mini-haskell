@@ -37,4 +37,5 @@ public interface Expressao {
 	//tipo() = tipo(Tipo.Indefinido);
 
 	public void aceitar(Visitor v);
+	public void aceitar(Visitor2 v, String f);
 }

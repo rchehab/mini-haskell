@@ -25,14 +25,14 @@ public class TestExpressaoGreaterThan {
 	@Test
 	public void testeExpressaoGreaterThan() {
 		ExpressaoGreaterThan a = new ExpressaoGreaterThan(v10, v10); // ==
-		ExpressaoGreaterThan b = new ExpressaoGreaterThan(v5, v10); // >
-		ExpressaoGreaterThan c = new ExpressaoGreaterThan(v10, v5); // <
+		ExpressaoGreaterThan b = new ExpressaoGreaterThan(v5, v10); // <
+		ExpressaoGreaterThan c = new ExpressaoGreaterThan(v10, v5); // >
 		
 		Assert.assertEquals(a.tipo(Tipo.Indefinido), Tipo.Booleano);
 		
 		Assert.assertEquals(new ValorBooleano(false), a.avaliar());
-		Assert.assertEquals(new ValorBooleano(true), b.avaliar());
-		Assert.assertEquals(new ValorBooleano(false), c.avaliar());
+		Assert.assertEquals(new ValorBooleano(false), b.avaliar());
+		Assert.assertEquals(new ValorBooleano(true), c.avaliar());
 		
 		PrettyPrinter pp = new PrettyPrinter();
 		
