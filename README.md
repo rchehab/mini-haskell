@@ -102,3 +102,9 @@ Para fazer o Parser do texto utilizou-se ANTLR, a gramática e classe dele estã
 br.unb.poo.mh.grammar.
 A versão utilizada é 4.5.3,
 e a instalação foi feito seguindo o manual de https://github.com/antlr/antlr4/blob/master/doc/getting-started.md
+
+*Observacao*: Ao verificar a cobertura, não se atingiu os 90%. Isso se deve em parte às classes geradas pelo ANTLR,
+que tiveram uma baixa de cobertura baixa, porém esse valor não pode ser muito alterado, uma vez que o acesso ao Parser
+é limitado à algumas funções.
+
+Sem contar o ANTLR, a cobertura foi de 85,2%
