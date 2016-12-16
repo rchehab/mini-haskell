@@ -5,20 +5,20 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.unb.poo.mh.ParserTranslator;
+import br.unb.poo.mh.PrettyPrinter;
+import br.unb.poo.mh.TamanhoDasExpressoes;
 import br.unb.poo.mh.CreateExpressao;
 import br.unb.poo.mh.Expressao;
 import br.unb.poo.mh.NotacaoPolonesaReversa;
 
 public class TestNotacaoPolonesaReversa {
 
-	NotacaoPolonesaReversa npr;
 
 	CreateExpressao ce;
 	
 	@Before
 	public void SetUp() {
 		ce = new CreateExpressao();
-		npr = new NotacaoPolonesaReversa();
 	}
 	
 	@Test
@@ -28,9 +28,23 @@ public class TestNotacaoPolonesaReversa {
 
 		Expressao a = ce.choose(tree);
 		
+		PrettyPrinter pp = new PrettyPrinter();
+		
+		a.aceitar(pp);
+		
+		System.out.println(pp.getStr() + "\n");
+		
+		TamanhoDasExpressoes te = new TamanhoDasExpressoes();
+		
+		a.aceitar(te);
+		
+		System.out.println(te.getTamanho() + "\n");
+		
+		NotacaoPolonesaReversa npr = new NotacaoPolonesaReversa();
+		
 		a.aceitar(npr);
 		
-		System.out.println(npr.getStr());
+		System.out.println(npr.getStr() + "\n");
 		Assert.assertTrue(true);
 	}
 	@Test
@@ -40,9 +54,23 @@ public class TestNotacaoPolonesaReversa {
 
 		Expressao a = ce.choose(tree);
 		
+		PrettyPrinter pp = new PrettyPrinter();
+		
+		a.aceitar(pp);
+		
+		System.out.println(pp.getStr() + "\n");
+		
+		TamanhoDasExpressoes te = new TamanhoDasExpressoes();
+		
+		a.aceitar(te);
+		
+		System.out.println(te.getTamanho() + "\n");
+		
+		NotacaoPolonesaReversa npr = new NotacaoPolonesaReversa();
+		
 		a.aceitar(npr);
 		
-		System.out.println(npr.getStr());
+		System.out.println(npr.getStr() + "\n");
 	}
 	
 	@Test
@@ -55,9 +83,23 @@ public class TestNotacaoPolonesaReversa {
 		System.out.println("a");
 		Expressao a = ce.choose2(tree).getCorpo();
 		
+		PrettyPrinter pp = new PrettyPrinter();
+		
+		a.aceitar(pp);
+		
+		System.out.println(pp.getStr() + "\n");
+		
+		TamanhoDasExpressoes te = new TamanhoDasExpressoes();
+		
+		a.aceitar(te);
+		
+		System.out.println(te.getTamanho() + "\n");
+		
+		NotacaoPolonesaReversa npr = new NotacaoPolonesaReversa();
+		
 		a.aceitar(npr);
 		
-		System.out.println(npr.getStr());
+		System.out.println(npr.getStr() + "\n");
 	}
 	
 	@Test
@@ -67,9 +109,23 @@ public class TestNotacaoPolonesaReversa {
 
 		Expressao a = ce.choose(tree);
 		
+		PrettyPrinter pp = new PrettyPrinter();
+		
+		a.aceitar(pp);
+		
+		System.out.println(pp.getStr() + "\n");
+		
+		TamanhoDasExpressoes te = new TamanhoDasExpressoes();
+		
+		a.aceitar(te);
+		
+		System.out.println(te.getTamanho() + "\n");
+		
+		NotacaoPolonesaReversa npr = new NotacaoPolonesaReversa();
+		
 		a.aceitar(npr);
 		
-		System.out.println(npr.getStr());
+		System.out.println(npr.getStr() + "\n");
 	}
 	@Test
 	public void test4() {
@@ -78,9 +134,23 @@ public class TestNotacaoPolonesaReversa {
 
 		Expressao a = ce.choose(tree);
 		
+		PrettyPrinter pp = new PrettyPrinter();
+		
+		a.aceitar(pp);
+		
+		System.out.println(pp.getStr() + "\n");
+		
+		TamanhoDasExpressoes te = new TamanhoDasExpressoes();
+		
+		a.aceitar(te);
+		
+		System.out.println(te.getTamanho() + "\n");
+		
+		NotacaoPolonesaReversa npr = new NotacaoPolonesaReversa();
+		
 		a.aceitar(npr);
 		
-		System.out.println(npr.getStr());
+		System.out.println(npr.getStr() + "\n");
 	}
 	
 	@Test
@@ -90,9 +160,23 @@ public class TestNotacaoPolonesaReversa {
 
 		Expressao a = ce.choose2(tree).getCorpo();
 		
+		PrettyPrinter pp = new PrettyPrinter();
+		
+		a.aceitar(pp);
+		
+		System.out.println(pp.getStr() + "\n");
+		
+		TamanhoDasExpressoes te = new TamanhoDasExpressoes();
+		
+		a.aceitar(te);
+		
+		System.out.println(te.getTamanho() + "\n");
+		
+		NotacaoPolonesaReversa npr = new NotacaoPolonesaReversa();
+		
 		a.aceitar(npr);
 		
-		System.out.println(npr.getStr());
+		System.out.println(npr.getStr() + "\n");
 		Assert.assertTrue(true);
 	}
 	
@@ -103,9 +187,23 @@ public class TestNotacaoPolonesaReversa {
 
 		Expressao a = ce.choose(tree);
 		
+		PrettyPrinter pp = new PrettyPrinter();
+		
+		a.aceitar(pp);
+		
+		System.out.println(pp.getStr() + "\n");
+		
+		TamanhoDasExpressoes te = new TamanhoDasExpressoes();
+		
+		a.aceitar(te);
+		
+		System.out.println(te.getTamanho() + "\n");
+		
+		NotacaoPolonesaReversa npr = new NotacaoPolonesaReversa();
+		
 		a.aceitar(npr);
 		
-		System.out.println(npr.getStr());
+		System.out.println(npr.getStr() + "\n");
 		Assert.assertTrue(true);
 	}
 	
@@ -116,9 +214,23 @@ public class TestNotacaoPolonesaReversa {
 
 		Expressao a = ce.choose(tree).avaliar();
 		
+		PrettyPrinter pp = new PrettyPrinter();
+		
+		a.aceitar(pp);
+		
+		System.out.println(pp.getStr() + "\n");
+		
+		TamanhoDasExpressoes te = new TamanhoDasExpressoes();
+		
+		a.aceitar(te);
+		
+		System.out.println(te.getTamanho() + "\n");
+		
+		NotacaoPolonesaReversa npr = new NotacaoPolonesaReversa();
+		
 		a.aceitar(npr);
 		
-		System.out.println(npr.getStr());
+		System.out.println(npr.getStr() + "\n");
 		Assert.assertTrue(true);
 	}
 	@Test
@@ -128,9 +240,23 @@ public class TestNotacaoPolonesaReversa {
 
 		Expressao a = ce.choose(tree);
 		
+		PrettyPrinter pp = new PrettyPrinter();
+		
+		a.aceitar(pp);
+		
+		System.out.println(pp.getStr() + "\n");
+		
+		TamanhoDasExpressoes te = new TamanhoDasExpressoes();
+		
+		a.aceitar(te);
+		
+		System.out.println(te.getTamanho() + "\n");
+		
+		NotacaoPolonesaReversa npr = new NotacaoPolonesaReversa();
+		
 		a.aceitar(npr);
 		
-		System.out.println(npr.getStr());
+		System.out.println(npr.getStr() + "\n");
 	}
 
 }
