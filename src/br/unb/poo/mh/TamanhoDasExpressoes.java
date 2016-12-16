@@ -161,4 +161,11 @@ public class TamanhoDasExpressoes implements Visitor {
 		
 	}
 
+	@Override
+	public void visitar(GuardaFalsa guardaFalsa) {
+		tamanho += 1;
+		guardaFalsa.condicao.aceitar(this);
+		
+	}
+
 }

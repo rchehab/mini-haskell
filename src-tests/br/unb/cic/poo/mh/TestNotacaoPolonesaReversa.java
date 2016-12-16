@@ -50,6 +50,9 @@ public class TestNotacaoPolonesaReversa {
 		System.out.println("\nTest2");
 		String tree = ParserTranslator.parse("f a b c d = if a then b + c else d < 20 and (false or a)");
 
+		System.out.println(tree);
+		ce.choose2(tree);
+		System.out.println("a");
 		Expressao a = ce.choose2(tree).getCorpo();
 		
 		a.aceitar(npr);

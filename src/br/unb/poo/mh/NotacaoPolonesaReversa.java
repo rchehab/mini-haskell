@@ -174,4 +174,9 @@ public class NotacaoPolonesaReversa implements Visitor{
 		visitarBin(concatenar, "++");
 		
 	}
+
+	@Override
+	public void visitar(GuardaFalsa guardaFalsa) {
+		guardaFalsa.clausula.aceitar(this);
+	}
 }

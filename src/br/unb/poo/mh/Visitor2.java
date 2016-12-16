@@ -26,4 +26,5 @@ public interface Visitor2 {
 	public Expressao visitar(ListaVazia listaVazia, String f);
 	public Expressao visitar(ValorLista valorLista, String f);
 	public Expressao visitar(Concatenar concatenar, String f);
+	public Expressao visitar(GuardaFalsa guardaFalsa, String f);
 }

@@ -186,4 +186,11 @@ public class PrettyPrinter implements Visitor{
 		visitarBin(concatenar, "++");
 		
 	}
+
+	@Override
+	public void visitar(GuardaFalsa guardaFalsa) {
+		str = str + " =";
+		guardaFalsa.clausula.aceitar(this);
+		str = str + "\n";
+	}
 }

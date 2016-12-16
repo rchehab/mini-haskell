@@ -203,6 +203,12 @@ public class CreateExpressao implements Visitor2 {
 			e = visitar(e, f);
 			return e;
 		}
+		case "GuardaFalsa":
+		{
+			GuardaFalsa e = null;
+			e = visitar(e, f);
+			return e;
+		}
 		}
 		System.out.println("Error");
 		return null;
@@ -232,18 +238,21 @@ public class CreateExpressao implements Visitor2 {
 	}
 	
 	/*Done*/
+	@Override
 	public ValorInteiro visitar(ValorInteiro exp, String f) {
 		exp = new ValorInteiro(Integer.parseInt(f));
 		return exp;
 	}
 
 	/*Done*/
+	@Override
 	public ValorBooleano visitar(ValorBooleano exp, String f) {
 		exp = new ValorBooleano(Boolean.parseBoolean(f));
 		return exp;
 	}
 
 	/*Done*/
+	@Override
 	public ExpressaoSoma visitar(ExpressaoSoma exp, String f) {
 		Vector<String> str = divide(f);
 		
@@ -257,6 +266,7 @@ public class CreateExpressao implements Visitor2 {
 	
 	
 	/*Done*/
+	@Override
 	public ExpressaoSubtracao visitar(ExpressaoSubtracao exp, String f) {
 		Vector<String> str = divide(f);
 		
@@ -268,6 +278,7 @@ public class CreateExpressao implements Visitor2 {
 	}
 	
 	/*Done*/
+	@Override
 	public ExpressaoDivisor visitar(ExpressaoDivisor exp, String f) {
 		Vector<String> str = divide(f);
 		
@@ -277,7 +288,8 @@ public class CreateExpressao implements Visitor2 {
 		 exp = new ExpressaoDivisor(a, b);
 		 return exp;
 	}
-	
+
+	@Override
 	public Multiplicacao visitar(Multiplicacao exp, String f) {
 		Vector<String> str = divide(f);
 		
@@ -287,7 +299,8 @@ public class CreateExpressao implements Visitor2 {
 		 exp = new Multiplicacao(a, b);
 		 return exp;
 	}
-	
+
+	@Override
 	public ExpressaoAnd visitar(ExpressaoAnd exp, String f) {
 		Vector<String> str = divide(f);
 		
@@ -297,7 +310,8 @@ public class CreateExpressao implements Visitor2 {
 		 exp = new ExpressaoAnd(a, b);
 		 return exp;
 	}
-	
+
+	@Override
 	public ExpressaoOr visitar(ExpressaoOr exp, String f) {
 		Vector<String> str = divide(f);
 		
@@ -307,7 +321,8 @@ public class CreateExpressao implements Visitor2 {
 		 exp = new ExpressaoOr(a, b);
 		 return exp;
 	}
-	
+
+	@Override
 	public ExpressaoEqual visitar(ExpressaoEqual exp, String f) {
 		Vector<String> str = divide(f);
 		
@@ -317,7 +332,8 @@ public class CreateExpressao implements Visitor2 {
 		 exp = new ExpressaoEqual(a, b);
 		 return exp;
 	}
-	
+
+	@Override
 	public ExpressaoGreaterThan visitar(ExpressaoGreaterThan exp, String f) {
 		Vector<String> str = divide(f);
 		
@@ -327,7 +343,8 @@ public class CreateExpressao implements Visitor2 {
 		 exp = new ExpressaoGreaterThan(a, b);
 		 return exp;
 	}
-	
+
+	@Override
 	public ExpressaoLessThan visitar(ExpressaoLessThan exp, String f) {
 		Vector<String> str = divide(f);
 		
@@ -337,7 +354,8 @@ public class CreateExpressao implements Visitor2 {
 		 exp = new ExpressaoLessThan(a, b);
 		 return exp;
 	}
-	
+
+	@Override
 	public ExpressaoGreaterOrEqual visitar(ExpressaoGreaterOrEqual exp, String f) {
 		Vector<String> str = divide(f);
 		
@@ -347,7 +365,8 @@ public class CreateExpressao implements Visitor2 {
 		 exp = new ExpressaoGreaterOrEqual(a, b);
 		 return exp;
 	}
-	
+
+	@Override
 	public ExpressaoLessOrEqual visitar(ExpressaoLessOrEqual exp, String f) {
 		
 		Vector<String> str = divide(f);
@@ -358,7 +377,8 @@ public class CreateExpressao implements Visitor2 {
 		 exp = new ExpressaoLessOrEqual(a, b);
 		 return exp;
 	}
-	
+
+	@Override
 	public IfThenElse visitar(IfThenElse exp, String f) {
 		Vector<String> str = divide(f);
 
@@ -369,13 +389,15 @@ public class CreateExpressao implements Visitor2 {
 		 exp = new IfThenElse(a, b, c);
 		 return exp;
 	}
-	
+
+	@Override
 	public Identificador visitar(Identificador exp, String f) {
 		 
 		 exp = new Identificador(f);
 		 return exp;
 	}
-	
+
+	@Override
 	public ExpressaoNot visitar(ExpressaoNot exp, String f) {
 		
 		Expressao a = choose(f);
@@ -383,7 +405,8 @@ public class CreateExpressao implements Visitor2 {
 		 exp = new ExpressaoNot(a);
 		 return exp;
 	}
-	
+
+	@Override
 	public Parentesis visitar(Parentesis exp, String f) {
 		
 		Expressao a = choose(f);
@@ -391,7 +414,8 @@ public class CreateExpressao implements Visitor2 {
 		 exp = new Parentesis(a);
 		 return exp;
 	}
-	
+
+	@Override
 	public AplicacaoFuncao visitar(AplicacaoFuncao exp, String f) {
 		Vector<String> str = divide(f);
 		Vector<Expressao> exp2 = new Vector<Expressao>();
@@ -403,7 +427,8 @@ public class CreateExpressao implements Visitor2 {
 		 exp = new AplicacaoFuncao(getName(str.get(0)), exp2);
 		 return exp;
 	}
-	
+
+	@Override
 	public Guarda visitar(Guarda exp, String f) {
 		Vector<String> str = divide(f);
 		
@@ -413,7 +438,8 @@ public class CreateExpressao implements Visitor2 {
 		 exp = new Guarda(a, b);
 		 return exp;
 	}
-	
+
+	@Override
 	public Guardas visitar(Guardas exp, String f) {
 		Vector<String> str = divide(f);
 		Vector<Guarda> exp2 = new Vector<Guarda>();
@@ -467,5 +493,15 @@ public class CreateExpressao implements Visitor2 {
 		concatenar = new Concatenar(a, b);
 		 return concatenar;
 		
+	}
+
+	@Override
+	public GuardaFalsa visitar(GuardaFalsa guardaFalsa, String f) {
+		Vector<String> str = divide(f);
+		
+		Expressao a = choose(str.get(0));
+		 
+		guardaFalsa = new GuardaFalsa(a);
+		return guardaFalsa;
 	}
 }

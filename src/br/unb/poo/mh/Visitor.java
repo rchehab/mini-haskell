@@ -33,4 +33,5 @@ public interface Visitor {
 	public void visitar(ListaVazia listaVazia);
 	public void visitar(ValorLista valorLista);
 	public void visitar(Concatenar concatenar);
+	public void visitar(GuardaFalsa guardaFalsa);
 }
