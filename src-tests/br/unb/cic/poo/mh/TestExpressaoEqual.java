@@ -28,6 +28,8 @@ public class TestExpressaoEqual {
 		ExpressaoEqual a = new ExpressaoEqual(v10, v10); // ==
 		ExpressaoEqual b = new ExpressaoEqual(v5, v10); // <
 		ExpressaoEqual c = new ExpressaoEqual(v10, v5); // >
+		ExpressaoEqual d = new ExpressaoEqual(v10, new ValorBooleano(true)); // erro
+		Assert.assertEquals(d.tipo(Tipo.Indefinido), Tipo.Error);
 		
 		Assert.assertEquals(a.tipo(Tipo.Indefinido), Tipo.Booleano);
 		

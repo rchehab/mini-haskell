@@ -28,6 +28,8 @@ public class TestExpressaoGreaterOrEqual {
 		ExpressaoGreaterOrEqual a = new ExpressaoGreaterOrEqual(v10, v10); // ==
 		ExpressaoGreaterOrEqual b = new ExpressaoGreaterOrEqual(v5, v10); // <
 		ExpressaoGreaterOrEqual c = new ExpressaoGreaterOrEqual(v10, v5); // >
+		ExpressaoGreaterOrEqual d = new ExpressaoGreaterOrEqual(v10, new ValorBooleano(true)); // erro
+		Assert.assertEquals(d.tipo(Tipo.Indefinido), Tipo.Error);
 		
 		Assert.assertEquals(a.tipo(Tipo.Indefinido), Tipo.Booleano);
 		

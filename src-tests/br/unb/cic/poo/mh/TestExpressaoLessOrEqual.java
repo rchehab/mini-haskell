@@ -28,6 +28,8 @@ public class TestExpressaoLessOrEqual {
 		ExpressaoLessOrEqual a = new ExpressaoLessOrEqual(v10, v10); // ==
 		ExpressaoLessOrEqual b = new ExpressaoLessOrEqual(v5, v10); // <
 		ExpressaoLessOrEqual c = new ExpressaoLessOrEqual(v10, v5); // >
+		ExpressaoLessOrEqual d = new ExpressaoLessOrEqual(v10, new ValorBooleano(true)); // erro
+		Assert.assertEquals(d.tipo(Tipo.Indefinido), Tipo.Error);
 		
 		Assert.assertEquals(a.tipo(Tipo.Indefinido), Tipo.Booleano);
 		

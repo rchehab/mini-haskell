@@ -28,6 +28,8 @@ public class TestExpressaoLessThan {
 		ExpressaoLessThan a = new ExpressaoLessThan(v10, v10); // ==
 		ExpressaoLessThan b = new ExpressaoLessThan(v5, v10); // <
 		ExpressaoLessThan c = new ExpressaoLessThan(v10, v5); // >
+		ExpressaoLessThan d = new ExpressaoLessThan(v10, new ValorBooleano(true)); // erro
+		Assert.assertEquals(d.tipo(Tipo.Indefinido), Tipo.Error);
 		
 		Assert.assertEquals(a.tipo(Tipo.Indefinido), Tipo.Booleano);
 		
