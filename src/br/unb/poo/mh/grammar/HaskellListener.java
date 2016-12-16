@@ -140,6 +140,16 @@ public interface HaskellListener extends ParseTreeListener {
 	 */
 	void exitMultiplicacao(HaskellParser.MultiplicacaoContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link HaskellParser#concatenar}.
+	 * @param ctx the parse tree
+	 */
+	void enterConcatenar(HaskellParser.ConcatenarContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HaskellParser#concatenar}.
+	 * @param ctx the parse tree
+	 */
+	void exitConcatenar(HaskellParser.ConcatenarContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link HaskellParser#ifThenElse}.
 	 * @param ctx the parse tree
 	 */
@@ -189,6 +199,36 @@ public interface HaskellListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitValorBooleano(HaskellParser.ValorBooleanoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HaskellParser#lista}.
+	 * @param ctx the parse tree
+	 */
+	void enterLista(HaskellParser.ListaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HaskellParser#lista}.
+	 * @param ctx the parse tree
+	 */
+	void exitLista(HaskellParser.ListaContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HaskellParser#listaVazia}.
+	 * @param ctx the parse tree
+	 */
+	void enterListaVazia(HaskellParser.ListaVaziaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HaskellParser#listaVazia}.
+	 * @param ctx the parse tree
+	 */
+	void exitListaVazia(HaskellParser.ListaVaziaContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HaskellParser#listaComValor}.
+	 * @param ctx the parse tree
+	 */
+	void enterListaComValor(HaskellParser.ListaComValorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HaskellParser#listaComValor}.
+	 * @param ctx the parse tree
+	 */
+	void exitListaComValor(HaskellParser.ListaComValorContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link HaskellParser#name}.
 	 * @param ctx the parse tree

@@ -1,0 +1,7 @@
+O aplicacaofuncao deve conter o nome da
+funcao e os parametros, esses devem estar dentro de um parentesis:
+
+soma (1 + 2 2 * 3)
+
+Nao deve-se colocar vírgulas entre os parametros da
+funcao.

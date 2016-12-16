@@ -2,9 +2,9 @@ package br.unb.poo.mh;
 
 import java.util.Vector;
 
-public class ValorLista<T extends Valor> extends ValorParametrizado<Vector<T>>{
+public class ValorLista extends ValorParametrizado<Vector<Valor>>{
 
-	public ValorLista(Vector<T> valor) {
+	public ValorLista(Vector<Valor> valor) {
 		super(valor);
 	}
 

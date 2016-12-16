@@ -1,0 +1,6 @@
+O and deve ser utilizada como se segue:
+
+expressao1 and expressao2
+
+Ambos as expressoes devem retornar um booleano
+e o resultado também é um booleano

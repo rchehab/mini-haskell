@@ -61,6 +61,7 @@ public class CreateExpressao implements Visitor2 {
 		case "ValorInteiro":
 		{
 			ValorInteiro e = null;
+			//e.aceitar(this, f); Nao pode porque e eh null
 			e = visitar(e, f);
 			return e;
 		}
@@ -175,6 +176,30 @@ public class CreateExpressao implements Visitor2 {
 		case "Guardas":
 		{
 			Guardas e = null;
+			e = visitar(e, f);
+			return e;
+		}
+		case "ListaComValor":
+		{
+			ListaComValor e = null;
+			e = visitar(e, f);
+			return e;
+		}
+		case "ListaVazia":
+		{
+			ListaVazia e = null;
+			e = visitar(e, f);
+			return e;
+		}
+		case "ValorLista":
+		{
+			ValorLista e = null;
+			e = visitar(e, f);
+			return e;
+		}
+		case "Concatenar":
+		{
+			Concatenar e = null;
 			e = visitar(e, f);
 			return e;
 		}
@@ -399,5 +424,48 @@ public class CreateExpressao implements Visitor2 {
 		
 		 exp = new Guardas(exp2);
 		 return exp;
+	}
+
+	@Override
+	public ListaComValor visitar(ListaComValor listaComValor, String f) {
+		Vector<String> str = divide(f);
+		Expressao a = choose(str.get(0));
+		Lista b = (Lista) choose(str.get(1));
+		
+		listaComValor = new ListaComValor(a, b);
+		
+		return listaComValor;
+	}
+
+	@Override
+	public ListaVazia visitar(ListaVazia listaVazia, String f) {
+		
+		listaVazia = new ListaVazia();
+		
+		return listaVazia;
+		
+	}
+
+	//Nao deve ser chamada
+	@Override
+	public ValorLista visitar(ValorLista valorLista, String f) {
+		
+		valorLista = null;
+		
+		return valorLista;
+		
+	}
+
+	@Override
+	public Concatenar visitar(Concatenar concatenar, String f) {
+		
+		Vector<String> str = divide(f);
+		
+		Expressao a = choose(str.get(0));
+		Expressao b = choose(str.get(1));
+		 
+		concatenar = new Concatenar(a, b);
+		 return concatenar;
+		
 	}
 }

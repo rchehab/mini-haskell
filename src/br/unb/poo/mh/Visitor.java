@@ -29,4 +29,8 @@ public interface Visitor {
 	public void visitar(Parentesis exp);
 	public void visitar(Guarda guarda);
 	public void visitar(Guardas guarda);
+	public void visitar(ListaComValor listaComValor);
+	public void visitar(ListaVazia listaVazia);
+	public void visitar(ValorLista valorLista);
+	public void visitar(Concatenar concatenar);
 }

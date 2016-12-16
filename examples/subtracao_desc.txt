@@ -1,0 +1,6 @@
+A subtracao deve ser utilizada como se segue:
+
+expressao1 - expressao2
+
+Ambos as expressoes devem retornar um número inteiro
+e o resultado também é um número inteiro (positivo ou negativo)

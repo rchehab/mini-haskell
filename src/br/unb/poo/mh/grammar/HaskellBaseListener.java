@@ -174,6 +174,18 @@ public class HaskellBaseListener implements HaskellListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterConcatenar(HaskellParser.ConcatenarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitConcatenar(HaskellParser.ConcatenarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterIfThenElse(HaskellParser.IfThenElseContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -229,6 +241,42 @@ public class HaskellBaseListener implements HaskellListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitValorBooleano(HaskellParser.ValorBooleanoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLista(HaskellParser.ListaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLista(HaskellParser.ListaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterListaVazia(HaskellParser.ListaVaziaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitListaVazia(HaskellParser.ListaVaziaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterListaComValor(HaskellParser.ListaComValorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitListaComValor(HaskellParser.ListaComValorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

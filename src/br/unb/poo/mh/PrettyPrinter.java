@@ -1,5 +1,7 @@
 package br.unb.poo.mh;
 
+import java.util.Vector;
+
 public class PrettyPrinter implements Visitor{
 
 	private String str = new String();
@@ -150,5 +152,38 @@ public class PrettyPrinter implements Visitor{
 		for (int i = 0; i < exp.opcoes.size(); i++) {
 			exp.opcoes.get(i).aceitar(this);
 		}
+	}
+
+	@Override
+	public void visitar(ListaComValor listaComValor) {
+		listaComValor.guard.aceitar(this);
+		str = str + ":";
+		listaComValor.next.aceitar(this);
+	}
+
+	@Override
+	public void visitar(ListaVazia listaVazia) {
+		str = str + "[]";
+	}
+
+	@Override
+	public void visitar(ValorLista valorLista) {
+		Vector<Valor> a = valorLista.getValor();
+		
+		str = str + "[";
+		
+		for (int i = 0; i < a.size() - 1; i++) {
+			a.get(i).aceitar(this);
+			str = str + ", ";
+		}
+		if (a.size() > 0)
+		a.get(a.size() - 1).aceitar(this);
+		str = str + "]";
+	}
+
+	@Override
+	public void visitar(Concatenar concatenar) {
+		visitarBin(concatenar, "++");
+		
 	}
 }

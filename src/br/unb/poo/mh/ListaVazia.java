@@ -2,15 +2,16 @@ package br.unb.poo.mh;
 
 import java.util.Vector;
 
-public class ListaVazia<T extends Valor> extends Lista<T> {
+public class ListaVazia extends Lista {
 
 	public ListaVazia() {
+		super(Tipo.Indefinido);
 	}
 	
 	@Override
 	public Valor avaliar() {
-		Vector<T> a = new Vector<T>();
-		return new ValorLista<T>(a);
+		Vector<Valor> a = new Vector<Valor>();
+		return new ValorLista(a);
 	}
 
 	//TODO

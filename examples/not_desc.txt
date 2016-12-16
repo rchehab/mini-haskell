@@ -1,0 +1,6 @@
+O not deve ser utilizada como se segue:
+
+not expressao
+
+A expressao deve retornar um booleano
+e o resultado também é um booleano

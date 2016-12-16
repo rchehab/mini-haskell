@@ -22,4 +22,8 @@ public interface Visitor2 {
 	public Expressao visitar(Parentesis exp, String f);
 	public Expressao visitar(Guarda guarda, String f);
 	public Expressao visitar(Guardas guarda, String f);
+	public Expressao visitar(ListaComValor listaComValor, String f);
+	public Expressao visitar(ListaVazia listaVazia, String f);
+	public Expressao visitar(ValorLista valorLista, String f);
+	public Expressao visitar(Concatenar concatenar, String f);
 }

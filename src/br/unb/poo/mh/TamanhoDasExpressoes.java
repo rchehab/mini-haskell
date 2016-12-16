@@ -137,4 +137,28 @@ public class TamanhoDasExpressoes implements Visitor {
 		}
 	}
 
+	@Override
+	public void visitar(ListaComValor listaComValor) {
+		tamanho += 1;
+		listaComValor.next.aceitar(this);
+		
+	}
+
+	@Override
+	public void visitar(ListaVazia listaVazia) {
+		tamanho += 1;
+		
+	}
+
+	@Override
+	public void visitar(ValorLista valorLista) {
+		tamanho += 1;
+	}
+
+	@Override
+	public void visitar(Concatenar concatenar) {
+		visitarBin(concatenar);
+		
+	}
+
 }

@@ -10,14 +10,33 @@ public class ProgramaPrincipal {
 		String s;
 		Scanner ler = new Scanner(System.in);
 		
-		System.out.println("Imprima quit para sair");
+		boolean verifica_tipo = false;
+		
 		
 		while (true) {
+			System.out.println("\tImprima quit\t para sair");
+			System.out.println("\tImprima load(example.hs)\t para executar a funcao contido no arquivo example.hs");
+			System.out.println("Esse arquivo deve conter somente uma funcao");
+			System.out.println("\tImprima set\t para ativar a verificacao de tipos");
+			System.out.println("\tImprima reset\t para desativar a verificacao de tipo");
+			System.out.println("Aviso: Se for utilizada uma função recursiva a verificacao de tipos deve estar desativada,");
+			System.out.println("caso contrario pode ocorrer um problema de execucao\n");
+			System.out.println("Verificacao de tipos " + (verifica_tipo ? "" : "des") + "ativada\n");
+			
 			System.out.print("Haskell> ");
+			
 			s = ler.nextLine();
 			
 			if (s.contentEquals("quit")) {
 				return;
+			}
+			if (s.contentEquals("set")) {
+				verifica_tipo = true;
+				continue;
+			}
+			if (s.contentEquals("reset")) {
+				verifica_tipo = false;
+				continue;
 			}
 			String tree;
 			if (s.substring(0, 4).contentEquals("load")) {
@@ -37,31 +56,35 @@ public class ProgramaPrincipal {
 
 				Ambiente.instance().declaraFuncao(decla);
 				
-				/*if (decla.tipo(Tipo.Indefinido) == Tipo.Error) {
-					System.out.println("Expressao dada contêm erro de tipos\n");
-					Ambiente.instance().desdeclaraFuncao(decla);
-					break;
+				if (verifica_tipo) {
+					if (decla.tipo(Tipo.Indefinido) == Tipo.Error) {
+						System.out.println("Expressao dada contêm erro de tipos\n");
+						Ambiente.instance().desdeclaraFuncao(decla);
+						break;
+					}
+					System.out.print(":: ");
+					System.out.println(decla.tipo(Tipo.Indefinido));
 				}
-				System.out.print(":: ");
-				System.out.println(decla.tipo(Tipo.Indefinido));*/
 				break;
 			default:
 				Expressao e = ce.choose(tree);
-				
-				/*if (e.tipo(Tipo.Indefinido) == Tipo.Error) {
+
+				if (verifica_tipo) {
+				if (e.tipo(Tipo.Indefinido) == Tipo.Error) {
 					System.out.println("Expressao dada contêm erro de tipos\n");
 					break;
 				}
 				System.out.print(":: ");
-				System.out.println(e.tipo(Tipo.Indefinido));*/
+				System.out.println(e.tipo(Tipo.Indefinido));
+				}
 				
 				Valor a = e.avaliar();
 				
-				if (a instanceof ValorBooleano) {
-					System.out.println(((ValorBooleano) a).getValor());	
-				} else {
-					System.out.println(((ValorInteiro) a).getValor());
-				}
+				PrettyPrinter pp = new PrettyPrinter();
+				
+				a.aceitar(pp);
+				
+				System.out.println(pp.getStr());
 				
 				break;
 			}

@@ -21,7 +21,9 @@ expressaoGreaterOrEqual	: expressaoGreaterOrEqual GE expressaoGreaterOrEqual				
 expressaoSubtracao		: expressaoSubtracao SUB expressaoSubtracao									| expressaoSoma;
 expressaoSoma			: expressaoSoma SOM expressaoSoma											| expressaoDivisor;
 expressaoDivisor		: expressaoDivisor DIV expressaoDivisor										| multiplicacao;
-multiplicacao			: multiplicacao MUL multiplicacao											| ifThenElse;
+multiplicacao			: multiplicacao MUL multiplicacao											| concatenar;
+
+concatenar				: concatenar CON concatenar													| ifThenElse;
 
 ifThenElse				: IF expressaoOr THEN expressaoOr ELSE ifThenElse							| aplicacaoFuncao;
 
@@ -29,7 +31,11 @@ aplicacaoFuncao			: name '(' expressaoOr* ')'													| parentesis;
 
 parentesis				: '(' expressaoOr ')'														| valorInteiro;
 valorInteiro			: INT																		| valorBooleano;
-valorBooleano			: BOOL																		| identificador;
+valorBooleano			: BOOL																		| lista;
+
+lista					: '[' listaVazia | '[' listaComValor										| identificador;
+listaVazia				: ']';
+listaComValor			: expressaoOr ',' listaComValor | expressaoOr listaVazia;
 
 name					: ID;
 identificador			: ID;
@@ -62,6 +68,7 @@ DIV: '/';
 SUB: '-';
 MUL: '*';
 SOM: '+';
+CON: '++';
 
 INT: [0-9]+;
 BOOL: 'true' | 'TRUE' | 'false' | 'FALSE';

@@ -1,0 +1,13 @@
+O declaracaofuncao deve comecar com o nome da
+funcao e dos parametros:
+
+soma a b
+
+Em seguida deve vir Guardas (verifique guarda_desc.tx) ou
+um '=' seguido de uma expressao:
+
+nome parametro1 ... parametron = expressao
+
+Nao deve-se colocar parentesis ou vírgulas nos parametros da
+funcao, nem o seu tipo, que eh verificado atraves da expressao
+(se a verificacao de tipos estiver ativa).

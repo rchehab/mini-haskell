@@ -1,0 +1,18 @@
+Uma lista deve ser declarada como:
+
+[expressao1, expressao2, expressao3, ..., expressaon]
+
+Uma lista pode ser vazia :
+
+[]
+
+Dentro de uma lista pode-se colocar qualquer expressao,
+porem a lista só guarda valores. Logo, se for colocado:
+
+[1 + 2, 2 * 4]
+
+Será guardado:
+
+[3, 8]
+
+Todos os elementos de uma lista devem ter o mesmo tipo

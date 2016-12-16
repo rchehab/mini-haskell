@@ -38,5 +38,13 @@ public class TestParserTranslator {
 		System.out.println(tree);
 		Assert.assertTrue(true);
 	}
+	
+	@Test
+	public void test5() {
+		String tree = ParserTranslator.parse("[true, false, true]");
+		
+		System.out.println(tree);
+		Assert.assertTrue(true);
+	}
 
 }

@@ -1,0 +1,23 @@
+Guardas so devem ser usadas imediatamente apos
+declarar uma funcao.
+
+O seu uso facilita o uso de recursao ou de multiplas opcoes,
+sem ser necessario usar muitos if then else.
+
+Seu uso deve ser
+
+declaracao de funcao
+	|condicao1 = expressao1
+	|condicao2 = expressao2
+	|condicao3 = expressao3
+	...
+	|condicaon = expressaon
+
+(Nao eh necessario colocar em uma nova linha ou a tabulacao)
+
+Sera executada a expressao da 1 condicao cujo resultado for verdadeiro,
+recomenda-se que a ultima condicao seja true, porque se nenhuma condicao
+der true, retorna-se null
+
+Cada "|condicao = expressao" eh uma Guarda,
+todas as condicoes sao Guardas.

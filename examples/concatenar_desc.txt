@@ -1,0 +1,7 @@
+O concantenar deve ser utilizada como se segue:
+
+expressao1 ++ expressao2
+
+Ambos as expressoes devem retornar uma lista,
+ademais elas devem ter o mesmo tipo de valores
+internos, o resultado também é uma lista

@@ -1,0 +1,6 @@
+O equal deve ser utilizada como se segue:
+
+expressao1 == expressao2
+
+Ambos as expressoes devem retornar um número inteiro,
+mas o resultado também é um booleano

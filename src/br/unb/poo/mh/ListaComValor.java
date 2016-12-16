@@ -2,42 +2,47 @@ package br.unb.poo.mh;
 
 import java.util.Vector;
 
-public class ListaComValor<T extends Valor> extends Lista<T> {
+public class ListaComValor extends Lista {
 
-	T guard;
-	Lista<T> next;
+	Valor guard;
+	Lista next;
 	
-	public ListaComValor(T guard) {
-		this.guard = guard;
+	public ListaComValor(Expressao guard) {
+		super(guard.tipo(Tipo.Indefinido));
+		
+		this.guard = guard.avaliar();
 		this.next = null;
 	}
-	public ListaComValor(T guard, Lista<T> next) {
-		this.guard = guard;
+	public ListaComValor(Expressao guard, Lista next) {
+		super(guard.tipo(Tipo.Indefinido));
+		
+		this.guard = guard.avaliar();
 		this.next = next;
 	}
 	
 	@Override
 	public Valor avaliar() {
-		Vector<T> a = new Vector<T>();
+		Vector<Valor> a = new Vector<Valor>();
 		
 		a.add(guard);
 
-		@SuppressWarnings("unchecked")
-		ValorLista<T> test = (ValorLista<T>) next.avaliar();
-		Vector<T> ne = test.getValor();
+		ValorLista test = (ValorLista) next.avaliar();
+		Vector<Valor> ne = test.getValor();
 		
 		for (int i = 0; i < ne.size(); i++) {
 			a.add(ne.get(i));
 		}
 		
-		return new ValorLista<T>(a);
+		return new ValorLista(a);
 	}
 
 	//TODO
 	@Override
 	public Tipo tipo(Tipo padrao) {
 		
-		Tipo ret = Tipo.Lista;
+		Tipo v1 = next.tipo(padrao);
+		boolean igual = (tipoBase == next.tipoBase || next.tipoBase == Tipo.Indefinido) ? true : false;
+		Tipo ret = igual ? v1 : Tipo.Error;
 		
 		return (ret == padrao || padrao == Tipo.Indefinido) ? ret : Tipo.Error;
 	}

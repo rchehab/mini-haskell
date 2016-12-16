@@ -1,0 +1,6 @@
+Uma expressao if then else deve ser usada como se segue:
+
+if expressao1 then expressao2 else expressao3
+
+A expressao1 deve ter tipo booleano, as expressoes
+2 e 3 devem retornar o mesmo tipo

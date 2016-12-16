@@ -1,0 +1,6 @@
+O parentesis deve ser utilizado como:
+
+( expressao )
+
+A sua funcao é executar a expressao interna com prioridade
+maior que uma expressao externa
