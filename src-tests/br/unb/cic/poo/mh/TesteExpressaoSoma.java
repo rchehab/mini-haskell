@@ -5,9 +5,11 @@ import org.junit.Test;
 
 import br.unb.poo.mh.Expressao;
 import br.unb.poo.mh.ExpressaoSoma;
+import br.unb.poo.mh.NotacaoPolonesaReversa;
 import br.unb.poo.mh.ValorInteiro;
 import br.unb.poo.mh.Tipo;
 import br.unb.poo.mh.PrettyPrinter;
+import br.unb.poo.mh.TamanhoDasExpressoes;
 
 
 public class TesteExpressaoSoma {
@@ -34,6 +36,19 @@ public class TesteExpressaoSoma {
 		PrettyPrinter pp = new PrettyPrinter();
 		
 		soma2.aceitar(pp);
-		System.out.println(pp.getStr());
+		
+		System.out.println(pp.getStr() + "\n");
+		
+		TamanhoDasExpressoes te = new TamanhoDasExpressoes();
+		
+		soma2.aceitar(te);
+		
+		System.out.println(te.getTamanho() + "\n");
+		
+		NotacaoPolonesaReversa npr = new NotacaoPolonesaReversa();
+		
+		soma2.aceitar(npr);
+		
+		System.out.println(npr.getStr() + "\n");
 	}
 }

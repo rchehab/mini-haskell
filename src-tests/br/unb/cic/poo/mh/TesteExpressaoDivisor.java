@@ -5,9 +5,11 @@ import org.junit.Test;
 
 import br.unb.poo.mh.Expressao;
 import br.unb.poo.mh.ExpressaoDivisor;
+import br.unb.poo.mh.NotacaoPolonesaReversa;
 import br.unb.poo.mh.Tipo;
 import br.unb.poo.mh.ValorInteiro;
 import br.unb.poo.mh.PrettyPrinter;
+import br.unb.poo.mh.TamanhoDasExpressoes;
 
 public class TesteExpressaoDivisor {
 	
@@ -27,8 +29,23 @@ public class TesteExpressaoDivisor {
 		Expressao divisao = new ExpressaoDivisor(div, v2);
 		Assert.assertEquals(v10, divisao.avaliar());
 		Assert.assertEquals(divisao.tipo(Tipo.Indefinido), Tipo.Inteiro);
+		
 		PrettyPrinter pp = new PrettyPrinter();
+		
 		divisao.aceitar(pp);
-		System.out.println(pp.getStr());
+		
+		System.out.println(pp.getStr() + "\n");
+		
+		TamanhoDasExpressoes te = new TamanhoDasExpressoes();
+		
+		divisao.aceitar(te);
+		
+		System.out.println(te.getTamanho() + "\n");
+		
+		NotacaoPolonesaReversa npr = new NotacaoPolonesaReversa();
+		
+		divisao.aceitar(npr);
+		
+		System.out.println(npr.getStr() + "\n");
 	}
 }

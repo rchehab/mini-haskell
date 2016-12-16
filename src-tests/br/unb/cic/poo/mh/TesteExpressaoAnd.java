@@ -6,8 +6,10 @@ import org.junit.Before;
 
 import br.unb.poo.mh.ValorBooleano;
 import br.unb.poo.mh.ExpressaoAnd;
+import br.unb.poo.mh.NotacaoPolonesaReversa;
 import br.unb.poo.mh.Tipo;
 import br.unb.poo.mh.PrettyPrinter;
+import br.unb.poo.mh.TamanhoDasExpressoes;
 
 public class TesteExpressaoAnd {
 
@@ -48,8 +50,22 @@ public class TesteExpressaoAnd {
 		Assert.assertEquals(test_complexo_1.tipo(Tipo.Indefinido), Tipo.Booleano);
 		
 		PrettyPrinter pp = new PrettyPrinter();
+		
 		test_complexo_1.aceitar(pp);
-		System.out.println(pp.getStr());
+		
+		System.out.println(pp.getStr() + "\n");
+		
+		TamanhoDasExpressoes te = new TamanhoDasExpressoes();
+		
+		test_complexo_1.aceitar(te);
+		
+		System.out.println(te.getTamanho() + "\n");
+		
+		NotacaoPolonesaReversa npr = new NotacaoPolonesaReversa();
+		
+		test_complexo_1.aceitar(npr);
+		
+		System.out.println(npr.getStr() + "\n");
 	}
 
 }

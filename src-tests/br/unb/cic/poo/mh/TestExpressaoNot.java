@@ -7,8 +7,9 @@ import org.junit.Before;
 import br.unb.poo.mh.ValorBooleano;
 import br.unb.poo.mh.Tipo;
 import br.unb.poo.mh.PrettyPrinter;
-
+import br.unb.poo.mh.TamanhoDasExpressoes;
 import br.unb.poo.mh.ExpressaoNot;
+import br.unb.poo.mh.NotacaoPolonesaReversa;
 import br.unb.poo.mh.ExpressaoAnd;
 
 
@@ -37,6 +38,19 @@ public class TestExpressaoNot {
 		PrettyPrinter pp = new PrettyPrinter();
 		
 		c.aceitar(pp);
-		System.out.println(pp.getStr());
+		
+		System.out.println(pp.getStr() + "\n");
+		
+		TamanhoDasExpressoes te = new TamanhoDasExpressoes();
+		
+		c.aceitar(te);
+		
+		System.out.println(te.getTamanho() + "\n");
+		
+		NotacaoPolonesaReversa npr = new NotacaoPolonesaReversa();
+		
+		c.aceitar(npr);
+		
+		System.out.println(npr.getStr() + "\n");
 	}
 }

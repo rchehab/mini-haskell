@@ -8,8 +8,9 @@ import br.unb.poo.mh.ValorInteiro;
 import br.unb.poo.mh.ValorBooleano;
 import br.unb.poo.mh.Tipo;
 import br.unb.poo.mh.PrettyPrinter;
-
+import br.unb.poo.mh.TamanhoDasExpressoes;
 import br.unb.poo.mh.ExpressaoEqual;
+import br.unb.poo.mh.NotacaoPolonesaReversa;
 
 
 public class TestExpressaoEqual {
@@ -37,6 +38,19 @@ public class TestExpressaoEqual {
 		PrettyPrinter pp = new PrettyPrinter();
 		
 		a.aceitar(pp);
-		System.out.println(pp.getStr());
+		
+		System.out.println(pp.getStr() + "\n");
+		
+		TamanhoDasExpressoes te = new TamanhoDasExpressoes();
+		
+		a.aceitar(te);
+		
+		System.out.println(te.getTamanho() + "\n");
+		
+		NotacaoPolonesaReversa npr = new NotacaoPolonesaReversa();
+		
+		a.aceitar(npr);
+		
+		System.out.println(npr.getStr() + "\n");
 	}
 }

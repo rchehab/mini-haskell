@@ -27,7 +27,19 @@ public class TestGuarda {
 		
 		ng.aceitar(pp);
 		
-		System.out.println(pp.getStr());
+		System.out.println(pp.getStr() + "\n");
+		
+		TamanhoDasExpressoes te = new TamanhoDasExpressoes();
+		
+		ng.aceitar(te);
+		
+		System.out.println(te.getTamanho() + "\n");
+		
+		NotacaoPolonesaReversa npr = new NotacaoPolonesaReversa();
+		
+		ng.aceitar(npr);
+		
+		System.out.println(npr.getStr() + "\n");
 	}
 
 }

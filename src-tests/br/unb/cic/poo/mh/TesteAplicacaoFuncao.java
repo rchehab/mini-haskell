@@ -13,6 +13,7 @@ import br.unb.poo.mh.DeclaracaoFuncao;
 import br.unb.poo.mh.Expressao;
 import br.unb.poo.mh.ExpressaoSoma;
 import br.unb.poo.mh.Identificador;
+import br.unb.poo.mh.NotacaoPolonesaReversa;
 import br.unb.poo.mh.PrettyPrinter;
 import br.unb.poo.mh.TamanhoDasExpressoes;
 import br.unb.poo.mh.Tipo;
@@ -44,15 +45,24 @@ public class TesteAplicacaoFuncao {
 		Expressao aplicaSoma = new AplicacaoFuncao("soma", parametros);
 
 		Assert.assertEquals(new ValorInteiro(12), aplicaSoma.avaliar());
-		
-		PrettyPrinter pp = new PrettyPrinter();
-		TamanhoDasExpressoes t = new TamanhoDasExpressoes();
-		
 		Assert.assertEquals(aplicaSoma.tipo(Tipo.Indefinido), Tipo.Inteiro);
 		
+		PrettyPrinter pp = new PrettyPrinter();
+		
 		aplicaSoma.aceitar(pp);
-		aplicaSoma.aceitar(t);
-		System.out.println(pp.getStr());
-		System.out.println(t.getTamanho());
+		
+		System.out.println(pp.getStr() + "\n");
+		
+		TamanhoDasExpressoes te = new TamanhoDasExpressoes();
+		
+		aplicaSoma.aceitar(te);
+		
+		System.out.println(te.getTamanho() + "\n");
+		
+		NotacaoPolonesaReversa npr = new NotacaoPolonesaReversa();
+		
+		aplicaSoma.aceitar(npr);
+		
+		System.out.println(npr.getStr() + "\n");
 	}
 }
