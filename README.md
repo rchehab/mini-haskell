@@ -21,7 +21,7 @@ Imprima set para ativar a verificacao de tipos
 Imprima reset para desativar a verificacao de tipo
 
 **Aviso**: *Se for utilizada uma função recursiva a verificacao de tipos deve estar desativada, 
-caso contrario pode ocorrer um problema de execucao
+caso contrario pode ocorrer um problema de execucao*
 
 
 
