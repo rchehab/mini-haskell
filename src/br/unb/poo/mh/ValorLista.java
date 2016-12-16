@@ -12,6 +12,16 @@ public class ValorLista extends ValorParametrizado<Vector<Valor>>{
 	public Tipo tipo(Tipo padrao) {
 		Tipo ret =  Tipo.Lista;
 		
+		Tipo interno = Tipo.Indefinido;
+		
+		for (int i = 0; i < valor.size(); i++) {
+			Tipo a = valor.get(i).tipo(Tipo.Indefinido);
+			interno = (a == interno || interno == Tipo.Indefinido) ? a : Tipo.Error;
+		}
+		
+		if (interno == Tipo.Error)
+			ret = Tipo.Error;
+		
 		return (ret == padrao || padrao == Tipo.Indefinido) ? ret : Tipo.Error;
 	}
 

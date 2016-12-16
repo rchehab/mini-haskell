@@ -2,7 +2,7 @@ package br.unb.poo.mh;
 
 public abstract class ValorParametrizado<T> extends Valor {
 
-	private T valor;
+	protected T valor;
 	
 	public ValorParametrizado(T valor) {
 		this.valor = valor;
