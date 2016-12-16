@@ -142,7 +142,7 @@ public class PrettyPrinter implements Visitor{
 	public void visitar(Guarda exp) {
 		str = str + "| ";
 		exp.condicao.aceitar(this);
-		str = str + " =";
+		str = str + " = ";
 		exp.clausula.aceitar(this);
 		str = str + "\n";
 	}
@@ -189,7 +189,7 @@ public class PrettyPrinter implements Visitor{
 
 	@Override
 	public void visitar(GuardaFalsa guardaFalsa) {
-		str = str + " =";
+		str = str + " = ";
 		guardaFalsa.clausula.aceitar(this);
 		str = str + "\n";
 	}
