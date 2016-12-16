@@ -13,8 +13,8 @@ public class Concatenar extends ExpressaoBinaria {
 		ValorLista v1 = (ValorLista) expEsquerda.avaliar();
 		ValorLista v2 = (ValorLista) expDireita.avaliar();
 
-		Vector<Valor> fi = v1.getValor();
-		Vector<Valor> ne = v2.getValor();
+		Vector<Valor> fi = new Vector<Valor>(v1.getValor());
+		Vector<Valor> ne = new Vector<Valor>(v2.getValor());
 		
 		for (int i = 0; i < ne.size(); i++) {
 			fi.add(ne.get(i));
@@ -36,9 +36,9 @@ public class Concatenar extends ExpressaoBinaria {
 		
 		Tipo a = fi.size() == 0 ? Tipo.Indefinido : fi.get(0).tipo(Tipo.Indefinido);
 		Tipo b = ne.size() == 0 ? Tipo.Indefinido : ne.get(0).tipo(Tipo.Indefinido);
-
+		
 		//Essas listas possuem o mesmo tipo
-		Tipo interno = (a == b || b == Tipo.Indefinido) ? a : Tipo.Error;
+		Tipo interno = (a == b || b == Tipo.Indefinido) ? a : ( a == Tipo.Indefinido ? b : Tipo.Error);
 		
 		if (interno == Tipo.Error)
 			ret = Tipo.Error;
